@@ -1,14 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Add Item</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Upload with Bootstrap</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 <body>
-    <header>
-      <h1>Add Item</h1>
-    </header>
-    <main>
-    </main>
+  <main>
+    <h1>Add Item</h1>
+    <div style="display: flex;">
+      
+      <div style="flex: 50%">
+        <!-- image upload -->
+        <div class="container mt-5">
+          <h3>Upload an Image</h3>
+          <form>
+            <div id="image-upload-box" class="form-group">
+              <span id="upload-text">Click to upload an image</span>
+              <img id="image-preview" src="#" alt="Image Preview">
+              <input type="file" class="form-control-file" id="imageUpload" accept="image/*">
+            </div>
+          </form>
+        </div>
+
+        <!-- tags -->
+        <div class="tag">
+          
+        </div>
+      </div>
+
+      <div style="flex: 50%">
+        hi
+      </div>
+
+    </div>
+    
+  </main>
+
+  <script>
+    const imageUploadBox = document.getElementById('image-upload-box');
+    const imageUploadInput = document.getElementById('imageUpload');
+    const imagePreview = document.getElementById('image-preview');
+    const uploadText = document.getElementById('upload-text');
+
+    imageUploadBox.addEventListener('click', () => {
+      imageUploadInput.click();
+    });
+
+    imageUploadInput.addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          imagePreview.src = e.target.result;
+          imagePreview.style.display = 'block';
+          uploadText.style.display = 'none';
+          imageUploadBox.style.border = 'none';
+        }
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
 </body>
 </html>

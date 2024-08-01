@@ -1,0 +1,30 @@
+/* add-page css components */
+#image-upload-box {
+    width: 100%;
+    max-width: 300px;
+    height: 200px;
+    border: 2px dashed #007bff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: 10px;
+    position: relative;
+}
+#image-preview {
+    max-width: 100%;
+    max-height: 100%;
+    display: none;
+}
+#imageUpload {
+    display: none;
+}
+
+.tag {
+    border-radius: 20px;
+    border-width: 1px;
+}
+
+main {
+    margin: 2%;
+}
