@@ -1,8 +1,9 @@
 /* styles.css */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Nunito';
+    font-weight: 600;
+    background-color: #FFFDF5;
 }
 
 .container {
@@ -77,13 +78,16 @@ body {
     width: 100%;
     max-width: 300px;
     height: 200px;
-    border: 2px dashed #007bff;
+    border: 1px dashed #929292;
+    border-radius: 30px;
+    background-color: #f1f0e8;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     margin-top: 10px;
     position: relative;
+    margin: auto;
 }
 #image-preview {
     max-width: 100%;
@@ -95,8 +99,26 @@ body {
 }
 
 .tag {
-    border-radius: 20px;
-    border-width: 1px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-left: 50px;
+}
+.tag>* {
+    flex: 0 0 20%;
+    background-color: #C0F1E7;
+    border: 1px solid #8acdbf;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.input-box {
+    background-color: #e5e0e8;
+    border: 0;
+    border-bottom: 2px solid #a389b2;
+    width: 80%;
+    padding: 10px;
 }
 
 main {

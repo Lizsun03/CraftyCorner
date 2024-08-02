@@ -6,16 +6,17 @@
   <title>Image Upload with Bootstrap</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200..1000&display=swap" rel="stylesheet">
 </head>
 <body>
   <main>
     <h1>Add Item</h1>
     <div style="display: flex;">
-      
-      <div style="flex: 50%">
+      <div style="flex: 50%; text-align: center; margin-top: 40px;">
+
         <!-- image upload -->
-        <div class="container mt-5">
-          <h3>Upload an Image</h3>
+        <div style="margin: auto;">
+          <h4>Upload an Image</h4>
           <form>
             <div id="image-upload-box" class="form-group">
               <span id="upload-text">Click to upload an image</span>
@@ -26,13 +27,32 @@
         </div>
 
         <!-- tags -->
-        <div class="tag">
-          
+        <h4 style="margin-top: 40px;">Choose labels</h4>
+        <div>
+          <div class="tag">
+            <div>Label 1</div>
+            <div>Label 2</div>
+            <div>Label 3</div>
+            <div>Label 4</div>
+            <div>Label 5</div>
+            <div>Label 6</div>
+            <div>Label 7</div>
+            <div>Label 8</div>
+          </div>
         </div>
       </div>
 
       <div style="flex: 50%">
-        hi
+        <div>
+          <div>Item Name</div>
+          <input type="text" class="input-box"/>
+        </div>
+
+        <div style="margin-top: 30px;">
+          <div>Description</div>
+          <textarea rows="6" class="input-box"></textarea>
+        </div>
+
       </div>
 
     </div>
