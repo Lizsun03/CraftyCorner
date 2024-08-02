@@ -1,3 +1,77 @@
+/* styles.css */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.search-bar {
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    width: 415px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 30px;
+}
+
+.labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.labels span {
+    font-size: 16px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    flex: 1;
+    text-align: center;
+    width: 114px;
+    height: 31px;
+    background: #FCC879;
+    border: 2px solid #FCC879;
+    
+    /* Drop Shadow/300 */
+    box-shadow: 0px 4px 4px -1px rgba(12, 12, 13, 0.1), 0px 4px 4px -1px rgba(12, 12, 13, 0.05);
+    border-radius: 8px;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    overflow-x: auto; /* Allows horizontal scrolling */
+    padding: 10px 0;
+}
+
+.box {
+    flex: 1 1 calc(33.333% - 20px); /* Three boxes per row, minus the gap */
+    min-width: calc(33.333% - 20px);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+    width: 236px;
+    height: 237px;
+
+
+}
+
 /* add-page css components */
 #image-upload-box {
     width: 100%;
