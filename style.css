@@ -176,6 +176,11 @@ h1 {
     color: #4f4e4e;
 }
 
+.box-description {
+    font-size: 17px;
+}
+
+
 .top-half {
     height: 50%;             /* Make the top section take up one-third of the height */
     overflow: hidden;          /* Hide overflow to maintain aspect ratio */
@@ -195,11 +200,17 @@ h1 {
 .bottom-half {
     flex: 1;                    /* Make the bottom half take up half the height */
     display: flex;
-    flex-direction: column;
+    /*flex-direction: column;
     align-items: center;
-    justify-content: center;
-    /*padding: 10px;
-    box-sizing: border-box; */
+    justify-content: center;*/
+    padding: 5px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+    text-align: left;
+    /*text-overflow: ellipsis;   Show '...' for overflowing text */
+    /*box-sizing: border-box; */
 }
 
 /* add-page css components */
@@ -330,8 +341,14 @@ main {
 
 .side-panel-content {
     /* Optional styling for the description text */
+    color:#929292;
+}
+
+.side-title {
+    /* Optional styling for the description text */
     color:black;
 }
+
 .overlay {
     display: none; /* Hidden by default */
     position: fixed;
