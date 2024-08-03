@@ -17,12 +17,20 @@ h1 {
     font-size: 3em; /* Adjust the size as needed */
 }
 
+.round-top-corners {
+    width: 100%;                /* Make the image fill the width of the container */
+    height: auto;               /* Maintain the aspect ratio of the image */
+    border-top-left-radius: 12px; /* Round the top-left corner */
+    border-top-right-radius: 12px; /* Round the top-right corner */
+}
+
 .header-container {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     margin-left: 20px;
+    margin-right: 20px;
     margin-bottom: 20px;
 }
 
@@ -128,7 +136,7 @@ h1 {
     
     /* Drop Shadow/300 */
     box-shadow: 0px 4px 4px -1px rgba(12, 12, 13, 0.1), 0px 4px 4px -1px rgba(12, 12, 13, 0.05);
-    border-radius: 8px;
+    border-radius: 8px; 
 }
 
 
@@ -146,22 +154,51 @@ h1 {
     cursor: pointer;
     flex: 1 1 calc(33.333% - 20px); /* Three boxes per row, minus the gap */
     min-width: calc(33.333% - 20px);
-    background-color: #fff;
+    background-color: #FFEDAC;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 12px; /*increased this*/
     box-sizing: border-box;
-    padding: 20px;
     text-align: center;
     font-size: 18px;
     width: 236px;
     height: 237px;
-    padding: 3px;
+    /*removed padding*/
 }
 
 .box:hover {
     border-width: 4px; 
-    border-color: #D3E79B; /* Color of the border on hover */
+    border-color: #D3E79B;
     /*transform: scale(1.05);  Slightly increase size on hover */
+}
+
+.box-title {
+    color: #4f4e4e;
+}
+
+.top-half {
+    height: 50%;             /* Make the top section take up one-third of the height */
+    overflow: hidden;          /* Hide overflow to maintain aspect ratio */
+}
+
+.top-half {
+    flex: 1;                    /* Make the top half take up half the height */
+    overflow: hidden;           /* Hide overflow to maintain aspect ratio */
+}
+
+.top-half img {
+    width: 100%;                /* Make the image fill the width */
+    height: 100%;               /* Make the image fill the height */
+    object-fit: cover;          /* Ensure the image covers the area */
+}
+
+.bottom-half {
+    flex: 1;                    /* Make the bottom half take up half the height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*padding: 10px;
+    box-sizing: border-box; */
 }
 
 /* add-page css components */
