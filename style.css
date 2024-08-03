@@ -4,6 +4,7 @@ body {
     font-family: 'Nunito';
     font-weight: 600;
     background-color: #FFFDF5;
+    color: #757575;;
 }
 
 .container {
@@ -12,21 +13,72 @@ body {
     padding: 20px;
 }
 
-.search-bar {
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     margin-bottom: 20px;
 }
 
+.logo {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.profile-icon {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.profile-image {
+    width: 100px;  /* Set a specific width */
+    height: 90px; /* Set a specific height */
+    max-width: 100%; /* Ensure image does not exceed container width */
+    max-height: 100%; /* Ensure image does not exceed container height */
+    min-width: 100px;
+    min-height: 90px;
+    object-fit: cover;  /*gets rid of distortion*/
+}
+
+.search-bar {
+    display: flex;
+    flex: 2;
+    padding-right: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 50px;
+    border-radius: 28px;
+    background-color: rgba(255, 166, 158, 0.3);
+    width: 100%;
+}
+
 .search-bar input {
+    flex: 2;
     width: 415px;
     padding: 10px;
     padding-left: 20px;
     color: #757575;
     font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
     height: 30px;
     border-radius: 28px;
-    background-color: rgba(255, 166, 158, 0.3);;
+    background: none;
+    border: none;
+}
+
+.search-button {
+    right: 5px;
+    background: none;
+    border: none;
+    color: #757575;
+    font-size: 20px;
+    right: 5px;
+}
+
+.search-button:hover i {
+    color: #4f4e4e;
 }
 
 .labels {
@@ -52,6 +104,9 @@ body {
     box-shadow: 0px 4px 4px -1px rgba(12, 12, 13, 0.1), 0px 4px 4px -1px rgba(12, 12, 13, 0.05);
     border-radius: 8px;
 }
+
+
+
 
 .grid {
     display: flex;
