@@ -13,12 +13,21 @@ body {
     padding: 20px;
 }
 
+h1 {
+    font-size: 3em; /* Adjust the size as needed */
+}
+
 .header-container {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin-left: 20px;
     margin-bottom: 20px;
+}
+
+.head-foot-container {
+    margin: 10px;
 }
 
 .logo {
@@ -81,7 +90,24 @@ body {
     color: #4f4e4e;
 }
 
+.fixed-buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    position: fixed; /* Fixes the button relative to the viewport */
+    bottom: 5px; 
+}
+
+.message-icon {
+    margin: 0; /* Remove left margin for the left button */
+}
+
+.add-icon {
+    margin-right: 20px; /* Remove right margin for the right button */
+}
+
 .labels {
+    cursor: pointer;
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
@@ -117,6 +143,7 @@ body {
 }
 
 .box {
+    cursor: pointer;
     flex: 1 1 calc(33.333% - 20px); /* Three boxes per row, minus the gap */
     min-width: calc(33.333% - 20px);
     background-color: #fff;
@@ -128,8 +155,13 @@ body {
     font-size: 18px;
     width: 236px;
     height: 237px;
+    padding: 3px;
+}
 
-
+.box:hover {
+    border-width: 4px; 
+    border-color: #D3E79B; /* Color of the border on hover */
+    /*transform: scale(1.05);  Slightly increase size on hover */
 }
 
 /* add-page css components */
