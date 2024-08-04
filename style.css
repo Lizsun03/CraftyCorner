@@ -143,6 +143,7 @@ h1 {
     height: 31px;
     background: #FCC879;
     border: 2px solid #FCC879;
+    margin: 5px;
     
     /* Drop Shadow/300 */
     box-shadow: 0px 4px 4px -1px rgba(12, 12, 13, 0.1), 0px 4px 4px -1px rgba(12, 12, 13, 0.05);
@@ -441,4 +442,43 @@ img.rounded {
 .overlay-active {
     display: block; /* Show the overlay */
     opacity: 1; /* Make the overlay fully opaque */
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* margin-top: 20px; */
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid #ccc;
+    border-radius: 12px; */
+    padding: 10px;
+}
+
+.about-me {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 30px;
+    margin: 2.5% 20%;
+}
+
+input[type="text"] {
+    font-family: 'Nunito';
 }

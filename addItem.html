@@ -115,6 +115,11 @@
         reader.readAsDataURL(file);
       }
     });
+
+    // if cancel button is clicked, go back to the previous page
+    document.querySelector('.button-style').addEventListener('click', () => {
+      window.history.back();
+    });
   </script>
 </body>
 </html>
