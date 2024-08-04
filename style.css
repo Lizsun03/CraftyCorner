@@ -283,7 +283,162 @@ h1 {
     border: 0;
 }
 
-main {
-    margin: 2%;
+/* message page css components */
+img.rounded {
+    object-fit: cover;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+}
+  
+.message-bar {
+    display: flex;
+    padding-right: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 50px;
+    border-radius: 28px;
+    background-color: rgba(255, 166, 158, 0.3);
+    width: 50%;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 20px;
+    
 }
 
+.message-bar input {
+    flex: 2;
+    width: 415px;
+    padding: 10px;
+    padding-left: 20px;
+    color: #757575;
+    font-size: 16px;
+    height: 50px;
+    border-radius: 28px;
+    background: none;
+    border: none;
+}
+
+.chat-bubble-receive p {
+    background: #42a5f5;
+    color: #fff !important;
+    border-radius: 20px 20px 3px 20px;
+    display: block;
+    max-width: 75%;
+    padding: 7px 13px 7px 13px;
+    float: right;
+    margin: 20px 40px;
+}
+
+.chat-bubble-send p {
+    background: #f1f1f1;
+    color: #000 !important;
+    border-radius: 20px 20px 20px 3px;
+    display: block;
+    max-width: 75%;
+    padding: 7px 13px 7px 13px;
+    left: 0;
+    float: left;
+    margin: 10px 40px;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 1rem 1rem;
+}
+
+.lightblue{
+    background-color: #C0F1E7;
+    border: 1px solid #8acdbf;
+}
+.orange{
+    background-color: #FCC879;
+    border: 1px solid #e3ab57;
+}
+.pink{
+    background-color:#FFD0CC ;
+    border: 1px solid #e1b4b0;
+
+}
+.blue{
+    background-color: #AED9E0;
+    border: 1px solid #6ea499;
+
+}
+.green{
+    background-color: #D3E79B; 
+    border: 1px solid #adbe7e;
+}
+.side-panel-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.side-panel {
+    position: fixed;
+    top: 0;
+    right: -500px; /* Hide the side panel off-screen initially */
+    width: 300px;
+    height: 100%;
+    background-color: #fcf4d4;
+    color: #000000;
+    transition: right 0.3s ease;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.side-panel-open {
+    right: 0; /* Slide the panel into view */
+}
+
+.side-panel-close {
+    background-color: transparent;
+    color:black;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.side-panel-content {
+    /* Optional styling for the description text */
+    color:#929292;
+}
+
+.side-title {
+    /* Optional styling for the description text */
+    color:black;
+}
+
+.overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(209, 206, 206, 0.50); /* Light gray overlay with some transparency */
+    z-index: 999; /* Ensure it's above other content */
+    transition: opacity 0.3s ease;
+    opacity: 0; /* Hidden by default */
+    /* shaded */
+
+
+
+    background: rgba(131, 131, 131, 0.5);
+
+}
+
+.overlay-active {
+    display: block; /* Show the overlay */
+    opacity: 1; /* Make the overlay fully opaque */
+}
