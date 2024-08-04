@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .search-bar {
+            flex-grow: 1;
+            margin-left: 20px;
+            position: relative;
+        }
+        .search-bar input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+        }
+        .filter-tags {
+            margin: 20px 0;
+        }
+        .filter-tags .tag {
+            display: inline-block;
+            background-color: #eee;
+            padding: 5px 10px;
+            border-radius: 20px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .item-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .item-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            text-align: center;
+        }
+        .item-card .image-placeholder {
+            width: 100%;
+            height: 150px;
+            background-color: #ccc;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        .item-card .image-placeholder::before {
+            content: "X";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: #999;
+        }
+        .item-card h3 {
+            margin: 10px 0 5px;
+        }
+        .item-card .description {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 10px;
+        }
+        .item-card .details {
+            font-size: 14px;
+            color: #666;
+        }
+        .item-card .label {
+            display: inline-block;
+            background-color: #f0f0f0;
+            padding: 5px;
+            border-radius: 10px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">Logo</div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search">
+            </div>
+            <div class="icons">
+                <!-- Add any icons as needed -->
+            </div>
+        </div>
+        <div class="filter-tags">
+            <div class="tag">Label 1</div>
+            <div class="tag">Label 2</div>
+            <div class="tag">Label 3</div>
+            <div class="tag">Label 4</div>
+        </div>
+        <div class="item-grid">
+            <div class="item-card">
+                <div class="image-placeholder"></div>
+                <h3> Lion Brand Merino Wool [Green] </h3>
+                <div class="description">Hi! I am giving away this beautiful merino wool yarn away! 
+                    It is of high quality,  from Lion Brand and it is a nice green everglade color. 
+                    I have not used it much, so it is around 80 yards left. 
+                    It weighs around 5 ounces and is soft but thick yarn.
+                </div>
+
+            </div>
+            <div class="item-card">
+                <div class="image-placeholder"></div>
+                <h3>Lily Sugar'n Cream Yarn</h3>
+                <div class="description">
+                    Giving away Lily Sugar  Cream yarn, all brand new. 
+                    There are a variety of sizes: 2 oz - 95 yards / and 3 oz to 200 yards. 
+                    I am selling many colors: red, orange, blue, white.  I got into an injury 1 year ago, 
+                    and since then I have not been crocheting as much. Even though it saddens me a lot, 
+                    it is worse staring at this pile of yarn, so If you could take these away,
+                    that would make me really relieved. I am selling these for $1.
+
+
+                </div>
+
+            </div>
+            <div class="item-card">
+                <div class="image-placeholder"></div>
+                <h3> SELLING NEW ACRYLIC BLEND TEAL YARN </h3>
+                <div class="description">
+                    I've got one skein of premium yarn left from my
+                     last project and it's looking for a new home.
+                      It's a beautiful, high-quality acrylic blend 
+                      that's incredibly soft and easy to work with. 
+                      The color is a vibrant teal, perfect for adding
+                       a pop of color to your knitting or crocheting 
+                       projects!
+                        Details:
+                        Type: Acrylic Blend
+                        Color: Teal
+                        Weight: 100 grams
+                        Length: Approximately 200 meters
+                        Recommended Needle Size: 4-5mm
+                        Price: $5 
+                        This yarn is from a smoke-free and pet-free home. 
+
+                </div>
+
+            </div>
+            <div class="item-card">
+                <div class="image-placeholder"></div>
+                <h3> Nice Green Bamboo Yarn</h3>
+                <div class="description">
+                   I have a lovely skein of bamboo blend yarn available.
+                    It's lightweight and has a beautiful natural sheen.
+
+                    Type: Bamboo Blend
+                    Color: Soft Green
+                    Price: $5
+                    Contact me for pickup details or shipping options. 
+                    Perfect for your next knitting project!
+
+                </div>
+ 
+            </div>
+            <!-- Add more item cards as needed -->
+        </div>
+    </div>
+</body>
+</html>
