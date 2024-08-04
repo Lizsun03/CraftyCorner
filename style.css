@@ -221,7 +221,66 @@ h1 {
     border: 0;
 }
 
-main {
-    margin: 2%;
+/* message page css components */
+img.rounded {
+    object-fit: cover;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+}
+  
+.message-bar {
+    display: flex;
+    padding-right: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 50px;
+    border-radius: 28px;
+    background-color: rgba(255, 166, 158, 0.3);
+    width: 50%;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 20px;
+    
 }
 
+.message-bar input {
+    flex: 2;
+    width: 415px;
+    padding: 10px;
+    padding-left: 20px;
+    color: #757575;
+    font-size: 16px;
+    height: 50px;
+    border-radius: 28px;
+    background: none;
+    border: none;
+}
+
+.chat-bubble-receive p {
+    background: #42a5f5;
+    color: #fff !important;
+    border-radius: 20px 20px 3px 20px;
+    display: block;
+    max-width: 75%;
+    padding: 7px 13px 7px 13px;
+    float: right;
+    margin: 20px 40px;
+}
+
+.chat-bubble-send p {
+    background: #f1f1f1;
+    color: #000 !important;
+    border-radius: 20px 20px 20px 3px;
+    display: block;
+    max-width: 75%;
+    padding: 7px 13px 7px 13px;
+    left: 0;
+    float: left;
+    margin: 10px 40px;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 1rem 1rem;
+}
