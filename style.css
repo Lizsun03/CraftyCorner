@@ -17,12 +17,20 @@ h1 {
     font-size: 3em; /* Adjust the size as needed */
 }
 
+.round-top-corners {
+    width: 100%;                /* Make the image fill the width of the container */
+    height: auto;               /* Maintain the aspect ratio of the image */
+    border-top-left-radius: 12px; /* Round the top-left corner */
+    border-top-right-radius: 12px; /* Round the top-right corner */
+}
+
 .header-container {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     margin-left: 20px;
+    margin-right: 20px;
     margin-bottom: 20px;
 }
 
@@ -36,10 +44,16 @@ h1 {
     justify-content: flex-start;
 }
 
-.profile-icon {
+.icons-container {
     flex: 1;
     display: flex;
-    justify-content: flex-end;
+    /*justify-content: flex-end;*/
+}
+
+.icon {
+    flex: 1;
+    display: flex;
+    /*justify-content: flex-end;*/
 }
 
 .profile-image {
@@ -50,11 +64,14 @@ h1 {
     min-width: 100px;
     min-height: 90px;
     object-fit: cover;  /*gets rid of distortion*/
+    cursor: pointer;
+
 }
 
 .search-bar {
     display: flex;
     flex: 2;
+    margin-right: 50px;
     padding-right: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -62,6 +79,7 @@ h1 {
     border-radius: 28px;
     background-color: rgba(255, 166, 158, 0.3);
     width: 100%;
+    max-width: 600px;
 }
 
 .search-bar input {
@@ -128,8 +146,9 @@ h1 {
     
     /* Drop Shadow/300 */
     box-shadow: 0px 4px 4px -1px rgba(12, 12, 13, 0.1), 0px 4px 4px -1px rgba(12, 12, 13, 0.05);
-    border-radius: 8px;
+    border-radius: 8px; 
 }
+
 
 
 
@@ -146,22 +165,62 @@ h1 {
     cursor: pointer;
     flex: 1 1 calc(33.333% - 20px); /* Three boxes per row, minus the gap */
     min-width: calc(33.333% - 20px);
-    background-color: #fff;
+    background-color: #FFEDAC;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 12px; /*increased this*/
     box-sizing: border-box;
-    padding: 20px;
     text-align: center;
     font-size: 18px;
     width: 236px;
     height: 237px;
-    padding: 3px;
+    /*removed padding*/
 }
 
 .box:hover {
     border-width: 4px; 
-    border-color: #D3E79B; /* Color of the border on hover */
+    border-color: #D3E79B;
     /*transform: scale(1.05);  Slightly increase size on hover */
+}
+
+.box-title {
+    color: #4f4e4e;
+}
+
+.box-description {
+    font-size: 17px;
+}
+
+
+.top-half {
+    height: 50%;             /* Make the top section take up one-third of the height */
+    overflow: hidden;          /* Hide overflow to maintain aspect ratio */
+}
+
+.top-half {
+    flex: 1;                    /* Make the top half take up half the height */
+    overflow: hidden;           /* Hide overflow to maintain aspect ratio */
+}
+
+.top-half img {
+    width: 100%;                /* Make the image fill the width */
+    height: 100%;               /* Make the image fill the height */
+    object-fit: cover;          /* Ensure the image covers the area */
+}
+
+.bottom-half {
+    flex: 1;                    /* Make the bottom half take up half the height */
+    display: flex;
+    /*flex-direction: column;
+    align-items: center;
+    justify-content: center;*/
+    padding: 5px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+    text-align: left;
+    /*text-overflow: ellipsis;   Show '...' for overflowing text */
+    /*box-sizing: border-box; */
 }
 
 /* add-page css components */
@@ -198,14 +257,17 @@ h1 {
 }
 .tag>* {
     flex: 0 0 20%;
-    background-color: #C0F1E7;
-    border: 1px solid #8acdbf;
+    /* background-color: #C0F1E7;
+    border: 1px solid #8acdbf; */
     text-align: center;
     border-radius: 8px;
+    box-shadow: 0px 4px 4px -1px rgba(12, 12, 13, 0.1), 0px 4px 4px -1px rgba(12, 12, 13, 0.05);
+
 }
 
 .input-box {
-    background-color: #e5e0e8;
+    background-color: #FFE3DA;
+     /* background-color: #e5e0e8; */
     border: 0;
     border-bottom: 2px solid #a389b2;
     width: 80%;
@@ -221,66 +283,7 @@ h1 {
     border: 0;
 }
 
-/* message page css components */
-img.rounded {
-    object-fit: cover;
-    border-radius: 50%;
-    height: 100px;
-    width: 100px;
-}
-  
-.message-bar {
-    display: flex;
-    padding-right: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    height: 50px;
-    border-radius: 28px;
-    background-color: rgba(255, 166, 158, 0.3);
-    width: 50%;
-    position: absolute;
-    bottom: 0;
-    margin-bottom: 20px;
-    
+main {
+    margin: 2%;
 }
 
-.message-bar input {
-    flex: 2;
-    width: 415px;
-    padding: 10px;
-    padding-left: 20px;
-    color: #757575;
-    font-size: 16px;
-    height: 50px;
-    border-radius: 28px;
-    background: none;
-    border: none;
-}
-
-.chat-bubble-receive p {
-    background: #42a5f5;
-    color: #fff !important;
-    border-radius: 20px 20px 3px 20px;
-    display: block;
-    max-width: 75%;
-    padding: 7px 13px 7px 13px;
-    float: right;
-    margin: 20px 40px;
-}
-
-.chat-bubble-send p {
-    background: #f1f1f1;
-    color: #000 !important;
-    border-radius: 20px 20px 20px 3px;
-    display: block;
-    max-width: 75%;
-    padding: 7px 13px 7px 13px;
-    left: 0;
-    float: left;
-    margin: 10px 40px;
-}
-
-.card-body {
-    flex: 1 1 auto;
-    padding: 1rem 1rem;
-}
