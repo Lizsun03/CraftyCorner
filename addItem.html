@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add Item</title>
+  <title>Image Upload with Bootstrap</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200..1000&display=swap" rel="stylesheet">
 </head>
 <body>
   <main>
-    <h1 style="margin: 2%;">Add Item</h1>
+    <h1>Add Item</h1>
     <div style="display: flex;">
       <div style="flex: 50%; text-align: center; margin-top: 40px;">
 
@@ -27,68 +27,91 @@
         </div>
 
         <!-- tags -->
-        <h4 style="margin-top: 40px;">Choose labels</h4>
-        <div>
-          <div class="tag">
-            <div class = 'lightblue'>Label 1</div>
-            <div class = 'blue'>Label 2</div>
-            <div class = 'orange'>Label 3</div>
-            <div class = 'green'>Label 4</div>
-            <div class = 'pink'>Label 5</div>
-            <div class = 'lightblue'>Label 6</div>
-            <div class = 'lightblue'>Label 7</div>
-            <div class = 'lightblue'>Label 8</div>
-          </div>
-        </div>
-      </div>
-
-      <div style="flex: 50%">
-        <div>
-          <div>Item Name</div>
-          <input type="text" class="input-box"/>
-        </div>
-
-        <div style="margin-top: 10px;">
-          <div>Description</div>
-          <textarea rows="6" class="input-box"></textarea>
-        </div>
-
-        <div style="margin-top: 10px;">
-          <div>Is your item eco-friendly?</div>
-          <div class="input-box" style="display: flex; gap: 250px; padding-bottom: 0%;">
-            <div>
-                <input type="radio" id="optionYes" name="optionsRadios" value="yes">
-                <label for="optionYes">Yes</label>
-            </div>
-            <div>
-                <input type="radio" id="optionNo" name="optionsRadios" value="no">
-                <label for="optionNo">No</label>
+        <form id = 'stuff'>
+          <h4 style="margin-top: 40px;">Choose labels</h4>
+          <div>
+            <div class="tag">
+              <div class = 'lightblue'>Label 1</div>
+              <div class = 'blue'>Label 2</div>
+              <div class = 'orange'>Label 3</div>
+              <div class = 'green'>Label 4</div>
+              <div class = 'pink'>Label 5</div>
+              <div class = 'click'>Label 6</div>
+              <div class = 'lightblue'>Label 7</div>
+              <div class = 'lightblue'>Label 8</div>
             </div>
           </div>
         </div>
-
-        <div style="margin-top: 10px;">
-          <div>Would you like to “barter” instead of assigning a price?</div>
-          <div class="input-box" style="display: flex; gap: 250px; padding-bottom: 0%;">
-            <div>
-                <input type="radio" id="optionYes" name="optionsRadios" value="yes">
-                <label for="optionYes">Yes</label>
-            </div>
-            <div>
-                <input type="radio" id="optionNo" name="optionsRadios" value="no">
-                <label for="optionNo">No</label>
+  
+        <div style="flex: 50%">
+          <div>
+            <div>Item Name</div>
+            <input type="text" class="input-box"/>
+          </div>
+  
+          <div style="margin-top: 10px;">
+            <div>Description</div>
+            <textarea rows="6" class="input-box" placeholder="
+            You can include the color, price (if applicable), etc.
+            If you'd like include what you used the material for!"></textarea>
+          </div>
+  
+          <div style="margin-top: 10px;">
+            <div>Is your item eco-friendly?</div>
+            <div class="input-box" style="display: flex; gap: 250px; padding-bottom: 0%;">
+              <div>
+                  <input type="radio" id="optionYes" name="optionsRadios1" value="yes">
+                  <label for="optionYes">Yes</label>
+              </div>
+              <div>
+                  <input type="radio" id="optionNo" name="optionsRadios1" value="no">
+                  <label for="optionNo">No</label>
+              </div>
             </div>
           </div>
-        </div>
+  
+          <div style="margin-top: 10px;">
+            <div>Would you like to “barter” instead of assigning a price?</div>
+            <div class="input-box" style="display: flex; gap: 250px; padding-bottom: 0%;">
+              <div>
+                  <input type="radio" id="optionYes" name="optionsRadios2" value="yes">
+                  <label for="optionYes">Yes</label>
+              </div>
+              <div>
+                  <input type="radio" id="optionNo" name="optionsRadios2" value="no">
+                  <label for="optionNo">No</label>
+              </div>
+            </div>
+          </div>
+
+        </form>
 
         <div style="display: flex; margin: 30px; justify-content: space-between; width: 70%">
-          <button class="button-style" style="background-color: #e35050;">Cancel</button>
-          <button class="button-style" style="background-color: #d5b5f2;">Post</button>
+          <button id = 'cancel-button' class="button-style" style="background-color: #e35050;">Cancel</button>
+          <button id = "post-button" class="button-style" style="background-color: #d5b5f2;">Post</button>
         </div>
 
       </div>
 
     </div>
+    <!-- Success Popup -->
+    <div class="overlay"></div>
+    <div id = 'success' class="popup">
+        <h3>Success</h3>
+        <p>Your post has been submitted successfully!</p>
+        <div style="display: flex; margin: 30px; justify-content: space-between; width: 70%">
+          <button id = 'go-main' class="button-style" style="background-color: #dbbf5a;margin-right: 10%;">Main page</button>
+          <button id = 'new-post' class="button-style" style="background-color: #d5b5f2;">New Post</button>
+        </div>
+    </div>
+    <div id = 'cancel' class="popup">
+      <h3>Cancel?</h3>
+      <p>Are you sure? Once you cancel all information will be lost.</p>
+      <div style="display: flex; margin: 30px; justify-content: space-between; width: 70%">
+        <button id = 'continue' class="button-style" style="background-color: #d5b5f2;margin-right: 10%;">Stay</button>
+        <button id = 'go-main' class="button-style" style="background-color: #e35050; "> Delete</button>
+      </div>
+  </div>
     
   </main>
 
@@ -115,11 +138,42 @@
         reader.readAsDataURL(file);
       }
     });
+        const postButton = document.getElementById('post-button');
+        const popup = document.querySelector('.popup');
+        const overlay = document.querySelector('.overlay');
+        const cancelButton = document.getElementById('cancel-button');
+        const back = document.querySelectorAll('#go-main');
+        const cont = document.getElementById('continue');
+        const newPost = document.getElementById('new-post');
+        const form = document.getElementById('stuff');
 
-    // if cancel button is clicked, go back to the previous page
-    document.querySelector('.button-style').addEventListener('click', () => {
-      window.history.back();
-    });
+        postButton.addEventListener('click', () => {
+          document.getElementById('success').classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        cancelButton.addEventListener('click',() => {
+          document.getElementById('cancel').classList.add('active');
+          overlay.classList.add('active');
+        });
+
+        back.forEach(button => {
+            button.addEventListener('click', () => {
+              window.location.href = 'index.html';
+            });
+        });
+
+        cont.addEventListener('click', () => {
+          document.getElementById('cancel').classList.remove('active');
+          overlay.classList.remove('active');
+        });
+
+        newPost.addEventListener('click', () => {
+          form.reset();
+          document.getElementById('success').classList.remove('active');
+          overlay.classList.remove('active');
+        });
+
   </script>
 </body>
 </html>
