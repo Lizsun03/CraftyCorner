@@ -143,6 +143,7 @@ h1 {
     height: 31px;
     background: #FCC879;
     border: 2px solid #FCC879;
+    margin: 5px;
     
     /* Drop Shadow/300 */
     box-shadow: 0px 4px 4px -1px rgba(12, 12, 13, 0.1), 0px 4px 4px -1px rgba(12, 12, 13, 0.05);
@@ -283,8 +284,68 @@ h1 {
     border: 0;
 }
 
-main {
-    margin: 2%;
+/* message page css components */
+img.rounded {
+    object-fit: cover;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+}
+  
+.message-bar {
+    display: flex;
+    padding-right: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 50px;
+    border-radius: 28px;
+    background-color: rgba(255, 166, 158, 0.3);
+    width: 50%;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 20px;
+    
+}
+
+.message-bar input {
+    flex: 2;
+    width: 415px;
+    padding: 10px;
+    padding-left: 20px;
+    color: #757575;
+    font-size: 16px;
+    height: 50px;
+    border-radius: 28px;
+    background: none;
+    border: none;
+}
+
+.chat-bubble-receive p {
+    background: #42a5f5;
+    color: #fff !important;
+    border-radius: 20px 20px 3px 20px;
+    display: block;
+    max-width: 75%;
+    padding: 7px 13px 7px 13px;
+    float: right;
+    margin: 20px 40px;
+}
+
+.chat-bubble-send p {
+    background: #f1f1f1;
+    color: #000 !important;
+    border-radius: 20px 20px 20px 3px;
+    display: block;
+    max-width: 75%;
+    padding: 7px 13px 7px 13px;
+    left: 0;
+    float: left;
+    margin: 10px 40px;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 1rem 1rem;
 }
 
 .lightblue{
@@ -374,11 +435,92 @@ main {
 
 
 
-background: rgba(131, 131, 131, 0.5);
+    background: rgba(131, 131, 131, 0.5);
 
 }
 
 .overlay-active {
     display: block; /* Show the overlay */
     opacity: 1; /* Make the overlay fully opaque */
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* margin-top: 20px; */
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid #ccc;
+    border-radius: 12px; */
+    padding: 10px;
+}
+
+.about-me {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 30px;
+    margin: 2.5% 20%;
+}
+
+input[type="text"] {
+    font-family: 'Nunito';
+}
+
+/* Styles for the popup */
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    text-align: center;
+}
+.popup.active {
+    display: block; /* Show the popup */
+}
+.popup .close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+.overlay.active {
+    display: block;
 }
