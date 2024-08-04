@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link 
@@ -19,7 +20,7 @@
         <div class="header-container">
             <h1 class="logo">Crafty Corner</h1>
             <div class="search-bar">
-                <input type="text" placeholder="Search...">
+                <input type="text" id = "textbox" placeholder="Search...">
                 <button class="search-button">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
@@ -65,110 +66,34 @@
 
     <div class="container">
         <div class="labels">
-            <span>Label 1</span>
-            <span>Label 2</span>
-            <span>Label 3</span>
-            <span>Label 4</span>
-            <span>Label 5</span>
+            <label class = "label-item">
+                <input type="checkbox" id="Material" />
+                <span for="material"> Material </span>
+            </label>
+
+            <label class = "label-item">
+                <input type="checkbox" id="color" />
+                <span for="color"> Color </span>
+            </label>
+
+            <label class = "label-item">
+                <input type="checkbox" id="quantity" />
+                <span for="quantity"> Quantity </span>
+            </label>
+
+            <label class = "label-item">
+                <input type="checkbox" id="Conditon" />
+                <span for="condition"> Condition </span>
+            </label>
+
+            <label class = "label-item">
+                <input type="checkbox" id="Price" />
+                <span for="price"> Price </span>
+            </label>
         </div>
-        <div class="grid">
-            <div class="box" id="yarn">
-                <div class="top-half">
-                    <img src="images/content-images/yarn.png" alt="Image of yarn" class="round-top-corners">
-                </div>
-                <div class="bottom-half">
-                    <div class="box-title">Yarn</div>
-                    <div class="box-description">I have a bunch of leftover yarn in various colors and textures that I no longer need. Perfect for small projects, crafts,
-                         or sampling new techniques. This yarn has been used a bit but is still in great condition. Hoping to pass it on to someone
-                          who will put it to good use.</div>
-                </div>
-            </div>
-            <div class="box" id="fabric-scraps">
-                <div class="top-half">
-                    <img src="images/content-images/fabric-scraps.jpg" alt="Image of fabric scraps" class="round-top-corners">
-                </div>
-                <div class="bottom-half">
-                    <div class="box-title">Fabric Scraps</div>
-                    <div class="box-description">I’m giving away a collection of fabric scraps from various sewing projects. They are in different sizes and patterns,
-                         ideal for quilting, patchwork, or other crafts.
-                          These scraps are leftover from my projects and I’d love for them to find a new home where they can be used creatively.</div>
-                </div>
-            </div>
-            <div class="box" id="wood-pallets">
-                <div class="top-half">
-                    <img src="images/content-images/wood-pallets.jpg" alt="Image of wood-pallets" class="round-top-corners">
-                </div>
-                <div class="bottom-half">
-                    <div class="box-title">Wood Pallets</div>
-                    <div class="box-description">I have some wood pallets that I no longer need. They are used but still sturdy and could be repurposed for DIY projects, gardening,
-                         or storage solutions. Rather than disposing of them, I’d prefer to give them away to someone who can make use of them.</div>
-                </div>
-            </div>
-            <div class="box" id="beads">
-                <div class="top-half">
-                    <img src="images/content-images/beads.jpg" alt="Image of beads" class="round-top-corners">
-                </div>
-                <div class="bottom-half">
-                    <div class="box-title">Assorted Beads</div>
-                    <div class="box-description">I’m clearing out my craft supplies and have a collection of assorted beads that I no longer need.
-                         These beads are great for jewelry making, decorating, or other crafts.
-                          Some have been used, but most are still in excellent condition. Perfect for any crafter looking for new materials.</div>
-                </div>
-            </div>
-            <div class="box" id="used-paint">
-                <div class="top-half">
-                    <img src="images/content-images/used-paint.jpg" alt="Image of used paints" class="round-top-corners">
-                </div>
-                <div class="bottom-half">
-                    <div class="box-title">Used Oil Paints</div>
-                    <div class="box-description">I have several containers of used paints in various colors that I no longer need.
-                         There’s still plenty of paint left in each, suitable for small projects, touch-ups, or crafts.
-                          I hate to see them go to waste, so I’m offering them for free to anyone who can use them.</div>
-                </div>
-            </div>
-            <div class="box" id="glitter">
-                <div class="top-half">
-                    <img src="images/content-images/glitter.jpg" alt="Image of used glitter" class="round-top-corners">
-                </div>
-                <div class="bottom-half">
-                    <div class="box-title">Glitter</div>
-                    <div class="box-description"> I’m giving away half a container of glitter that I no longer need. It’s perfect for adding some sparkle to your crafts,
-                         decorations, or art projects. I’ve used some, but there’s still plenty left.
-                          Free to a good home – just looking to declutter my craft supplies.</div>
-                </div>
-            </div>
-            <div class="box" id="buttons">
-                <div class="top-half">
-                    <img src="images/content-images/buttons.jpg" alt="Image of button" class="round-top-corners">
-                </div>
-                <div class="bottom-half">
-                    <div class="box-title">Assorted Buttons</div>
-                    <div class="box-description">I have a collection of buttons in various sizes, colors, and styles that I no longer need.
-                         Great for sewing, crafting, or DIY projects. Some are from old garments and others are new but unused.
-                          I’d love to pass them on to someone who will make use of them.</div>
-                </div>
-            </div>
-            <div class="box" id="construction-paper">
-                <div class="top-half">
-                    <img src="images/content-images/construction-paper.jpg" alt="Image of construction-paper" class="round-top-corners">
-                </div>
-                <div class="bottom-half">
-                    <div class="box-title">Left Over Construction Paper</div>
-                    <div class="box-description">I’m clearing out my craft supplies and have a stack of leftover construction paper in various colors.
-                         Perfect for school projects, crafts, or creative activities.
-                          Some sheets have been partially used, but most are still intact and ready for new projects.</div>
-                </div>
-            </div>
-            <div class="box" id="wood-glue">
-                <div class="top-half">
-                    <img src="images/content-images/glue.jpg" alt="Image of glue" class="round-top-corners">
-                </div>
-                <div class="bottom-half">
-                    <div class="box-title">Wood Glue</div>
-                    <div class="box-description">I have a partially used container of wood glue that I no longer need. It’s still in good condition and works well for woodworking projects,
-                         repairs, or crafts. I’ve finished my project and would like to give this to someone who can make use of it rather than letting it go to waste.</div>
-                </div>
-            </div>
+        
+        <div class="grid" id = "items-grid">
+            <!-- this is where the displayItems does its magic -->
         </div>
     </div>
     <div class="side-panel">
@@ -178,6 +103,8 @@
         <p class="side-panel-content">Select a box to see its description.</p>
     </div>
     <script>
+        
+        //if side panel is clicked closed
         const boxes = document.querySelectorAll('.box');
         for (box of boxes) {
             const title = box.querySelector('.box-title').textContent;
@@ -189,11 +116,105 @@
                 document.querySelector(".side-panel").classList.toggle("side-panel-open");
                 document.querySelector(".overlay").classList.add("overlay-active");
             });
-        };
+        }
         document.querySelector(".side-panel-close").addEventListener("click", () => {
+            
             document.querySelector(".side-panel").classList.remove("side-panel-open");
             document.querySelector(".overlay").classList.remove("overlay-active");
         });
+        
+        //adds the relevant items into the grid. 
+        document.addEventListener('DOMContentLoaded', async() =>  {
+            const response = await fetch('database.json');
+            const items = await response.json();
+            console.log("fetched items");
+            const itemsGrid = document.getElementById("items-grid");
+            
+            //display the items (boxes)
+            console.log("displaying all items:", items);
+            displayItems(items);
+            // function that displays the items
+            function displayItems(displayItems) {
+                const itemsGrid = document.getElementById('items-grid');
+                const errorMessage = document.getElementById('error');
+                itemsGrid.innerHTML = '';
+
+                for (var key in displayItems) {
+                    // hasOwnProperty checks if the json object has filtered property, key. Key can be like the ID or it can be some logic
+                    if (displayItems.hasOwnProperty(key)) {
+                        const item = displayItems[key];
+                        //debug
+                        console.log('Display item: ', item);
+                        const itemBox = document.createElement('div');
+                        itemBox.className = 'box';
+                        itemBox.innerHTML =  `
+                        <div class="top-half">
+                            <img src="${item.ImageURL}" alt="Image of ${item.Name}" class="round-top-corners">
+                        </div>
+                        <div class="bottom-half">
+                            <div class="box-title"> ${item.Name} </div>
+                                <div class="box-description"> ${item.Description} </div>
+                        </div>
+                        
+                        `;
+                        itemsGrid.appendChild(itemBox);
+
+                    } 
+                }
+
+            }
+            const boxes = document.querySelectorAll('.box');
+            for (box of boxes) { 
+                const title = box.querySelector('.box-title').textContent;
+                    const description = box.querySelector('.box-description').textContent;
+                    const imageURL = document.getElementById("image-id").src="/images/save.png";
+                    box.addEventListener('click', () => {
+                        document.querySelector(".side-title").textContent = title;
+                        document.querySelector(".side-panel-content").textContent = description;
+                        document.querySelector(".side-panel").classList.toggle("side-panel-open");
+                        document.querySelector(".overlay").classList.add("overlay-active");
+                    });
+                    
+                    document.querySelector(".side-panel-close").addEventListener("click", () => {
+                        
+                        document.querySelector(".side-panel").classList.remove("side-panel-open");
+                        document.querySelector(".overlay").classList.remove("overlay-active");
+                    });
+            }
+
+
+            //go through search response
+            const searchButton = document.querySelector('.search-button');
+           
+
+            searchButton.addEventListener("click", async() => {
+                
+                const searchQuery = document.getElementById('textbox').value.toLowerCase();
+                console.log('searchQuery is: ', searchQuery);
+
+                const response = await fetch('database.json');
+                const json = await response.json();
+                const filtered = {};
+
+                for (var key in json) {
+                    if (json.hasOwnProperty(key) && json[key].Name.toLowerCase().includes(searchQuery)) {
+                        console.log('filtering...');
+                        filtered[key] = json[key];
+                    }       
+                }
+                //give error if there are no relevant results.
+                if (Object.keys(filtered).length == 0) {
+                    alert("I'm sorry, we are unable to find items related to your search.");
+                }
+                
+                displayItems(filtered);
+            });
+
+
+        });
+    
+    
+
     </script>
 
    

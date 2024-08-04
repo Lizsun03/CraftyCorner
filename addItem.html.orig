@@ -27,19 +27,69 @@
         </div>
 
         <!-- tags -->
+        <h4 style="margin-top: 40px;">Choose labels</h4>
+        <div class = "suggest-labels" style = margin-bottom:20px;>
+          <button type = "button" id = "suggest"> suggest labels </button>
+        </div>
+        <div>
+          <div class="tag">
+            <!-- do css later -->
+            
+              <!-- <input type="radio" name = "price-button" id="price">
+              <label for="price-button">price</label>
+
+              <input type="radio" name="material-button" id="material">
+              <label for="material-button">material</label>
+              </div> -->
+
+            
+           
+            
+            <div id ="price"> price</div>
+            <div id = "material"> material </div>
+            <div id = "quantity"> quantity </div>
+            <div id = "color"> color </div>
+            <div id = "condition"> condition </div>
+
+            <!-- <div class = 'lightblue'>Label 1</div>
+            <div class = 'blue'>Label 2</div>
+            <div class = 'orange'>Label 3</div>
+            <div class = 'green'>Label 4</div>
+            <div class = 'pink'>Label 5</div>
+            <div class = 'lightblue'>Label 6</div>
+            <div class = 'lightblue'>Label 7</div>
+            <div class = 'lightblue'>Label 8</div> -->
+          </div>
+        </div>
+      </div>
+
+      <div style="flex: 50%">
+        <div>
+          <div>Item Name</div>
+          <input type="text" class="input-box"/>
+        </div>
+
+        <div style="margin-top: 10px;">
+          <div>Description</div>
+          <textarea rows="6" class="input-box" id = "description"></textarea>
+        </div>
+
+       
+
+        <div style="margin-top: 20px;">
+          <div>Is your item eco-friendly?</div>
+          <div class="input-box" style="display: flex; gap: 250px; padding-bottom: 0%;">
+            <div>
+                <input type="radio" id="optionYes" name="optionsRadios" value="yes">
+                <label for="optionYes">Yes</label>
+            </div>
+            <div>
+                <input type="radio" id="optionNo" name="optionsRadios" value="no">
+                <label for="optionNo">No</label>
         <form id = 'stuff'>
           <h4 style="margin-top: 40px;">Choose labels</h4>
-          <div class = "suggest-labels" style = margin-bottom:20px;>
-            <button type = "button" id = "suggest"> suggest labels </button>
-          </div>
           <div>
             <div class="tag">
-              <div id="price"> price</div>
-              <div id="material"> material</div>
-              <div id="quantity"> quantity</div>
-              <div id="color"> color</div>
-              <div id="condition"> condition</div>
-<!-- 
               <div class = 'lightblue'>Label 1</div>
               <div class = 'blue'>Label 2</div>
               <div class = 'orange'>Label 3</div>
@@ -47,7 +97,7 @@
               <div class = 'pink'>Label 5</div>
               <div class = 'click'>Label 6</div>
               <div class = 'lightblue'>Label 7</div>
-              <div class = 'lightblue'>Label 8</div> -->
+              <div class = 'lightblue'>Label 8</div>
             </div>
           </div>
         </div>
@@ -60,7 +110,7 @@
   
           <div style="margin-top: 10px;">
             <div>Description</div>
-            <textarea rows="6" class="input-box" id = "description" placeholder="
+            <textarea rows="6" class="input-box" placeholder="
             You can include the color, price (if applicable), etc.
             If you'd like include what you used the material for!"></textarea>
           </div>
