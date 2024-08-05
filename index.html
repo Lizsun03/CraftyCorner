@@ -17,9 +17,19 @@
     <div class="overlay"></div>
     <div class="head-foot-container">
         <div class="header-container">
-            <h1 class="logo">Crafty Corner</h1>
+            <div>
+                <div class="icon">
+                    <img
+                        src="images/logo.svg"
+                        alt="logo"
+                        class="profile-image"
+                    />
+                </div>
+                <h1 class="logo">Crafty Corner</h1>
+            </div>
+            
             <div class="search-bar">
-                <input type="text" placeholder="Search...">
+                <input type="text" id="searchInput" placeholder="Search...">
                 <button class="search-button">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
@@ -63,11 +73,18 @@
 
     <div class="container">
         <div class="labels">
-            <span>Label 1</span>
-            <span>Label 2</span>
-            <span>Label 3</span>
-            <span>Label 4</span>
-            <span>Label 5</span>
+            <div>
+                <button onclick="drop()" class="label orange">Color</button>
+                <div id="dropdown" class="dropdown-content">
+                  <div class="label orange">Red</div>
+                  <div class="label orange">Yellow</div>
+                  <div class="label orange">Blue</div>
+                </div>
+            </div>
+            <div class="label green">Quantity</div>
+            <div class="label lightblue">Condition</div>
+            <div class="label pink">Price</div>
+            <div class="label blue">Material</div>
         </div>
         <div class="grid">
             <div class="box" id="yarn">
@@ -176,11 +193,17 @@
         <p class="side-panel-content">Select a box to see its description.</p>
     </div>
     <script>
+        /*drop down menu stuff*/
+        function drop() {
+            document.getElementById("dropdown").classList.toggle("show");
+        }
+
+
         const boxes = document.querySelectorAll('.box');
         for (box of boxes) {
             const title = box.querySelector('.box-title').textContent;
             const description = box.querySelector('.box-description').textContent;
-            const imageURL = document.getElementById("image-id").src="/images/save.png";
+            /*const imageURL = document.getElementById("image-id").src="/images/save.png";*/
             box.addEventListener('click', () => {
                 document.querySelector(".side-title").textContent = title;
                 document.querySelector(".side-panel-content").textContent = description;

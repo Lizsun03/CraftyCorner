@@ -14,7 +14,7 @@ body {
 }
 
 h1 {
-    font-size: 3em; /* Adjust the size as needed */
+    font-size: 2em; /* Adjust the size as needed */
 }
 
 .round-top-corners {
@@ -125,12 +125,55 @@ h1 {
 }
 
 .labels {
-    cursor: pointer;
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
 }
 
+.label {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 4px;
+    flex: 1;
+    text-align: left;
+    width: 60px;
+    max-width: 90px;
+    height: 31px;
+    border-radius: 4px;
+
+    /* Drop Shadow/300 */
+    box-shadow: 0px 4px 4px -1px rgba(12, 12, 13, 0.1), 0px 4px 4px -1px rgba(12, 12, 13, 0.05);
+    border-radius: 8px; 
+}
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 60px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  .dropdown-label {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    min-width: 60px;
+  }
+
+  .horizontal {
+    display: flex;
+    
+  }
+
+
+/*not using for now*/
 .labels span {
     font-size: 16px;
     padding: 10px;
