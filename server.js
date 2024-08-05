@@ -18,7 +18,7 @@ const PORT = 3000;
 // initialize items array
 let items = []
 
-const dbPath = path.join(__dirname, 'database.json');
+const dbPath = path.join(__dirname, '/public/database.json');
 
 // Function to read database
 const readDatabase = () => {
@@ -49,7 +49,7 @@ app.get('/', (req, res) => {
 // Endpoint to get items
 app.get('/items', (req, res) => {
   // Read the database.json file
-  const filePath = path.join(__dirname, 'database.json');
+  const filePath = path.join(__dirname, '/public/database.json');
   const database = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
   // Send the items as a JSON response
@@ -59,7 +59,7 @@ app.get('/items', (req, res) => {
 // Endpoint to get item details
 app.get('/item/:id', (req, res) => {
   // Read the database.json file
-  const filePath = path.join(__dirname, 'database.json');
+  const filePath = path.join(__dirname, '/public/database.json');
   const database = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
   // Get the item with the specified ID
@@ -72,7 +72,7 @@ app.get('/item/:id', (req, res) => {
 // Endpoint to update item details
 app.put('/item/:id', (req, res) => {
   // Read the current database.json file
-  const filePath = path.join(__dirname, 'database.json');
+  const filePath = path.join(__dirname, '/public/database.json');
   const database = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
   // Get the item with the specified ID
