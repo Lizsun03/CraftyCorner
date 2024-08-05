@@ -199,5 +199,35 @@
     },
     "ImageUrl": null,
     "Favorite": false
+  },
+  "15": {
+    "Name": "fabric",
+    "Description": "free fabric",
+    "EcoFriendly": true,
+    "Barter": true,
+    "Labels": {
+      "Price": "price",
+      "Material": "material",
+      "Color": "color",
+      "Quantity": "quantity",
+      "Condition": "condition"
+    },
+    "ImageUrl": null,
+    "Favorite": false
+  },
+  "16": {
+    "Name": "hi",
+    "Description": "this is a test",
+    "EcoFriendly": true,
+    "Barter": false,
+    "Labels": {
+      "Price": "price",
+      "Material": "material",
+      "Color": "color",
+      "Quantity": "quantity",
+      "Condition": "condition"
+    },
+    "ImageUrl": null,
+    "Favorite": false
   }
 }

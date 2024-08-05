@@ -191,7 +191,6 @@
         const back = document.querySelectorAll('#go-main');
         const cont = document.getElementById('continue');
         const newPost = document.getElementById('new-post');
-        // const form = document.getElementById('submit-form');
 
         const form = document.getElementById('submit-form');
 
@@ -202,13 +201,6 @@
           const formData = new FormData(form);
           const formJSON = Object.fromEntries(formData.entries());
           // send to backend
-          // event.preventDefault();
-          // formJSON['Price'] = document.getElementById('price').innerText;
-          // formJSON['Material'] = document.getElementById('material').innerText;
-          // formJSON['Quantity'] = document.getElementById('quantity').innerText;
-          // formJSON['Color'] = document.getElementById('color').innerText;
-          // formJSON['Condition'] = document.getElementById('condition').innerText;
-        
           const labels = {
             "Price": document.getElementById('price').innerText,
             "Material": document.getElementById('material').innerText,
@@ -216,18 +208,13 @@
             "Quantity": document.getElementById('quantity').innerText,
             "Condition": document.getElementById('condition').innerText
           }
-          console.log(labels);
+          // console.log(labels);
           const postData = {
             Name: document.getElementById('item-name').value,
             Description: document.getElementById('description').value,
             EcoFriendly: document.querySelector('input[name="EcoFriendly"]:checked')?.value === 'yes',
             Barter: document.querySelector('input[name="Barter"]:checked')?.value === 'yes',
             Labels: labels,
-            // Price: document.getElementById('price').innerText,
-            // Material: document.getElementById('material').innerText,
-            // Quantity: document.getElementById('quantity').innerText,
-            // Color: document.getElementById('color').innerText,
-            // Condition: document.getElementById('condition').innerText,
             ImageUrl: null, //document.getElementById('image-preview').src,
             Favorite: false
           };
@@ -255,75 +242,7 @@
           } catch (error) {
             alert(error.message);
           }
-          // formData.append('price', document.getElementById('price').innerText);
-          // formData.append('material', document.getElementById('material').innerText);
-          // formData.append('quantity', document.getElementById('quantity').innerText);
-          // formData.append('color', document.getElementById('color').innerText);
-          // formData.append('condition', document.getElementById('condition').innerText);
-          // formData.append('imageUrl', document.getElementById('image-preview').src);
-          // console.log(formData);
-          // const formJSON = Object.fromEntries(formData.entries());
-          // console.log(formJSON);
-          // const response = await fetch('/add-item', {
-          //   method: 'POST',
-          //   headers: {
-          //     'Content-Type': 'application/json',
-          //   },
-          //   body: JSON.stringify(formJSON),
-          // });
-          
-          
-          // if (response.ok) {
-          //   document.getElementById('success').classList.add('active');
-          //   document.querySelector('.overlay').classList.add('active');
-          //   alert('Item added successfully');
-          // } else {
-          //   alert('Failed to add item');
-          // }
-
-          // try {
-          //   const response = await fetch('/add-item', {
-          //     method: 'POST',
-          //     headers: {
-          //       'Content-Type': 'application/json',
-          //     },
-          //     body: JSON.stringify(formJSON),
-          //   });
-
-          //   if (!response.ok) {
-          //     throw new Error('Network response was not ok');
-          //   }
-
-          //   const result = await response.text();
-          //   console.log('Success:', result);
-          //   document.getElementById('success').classList.add('active');
-          //   document.querySelector('.overlay').classList.add('active');
-          //   alert('Item added successfully');
-          // } catch (error) {
-          //   console.error('Error:', error);
-          //   alert('Failed to add item');
-          // }
-
-          // const itemName = document.getElementById('item-name').value;
-          // const description = document.getElementById('description').value;
-          // const ecoFriendly = document.querySelector('input[name="Eco-friendly"]:checked').value;
-          // const barter = document.querySelector('input[name="optionsRadios2"]:checked').value;
-          // //const image = document.getElementById('image-preview').src;
-          // const imageURL = document.getElementById('image-preview').src;
-          // const favorite = false
-          
-          // console.log(itemName, description, ecoFriendly, barter, imageURL);
-
-          // send to backend
-
-          // document.getElementById('success').classList.add('active');
-          //   overlay.classList.add('active');
-            
         });
-
-        // postButton.addEventListener('click', () => {
-        //   document.getElementById('submit-form').submit();
-        // });
 
         postButton.addEventListener('click', () => {
           form.dispatchEvent(new Event('submit'));

@@ -65,7 +65,6 @@ app.get('/item/:id', (req, res) => {
   res.json(item);
 });
 
-
 // Endpoint to update item details
 app.put('/item/:id', (req, res) => {
   // Read the current database.json file
@@ -94,18 +93,7 @@ app.put('/item/:id', (req, res) => {
   res.status(200).json({ message: 'Item updated successfully' });
 });
 
-
-// app.post('/add-item', (req, res) => {
-//     const newItem = req.body;
-  
-//     if (Array.isArray(items)) {
-//       items.push(newItem);
-//       res.status(200).send('Item added successfully');
-//     } else {
-//       res.status(500).send('Server error: items is not an array');
-//     }
-// });
-
+// Endpoint to add an item to the database
 app.post('/add-item', (req, res) => {
     try {
         const newItem = req.body;
@@ -148,76 +136,6 @@ app.post('/add-item', (req, res) => {
         } catch (error) {
         res.status(500).json({ error: 'Failed to add item' });
     }
-});
-
-
-//   const newItem = req.body;
-//   const fs = require('fs');
-
-//   fs.readFile('database.json', (err, data) => {
-//     if (err) {
-//       res.status(500).send('Error reading database');
-//       return;
-//     }
-
-//     if (Array.isArray(items)) {
-//         items.push(newItem);
-    // const items = JSON.parse(data);
-    // items.push(newItem);
-    // const newItem = req.body;
-
-    // if (Array.isArray(items)) {
-    //     items.push(newItem);
-    //     res.status(200).send('Item added successfully');
-    // } else {
-    //     res.status(500).send('Server error: items is not an array');
-    // }
-
-    // fs.writeFile('database.json', JSON.stringify(items, null, 2), (err) => {
-    //   if (err) {
-    //     res.status(500).send('Error writing to database');
-    //     return;
-    //   }
-
-    //   res.status(200).send('Item added successfully');
-    // });
-
-// });
-
-
-app.post('/add-item', (req, res) => {
-  // Read the current database.json file
-  const filePath = path.join(__dirname, 'database.json');
-  const database = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-
-  // Generate a new ID for the new item
-  const newId = (Object.keys(database).length + 1).toString();
-
-  // Create the new item object
-  const newItem = {
-    Name: req.body.name,
-    Description: req.body.description,
-    "Eco-friendly": req.body.ecoFriendly === 'yes',
-    "Barter?": req.body.barter === 'yes',
-    Labels: {
-      price: req.body.price,
-      material: req.body.material,
-      Color: req.body.color,
-      Quantity: req.body.quantity,
-      Condition: req.body.condition
-    },
-    ImageURL: req.body.imageUrl,
-    favorite: false
-  };
-
-  // Add the new item to the database
-  database[newId] = newItem;
-
-  // Write the updated database back to the file
-  fs.writeFileSync(filePath, JSON.stringify(database, null, 2));
-
-  // Send a success response
-  res.status(200).json({ message: 'Item added successfully' });
 });
 
 // Start the server
