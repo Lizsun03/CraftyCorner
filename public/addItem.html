@@ -27,7 +27,7 @@
         </div>
 
         <!-- tags -->
-        <form id = 'stuff'>
+        <form id = 'submit-form'>
           <h4 style="margin-top: 40px;">Choose labels</h4>
           <div class = "suggest-labels" style = margin-bottom:20px;>
             <button type = "button" id = "suggest"> suggest labels </button>
@@ -51,16 +51,15 @@
             </div>
           </div>
         </div>
-  
         <div style="flex: 50%">
           <div>
             <div>Item Name</div>
-            <input type="text" class="input-box"/>
+            <input type="text" class="input-box" name="Name" id = "item-name"/>
           </div>
   
           <div style="margin-top: 10px;">
             <div>Description</div>
-            <textarea rows="6" class="input-box" id = "description" placeholder="
+            <textarea rows="6" class="input-box" name="Description" id = "description" placeholder="
             You can include the color, price (if applicable), etc.
             If you'd like include what you used the material for!"></textarea>
           </div>
@@ -69,11 +68,11 @@
             <div>Is your item eco-friendly?</div>
             <div class="input-box" style="display: flex; gap: 250px; padding-bottom: 0%;">
               <div>
-                  <input type="radio" id="optionYes" name="optionsRadios1" value="yes">
+                  <input type="radio" id="optionYes" name="EcoFriendly" value="yes">
                   <label for="optionYes">Yes</label>
               </div>
               <div>
-                  <input type="radio" id="optionNo" name="optionsRadios1" value="no">
+                  <input type="radio" id="optionNo" name="EcoFriendly" value="no">
                   <label for="optionNo">No</label>
               </div>
             </div>
@@ -83,11 +82,11 @@
             <div>Would you like to “barter” instead of assigning a price?</div>
             <div class="input-box" style="display: flex; gap: 250px; padding-bottom: 0%;">
               <div>
-                  <input type="radio" id="optionYes" name="optionsRadios2" value="yes">
+                  <input type="radio" id="optionYes" name="Barter" value="yes">
                   <label for="optionYes">Yes</label>
               </div>
               <div>
-                  <input type="radio" id="optionNo" name="optionsRadios2" value="no">
+                  <input type="radio" id="optionNo" name="Barter" value="no">
                   <label for="optionNo">No</label>
               </div>
             </div>
@@ -184,12 +183,7 @@
     document.getElementById('color').innerText = labels.color;
     document.getElementById('condition').innerText = labels.condition;
     
-    
-
-
     });
-   
-    
         const postButton = document.getElementById('post-button');
         const popup = document.querySelector('.popup');
         const overlay = document.querySelector('.overlay');
@@ -197,11 +191,142 @@
         const back = document.querySelectorAll('#go-main');
         const cont = document.getElementById('continue');
         const newPost = document.getElementById('new-post');
-        const form = document.getElementById('stuff');
+        // const form = document.getElementById('submit-form');
+
+        const form = document.getElementById('submit-form');
+
+        form.addEventListener('submit', async(event) => {
+          event.preventDefault();
+
+          // collect form data
+          const formData = new FormData(form);
+          const formJSON = Object.fromEntries(formData.entries());
+          // send to backend
+          // event.preventDefault();
+          // formJSON['Price'] = document.getElementById('price').innerText;
+          // formJSON['Material'] = document.getElementById('material').innerText;
+          // formJSON['Quantity'] = document.getElementById('quantity').innerText;
+          // formJSON['Color'] = document.getElementById('color').innerText;
+          // formJSON['Condition'] = document.getElementById('condition').innerText;
+        
+          const labels = {
+            "Price": document.getElementById('price').innerText,
+            "Material": document.getElementById('material').innerText,
+            "Color": document.getElementById('color').innerText,
+            "Quantity": document.getElementById('quantity').innerText,
+            "Condition": document.getElementById('condition').innerText
+          }
+          console.log(labels);
+          const postData = {
+            Name: document.getElementById('item-name').value,
+            Description: document.getElementById('description').value,
+            EcoFriendly: document.querySelector('input[name="EcoFriendly"]:checked')?.value === 'yes',
+            Barter: document.querySelector('input[name="Barter"]:checked')?.value === 'yes',
+            Labels: labels,
+            // Price: document.getElementById('price').innerText,
+            // Material: document.getElementById('material').innerText,
+            // Quantity: document.getElementById('quantity').innerText,
+            // Color: document.getElementById('color').innerText,
+            // Condition: document.getElementById('condition').innerText,
+            ImageUrl: null, //document.getElementById('image-preview').src,
+            Favorite: false
+          };
+
+          // formJSON['imageUrl'] = null //document.getElementById('image-preview').src;
+          console.log(formJSON);
+
+          // Post request to the server
+          try {
+            const response = await fetch('/add-item', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(postData),
+            });
+            
+            if (response.ok) {
+              document.getElementById('success').classList.add('active');
+              document.querySelector('.overlay').classList.add('active');
+              alert('Item added successfully');
+            } else {
+              throw new Error('Failed to add item');
+            }
+          } catch (error) {
+            alert(error.message);
+          }
+          // formData.append('price', document.getElementById('price').innerText);
+          // formData.append('material', document.getElementById('material').innerText);
+          // formData.append('quantity', document.getElementById('quantity').innerText);
+          // formData.append('color', document.getElementById('color').innerText);
+          // formData.append('condition', document.getElementById('condition').innerText);
+          // formData.append('imageUrl', document.getElementById('image-preview').src);
+          // console.log(formData);
+          // const formJSON = Object.fromEntries(formData.entries());
+          // console.log(formJSON);
+          // const response = await fetch('/add-item', {
+          //   method: 'POST',
+          //   headers: {
+          //     'Content-Type': 'application/json',
+          //   },
+          //   body: JSON.stringify(formJSON),
+          // });
+          
+          
+          // if (response.ok) {
+          //   document.getElementById('success').classList.add('active');
+          //   document.querySelector('.overlay').classList.add('active');
+          //   alert('Item added successfully');
+          // } else {
+          //   alert('Failed to add item');
+          // }
+
+          // try {
+          //   const response = await fetch('/add-item', {
+          //     method: 'POST',
+          //     headers: {
+          //       'Content-Type': 'application/json',
+          //     },
+          //     body: JSON.stringify(formJSON),
+          //   });
+
+          //   if (!response.ok) {
+          //     throw new Error('Network response was not ok');
+          //   }
+
+          //   const result = await response.text();
+          //   console.log('Success:', result);
+          //   document.getElementById('success').classList.add('active');
+          //   document.querySelector('.overlay').classList.add('active');
+          //   alert('Item added successfully');
+          // } catch (error) {
+          //   console.error('Error:', error);
+          //   alert('Failed to add item');
+          // }
+
+          // const itemName = document.getElementById('item-name').value;
+          // const description = document.getElementById('description').value;
+          // const ecoFriendly = document.querySelector('input[name="Eco-friendly"]:checked').value;
+          // const barter = document.querySelector('input[name="optionsRadios2"]:checked').value;
+          // //const image = document.getElementById('image-preview').src;
+          // const imageURL = document.getElementById('image-preview').src;
+          // const favorite = false
+          
+          // console.log(itemName, description, ecoFriendly, barter, imageURL);
+
+          // send to backend
+
+          // document.getElementById('success').classList.add('active');
+          //   overlay.classList.add('active');
+            
+        });
+
+        // postButton.addEventListener('click', () => {
+        //   document.getElementById('submit-form').submit();
+        // });
 
         postButton.addEventListener('click', () => {
-          document.getElementById('success').classList.add('active');
-            overlay.classList.add('active');
+          form.dispatchEvent(new Event('submit'));
         });
 
         cancelButton.addEventListener('click',() => {

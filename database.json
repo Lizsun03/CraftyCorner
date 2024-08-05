@@ -133,5 +133,71 @@
     },
     "ImageURL": "images/content-images/glue.jpg",
     "favorite": false
+  },
+  "10": {
+    "Name": "yarn",
+    "Description": "test",
+    "Eco-friendly": "yes",
+    "Barter": "no",
+    "Price": "price",
+    "Material": "material",
+    "Quantity": "quantity",
+    "Color": "color",
+    "Condition": "condition",
+    "imageUrl": null
+  },
+  "11": {
+    "name": "yarn2",
+    "description": "test2",
+    "ecoFriendly": "no",
+    "barter": "no",
+    "price": "price",
+    "material": "material",
+    "quantity": "quantity",
+    "color": "color",
+    "condition": "condition",
+    "imageUrl": null
+  },
+  "12": {
+    "Name": "test3",
+    "Sescription": "hello",
+    "Element": "yes",
+    "Barter": "yes",
+    "Price": "price",
+    "Material": "material",
+    "Quantity": "quantity",
+    "Color": "color",
+    "Condition": "condition",
+    "ImageUrl": null
+  },
+  "13": {
+    "Name": "test",
+    "Description": "hello world",
+    "EcoFriendly": "yes",
+    "Barter": "yes",
+    "Labels": {
+      "Price": "price",
+      "Material": "material",
+      "Color": "color",
+      "Quantity": "quantity",
+      "Condition": "condition"
+    },
+    "ImageUrl": null,
+    "Favorite": false
+  },
+  "14": {
+    "Name": "item",
+    "Description": "description",
+    "EcoFriendly": true,
+    "Barter": false,
+    "Labels": {
+      "Price": "price",
+      "Material": "material",
+      "Color": "color",
+      "Quantity": "quantity",
+      "Condition": "condition"
+    },
+    "ImageUrl": null,
+    "Favorite": false
   }
 }
