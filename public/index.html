@@ -104,36 +104,6 @@
     </div>
     <script>
         
-        //function to display items
-        function displayItems(displayItems) {
-            const itemsGrid = document.getElementById('items-grid');
-            const errorMessage = document.getElementById('error');
-            itemsGrid.innerHTML = '';
-
-            for (var key in displayItems) {
-                // hasOwnProperty checks if the json object has filtered property, key. Key can be like the ID or it can be some logic
-                if (displayItems.hasOwnProperty(key)) {
-                    const item = displayItems[key];
-                    //debug
-                    console.log('Display item: ', item);
-                    const itemBox = document.createElement('div');
-                    itemBox.className = 'box';
-                    itemBox.innerHTML =  `
-                        <div class="top-half">
-                            <img src="${item.ImageURL}" alt="Image of ${item.Name}" class="round-top-corners">
-                        </div>
-                        <div class="bottom-half">
-                            <div class="box-title"> ${item.Name} </div>
-                                <div class="box-description"> ${item.Description} </div>
-                        </div>
-                
-                    `;
-                    itemsGrid.appendChild(itemBox);
-                } 
-            }
-        }
-
-
         //if side panel is clicked closed
         const boxes = document.querySelectorAll('.box');
         for (box of boxes) {
@@ -147,8 +117,8 @@
                 document.querySelector(".overlay").classList.add("overlay-active");
             });
         }
-
         document.querySelector(".side-panel-close").addEventListener("click", () => {
+            
             document.querySelector(".side-panel").classList.remove("side-panel-open");
             document.querySelector(".overlay").classList.remove("overlay-active");
         });
@@ -157,28 +127,41 @@
         document.addEventListener('DOMContentLoaded', async() =>  {
             const response = await fetch('database.json');
             const items = await response.json();
-
+            console.log("fetched items");
+            const itemsGrid = document.getElementById("items-grid");
+            
             //display the items (boxes)
             console.log("displaying all items:", items);
             displayItems(items);
+            // function that displays the items
+            function displayItems(displayItems) {
+                const itemsGrid = document.getElementById('items-grid');
+                const errorMessage = document.getElementById('error');
+                itemsGrid.innerHTML = '';
 
-            const boxes = document.querySelectorAll('.box');
-            for (box of boxes) { 
-                const title = box.querySelector('.box-title').textContent;
-                    const description = box.querySelector('.box-description').textContent;
-                    const imageURL = document.getElementById("image-id").src="/images/save.png";
-                    box.addEventListener('click', () => {
-                        document.querySelector(".side-title").textContent = title;
-                        document.querySelector(".side-panel-content").textContent = description;
-                        document.querySelector(".side-panel").classList.toggle("side-panel-open");
-                        document.querySelector(".overlay").classList.add("overlay-active");
-                    });
-                    
-                    document.querySelector(".side-panel-close").addEventListener("click", () => {
+                for (var key in displayItems) {
+                    // hasOwnProperty checks if the json object has filtered property, key. Key can be like the ID or it can be some logic
+                    if (displayItems.hasOwnProperty(key)) {
+                        const item = displayItems[key];
+                        //debug
+                        console.log('Display item: ', item);
+                        const itemBox = document.createElement('div');
+                        itemBox.className = 'box';
+                        itemBox.innerHTML =  `
+                        <div class="top-half">
+                            <img src="${item.ImageURL}" alt="Image of ${item.Name}" class="round-top-corners">
+                        </div>
+                        <div class="bottom-half">
+                            <div class="box-title"> ${item.Name} </div>
+                                <div class="box-description"> ${item.Description} </div>
+                        </div>
                         
-                        document.querySelector(".side-panel").classList.remove("side-panel-open");
-                        document.querySelector(".overlay").classList.remove("overlay-active");
-                    });
+                        `;
+                        itemsGrid.appendChild(itemBox);
+
+                    } 
+                }
+
             }
 
 
@@ -193,14 +176,17 @@
 
                 const response = await fetch('database.json');
                 const json = await response.json();
+                console.log("json file is: " , json);
                 const filtered = {};
 
                 for (var key in json) {
-                    if (json.hasOwnProperty(key) && json[key].Name.toLowerCase().includes(searchQuery)) {
-                        console.log('filtering...');
+                    if (json.hasOwnProperty(key) && json[key] && typeof json[key].Name === 'string' && json[key].Name.toLowerCase().includes(searchQuery)) {
+                        console.log('filtering...', json[key]);
                         filtered[key] = json[key];
+                        console.log('current items', filtered)
                     }       
                 }
+                console.log('filtered items', filtered)
                 //give error if there are no relevant results.
                 if (Object.keys(filtered).length == 0) {
                     alert("I'm sorry, we are unable to find items related to your search.");
@@ -208,7 +194,12 @@
                 
                 displayItems(filtered);
             });
+
+
         });
+    
+    
+
     </script>
 
    
