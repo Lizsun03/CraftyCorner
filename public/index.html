@@ -18,7 +18,14 @@
     <div class="overlay"></div>
     <div class="head-foot-container">
         <div class="header-container">
-            <h1 class="logo">Crafty Corner</h1>
+            <div class="icon">
+                <img
+                    src="images/logo.svg"
+                    alt="logo"
+                    class="logo"
+                />
+                <h1 class="title">Crafty Corner</h1>
+            </div>
             <div class="search-bar">
                 <input type="text" id = "textbox" placeholder="Search...">
                 <button class="search-button">
@@ -103,7 +110,8 @@
         <p class="side-panel-content">Select a box to see its description.</p>
     </div>
     <script>
-
+        
+        
         
         //adds the relevant items into the grid. 
         document.addEventListener('DOMContentLoaded', async() =>  {
@@ -144,29 +152,29 @@
                     } 
                 }
 
+                //if side panel is clicked closed
+                const boxes = document.querySelectorAll('.box');
+                for (box of boxes) {
+                    const title = box.querySelector('.box-title').textContent;
+                    const description = box.querySelector('.box-description').textContent;
+                    const imageSrc = box.querySelector('img').src
+                    box.addEventListener('click', () => {
+                        document.querySelector(".side-title").textContent = title;
+                        document.querySelector(".side-panel-content").textContent = description;
+                        document.querySelector(".side-panel").classList.toggle("side-panel-open");
+                        document.querySelector(".overlay").classList.add("overlay-active");
+                        document.querySelector("#image-id").src = imageSrc;
+                    });
+                }
+                document.querySelector(".side-panel-close").addEventListener("click", () => {
+                    
+                    document.querySelector(".side-panel").classList.remove("side-panel-open");
+                    document.querySelector(".overlay").classList.remove("overlay-active");
+                });
+
+
+
             }
-
-
-        //if side panel is clicked closed
-        const boxes = document.querySelectorAll('.box');
-        for (box of boxes) {
-            const title = box.querySelector('.box-title').textContent;
-            const description = box.querySelector('.box-description').textContent;
-            const imageURL = document.getElementById("image-id").src="/images/save.png";
-            box.addEventListener('click', () => {
-                document.querySelector(".side-title").textContent = title;
-                document.querySelector(".side-panel-content").textContent = description;
-                document.querySelector(".side-panel").classList.toggle("side-panel-open");
-                document.querySelector(".overlay").classList.add("overlay-active");
-            });
-        }
-        document.querySelector(".side-panel-close").addEventListener("click", () => {
-            
-            document.querySelector(".side-panel").classList.remove("side-panel-open");
-            document.querySelector(".overlay").classList.remove("overlay-active");
-        });
-
-
             //go through search response
             const searchButton = document.querySelector('.search-button');
            
@@ -176,7 +184,7 @@
                 const searchQuery = document.getElementById('textbox').value.toLowerCase();
                 console.log('searchQuery is: ', searchQuery);
 
-                const response = await fetch('../database.json');
+                const response = await fetch('database.json');
                 const json = await response.json();
                 console.log("json file is: " , json);
                 const filtered = {};
