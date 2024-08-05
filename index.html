@@ -179,7 +179,12 @@
                     <img src="images/content-images/glue.jpg" alt="Image of glue" class="round-top-corners">
                 </div>
                 <div class="bottom-half">
-                    <div class="box-title">Wood Glue</div>
+                    <!--- favorite -->
+                    <div>
+                        <span style="font-size:300%;">&star;</span>
+                        <div class="box-title">Wood Glue</div>
+                    </div>
+                    <img src="images/star.jpeg" alt="Image of glue" class="round-top-corners">
                     <div class="box-description">I have a partially used container of wood glue that I no longer need. It’s still in good condition and works well for woodworking projects,
                          repairs, or crafts. I’ve finished my project and would like to give this to someone who can make use of it rather than letting it go to waste.</div>
                 </div>
@@ -197,7 +202,6 @@
         function drop() {
             document.getElementById("dropdown").classList.toggle("show");
         }
-
 
         const boxes = document.querySelectorAll('.box');
         for (box of boxes) {
