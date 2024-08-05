@@ -524,3 +524,7 @@ input[type="text"] {
 .overlay.active {
     display: block;
 }
+#image-id{
+    height: 200px;
+    width: 300px;
+}
