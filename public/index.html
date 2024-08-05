@@ -104,24 +104,7 @@
     </div>
     <script>
         
-        //if side panel is clicked closed
-        const boxes = document.querySelectorAll('.box');
-        for (box of boxes) {
-            const title = box.querySelector('.box-title').textContent;
-            const description = box.querySelector('.box-description').textContent;
-            const imageURL = document.getElementById("image-id").src="/images/save.png";
-            box.addEventListener('click', () => {
-                document.querySelector(".side-title").textContent = title;
-                document.querySelector(".side-panel-content").textContent = description;
-                document.querySelector(".side-panel").classList.toggle("side-panel-open");
-                document.querySelector(".overlay").classList.add("overlay-active");
-            });
-        }
-        document.querySelector(".side-panel-close").addEventListener("click", () => {
-            
-            document.querySelector(".side-panel").classList.remove("side-panel-open");
-            document.querySelector(".overlay").classList.remove("overlay-active");
-        });
+        
         
         //adds the relevant items into the grid. 
         document.addEventListener('DOMContentLoaded', async() =>  {
@@ -163,6 +146,25 @@
                 }
 
             }
+            //if side panel is clicked closed
+        const boxes = document.querySelectorAll('.box');
+        for (box of boxes) {
+            const title = box.querySelector('.box-title').textContent;
+            const description = box.querySelector('.box-description').textContent;
+            const imageSrc = box.querySelector('img').src
+            box.addEventListener('click', () => {
+                document.querySelector(".side-title").textContent = title;
+                document.querySelector(".side-panel-content").textContent = description;
+                document.querySelector(".side-panel").classList.toggle("side-panel-open");
+                document.querySelector(".overlay").classList.add("overlay-active");
+                document.querySelector("#image-id").src = imageSrc;
+            });
+        }
+        document.querySelector(".side-panel-close").addEventListener("click", () => {
+            
+            document.querySelector(".side-panel").classList.remove("side-panel-open");
+            document.querySelector(".overlay").classList.remove("overlay-active");
+        });
 
 
             //go through search response
