@@ -31,6 +31,10 @@ const writeDatabase = (data) => {
     fs.writeFileSync(dbPath, JSON.stringify(data, null, 2));
 };
 
+app.get('/database.json', (req, res) => {
+    res.sendFile(dbPath);
+});
+
 // Middleware to parse JSON bodies
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
@@ -137,6 +141,70 @@ app.post('/add-item', (req, res) => {
         res.status(500).json({ error: 'Failed to add item' });
     }
 });
+
+// Endpoint to delete an item from the database
+app.delete('/delete-item/:id', (req, res) => {
+    try {
+        const db = readDatabase();
+        
+        // Check if the item exists
+        if (!db[req.params.id]) {
+            return res.status(404).json({ error: 'Item not found' });
+        }
+        
+        // Delete the item
+        delete db[req.params.id];
+        
+        // Write the updated database to file
+        writeDatabase(db);
+        
+        res.status(200).json({ message: 'Item deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to delete item' });
+    }
+});
+
+// Endpoint to toggle favorite status of an item
+app.put('/toggle-favorite/:id', (req, res) => {
+    try {
+        const db = readDatabase();
+        
+        // Check if the item exists
+        if (!db[req.params.id]) {
+            return res.status(404).json({ error: 'Item not found' });
+        }
+        
+        // Toggle the favorite status
+        db[req.params.id].favorite = !db[req.params.id].favorite;
+        
+        // Write the updated database to file
+        writeDatabase(db);
+        
+        res.status(200).json({ message: 'Favorite status updated successfully' });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to update favorite status' });
+    }
+});
+
+// Endpoint to search for items
+app.get('/search', (req, res) => {
+    try {
+        const db = readDatabase();
+        
+        // Get the search query from the request
+        const query = req.query.q.toLowerCase();
+        
+        // Filter the items based on the search query
+        const searchResults = Object.values(db).filter((item) => {
+            return item.Name.toLowerCase().includes(query) || item.Description.toLowerCase().includes(query);
+        });
+        
+        res.status(200).json(searchResults);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to search for items' });
+    }
+});
+
 
 // Start the server
 app.listen(PORT, () => {

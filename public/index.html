@@ -29,14 +29,14 @@
                 <div class="icon">
                     <img
                         src="Images/favorites-icon.svg"
-                        alt="profile icon"
-                        class="profile-image"
+                        alt="favorites icon"
+                        class="favorites-image"
                     />
                 </div>
                 <div class="icon">
                     <a href="profile.html">
                         <img
-                        src="../Images/profileIcon2.png"
+                        src="Images/profileIcon2.png"
                         alt="profile icon"
                         class="profile-image"
                     />
@@ -48,7 +48,7 @@
         <div class="fixed-buttons">
             <a href="messages.html">
                 <img
-                    src="../images/messageIcon.svg"
+                    src="Images/messageIcon.svg"
                     alt="message icon"
                     class="message-icon"
                 />
@@ -104,6 +104,45 @@
     </div>
     <script>
         
+        //function to display items
+        function displayItems(displayItems) {
+            const itemsGrid = document.getElementById('items-grid');
+            const errorMessage = document.getElementById('error');
+            itemsGrid.innerHTML = '';
+
+            for (var key in displayItems) {
+                // hasOwnProperty checks if the json object has filtered property, key. Key can be like the ID or it can be some logic
+                if (displayItems.hasOwnProperty(key)) {
+                    const item = displayItems[key];
+                    //debug
+                    console.log('Display item: ', item);
+                    const itemBox = document.createElement('div');
+                    itemBox.className = 'box';
+                    itemBox.innerHTML =  `
+                        <div class="top-half">
+                            <img src="${item.ImageURL}" alt="Image of ${item.Name}" class="round-top-corners">
+                        </div>
+                        <div class="bottom-half">
+                            <div class="box-title"> ${item.Name} </div>
+                                <div class="box-description"> ${item.Description} </div>
+                        </div>
+                
+                    `;
+                    itemsGrid.appendChild(itemBox);
+
+                    // event listener for side panel
+                    // itemBox.addEventListener('click', () => {
+                    //     document.querySelector(".side-title").textContent = item.Name;
+                    //     document.querySelector(".side-panel-content").textContent = item.Description;
+                    //     document.querySelector(".side-panel").classList.toggle("side-panel-open");
+                    //     document.querySelector(".overlay").classList.add("overlay-active");
+                    // });
+
+                } 
+            }
+        }
+
+
         //if side panel is clicked closed
         const boxes = document.querySelectorAll('.box');
         for (box of boxes) {
@@ -123,46 +162,68 @@
             document.querySelector(".overlay").classList.remove("overlay-active");
         });
         
+
         //adds the relevant items into the grid. 
         document.addEventListener('DOMContentLoaded', async() =>  {
             const response = await fetch('database.json');
             const items = await response.json();
-            console.log("fetched items");
-            const itemsGrid = document.getElementById("items-grid");
-            
+            // console.log("Fetched items:", items);
+            // const itemsGrid = document.getElementById("items-grid");
+
             //display the items (boxes)
             console.log("displaying all items:", items);
             displayItems(items);
+            // const searchButton = document.querySelector('.search-button');
+            // searchButton.addEventListener("click", async() => {
+            //     const searchQuery = document.getElementById('textbox').value.toLowerCase();
+            //     console.log('searchQuery is: ', searchQuery);
+
+            //     const response = await fetch('database.json');
+            //     const json = await response.json();
+            //     const filtered = {};
+
+            //     for (var key in json) {
+            //         if (json.hasOwnProperty(key) && json[key].Name.toLowerCase().includes(searchQuery)) {
+            //             console.log('filtering...');
+            //             filtered[key] = json[key];
+            //         }       
+            //     }
+            //     //give error if there are no relevant results.
+            //     if (Object.keys(filtered).length == 0) {
+            //         alert("I'm sorry, we are unable to find items related to your search.");
+            //     }
+                
+            //     displayItems(filtered);
+            // });
             // function that displays the items
-            function displayItems(displayItems) {
-                const itemsGrid = document.getElementById('items-grid');
-                const errorMessage = document.getElementById('error');
-                itemsGrid.innerHTML = '';
+            // function displayItems(displayItems) {
+            //     const itemsGrid = document.getElementById('items-grid');
+            //     const errorMessage = document.getElementById('error');
+            //     itemsGrid.innerHTML = '';
 
-                for (var key in displayItems) {
-                    // hasOwnProperty checks if the json object has filtered property, key. Key can be like the ID or it can be some logic
-                    if (displayItems.hasOwnProperty(key)) {
-                        const item = displayItems[key];
-                        //debug
-                        console.log('Display item: ', item);
-                        const itemBox = document.createElement('div');
-                        itemBox.className = 'box';
-                        itemBox.innerHTML =  `
-                        <div class="top-half">
-                            <img src="${item.ImageURL}" alt="Image of ${item.Name}" class="round-top-corners">
-                        </div>
-                        <div class="bottom-half">
-                            <div class="box-title"> ${item.Name} </div>
-                                <div class="box-description"> ${item.Description} </div>
-                        </div>
+            //     for (var key in displayItems) {
+            //         // hasOwnProperty checks if the json object has filtered property, key. Key can be like the ID or it can be some logic
+            //         if (displayItems.hasOwnProperty(key)) {
+            //             const item = displayItems[key];
+            //             //debug
+            //             console.log('Display item: ', item);
+            //             const itemBox = document.createElement('div');
+            //             itemBox.className = 'box';
+            //             itemBox.innerHTML =  `
+            //             <div class="top-half">
+            //                 <img src="${item.ImageURL}" alt="Image of ${item.Name}" class="round-top-corners">
+            //             </div>
+            //             <div class="bottom-half">
+            //                 <div class="box-title"> ${item.Name} </div>
+            //                     <div class="box-description"> ${item.Description} </div>
+            //             </div>
                         
-                        `;
-                        itemsGrid.appendChild(itemBox);
+            //             `;
+            //             itemsGrid.appendChild(itemBox);
 
-                    } 
-                }
-
-            }
+            //         } 
+            //     }
+            // }
             const boxes = document.querySelectorAll('.box');
             for (box of boxes) { 
                 const title = box.querySelector('.box-title').textContent;
