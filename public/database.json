@@ -2,179 +2,143 @@
   "1": {
     "Name": "Yarn",
     "Description": "I have a bunch of leftover yarn in various colors and textures that I no longer need. Perfect for small projects, crafts, or sampling new techniques. This yarn has been used a bit but is still in great condition. Hoping to pass it on to someone who will put it to good use.",
-    "Eco-friendly": true,
-    "Barter?": false,
+    "EcoFriendly": true,
+    "Barter": false,
     "Labels": {
-      "price": "Free",
-      "material": "Various",
+      "Price": "Free",
+      "Material": "Various",
       "Color": "Various",
       "Quantity": "Bunch",
       "Condition": "Used but good"
     },
     "ImageURL": "images/content-images/yarn.png",
-    "favorite": false
+    "Favorite": false
   },
   "2": {
     "Name": "Fabric Scraps",
     "Description": "I’m giving away a collection of fabric scraps from various sewing projects. They are in different sizes and patterns, ideal for quilting, patchwork, or other crafts. These scraps are leftover from my projects and I’d love for them to find a new home where they can be used creatively.",
-    "Eco-friendly": true,
-    "Barter?": false,
+    "EcoFriendly": true,
+    "Barter": false,
     "Labels": {
-      "price": "Free",
-      "material": "Fabric",
+      "Price": "Free",
+      "Material": "Fabric",
       "Color": "Various",
       "Quantity": "Collection",
       "Condition": "Used"
     },
     "ImageURL": "images/content-images/fabric-scraps.jpg",
-    "favorite": false
+    "Favorite": false
   },
   "3": {
     "Name": "Wood Pallets",
     "Description": "I have some wood pallets that I no longer need. They are used but still sturdy and could be repurposed for DIY projects, gardening, or storage solutions. Rather than disposing of them, I’d prefer to give them away to someone who can make use of them.",
-    "Eco-friendly": true,
-    "Barter?": false,
+    "EcoFriendly": true,
+    "Barter": false,
     "Labels": {
-      "price": "Free",
-      "material": "Wood",
+      "Price": "Free",
+      "Material": "Wood",
       "Color": "Natural",
       "Quantity": "Several",
       "Condition": "Used"
     },
     "ImageURL": "images/content-images/wood-pallets.jpg",
-    "favorite": false
+    "Favorite": false
   },
   "4": {
     "Name": "Assorted Beads",
-    "Description": "I’m clearing out my craft supplies and have a collection of assorted beads that I no longer need. These beads are great for jewelry making, decorating, or other crafts. Some have been used, but most are still in excellent condition. Perfect for any crafter looking for new materials.",
-    "Eco-friendly": true,
-    "Barter?": false,
+    "Description": "I’m clearing out my craft supplies and have a collection of assorted beads that I no longer need. These beads are great for jewelry making, decorating, or other crafts. Some have been used, but most are still in excellent condition. Perfect for any crafter looking for new Materials.",
+    "EcoFriendly": true,
+    "Barter": false,
     "Labels": {
-      "price": "Free",
-      "material": "Beads",
+      "Price": "Free",
+      "Material": "Beads",
       "Color": "Assorted",
       "Quantity": "Collection",
       "Condition": "Mixed"
     },
     "ImageURL": "images/content-images/beads.jpg",
-    "favorite": false
+    "Favorite": false
   },
   "5": {
     "Name": "Used Oil Paints",
     "Description": "I have several containers of used paints in various colors that I no longer need. There’s still plenty of paint left in each, suitable for small projects, touch-ups, or crafts. I hate to see them go to waste, so I’m offering them for free to anyone who can use them.",
-    "Eco-friendly": true,
-    "Barter?": false,
+    "EcoFriendly": true,
+    "Barter": false,
     "Labels": {
-      "price": "Free",
-      "material": "Oil Paint",
+      "Price": "Free",
+      "Material": "Oil Paint",
       "Color": "Various",
       "Quantity": "Several containers",
       "Condition": "Used"
     },
     "ImageURL": "images/content-images/used-paint.jpg",
-    "favorite": false
+    "Favorite": false
   },
   "6": {
     "Name": "Glitter",
     "Description": "I’m giving away half a container of glitter that I no longer need. It’s perfect for adding some sparkle to your crafts, decorations, or art projects. I’ve used some, but there’s still plenty left. Free to a good home – just looking to declutter my craft supplies.",
-    "Eco-friendly": true,
-    "Barter?": false,
+    "EcoFriendly": true,
+    "Barter": false,
     "Labels": {
-      "price": "Free",
-      "material": "Glitter",
+      "Price": "Free",
+      "Material": "Glitter",
       "Color": "Assorted",
       "Quantity": "Half container",
       "Condition": "Used"
     },
     "ImageURL": "images/content-images/glitter.jpg",
-    "favorite": false
+    "Favorite": false
   },
   "7": {
     "Name": "Assorted Buttons",
     "Description": "I have a collection of buttons in various sizes, colors, and styles that I no longer need. Great for sewing, crafting, or DIY projects. Some are from old garments and others are new but unused. I’d love to pass them on to someone who will make use of them.",
-    "Eco-friendly": true,
-    "Barter?": false,
+    "EcoFriendly": true,
+    "Barter": false,
     "Labels": {
-      "price": "Free",
-      "material": "Buttons",
+      "Price": "Free",
+      "Material": "Buttons",
       "Color": "Various",
       "Quantity": "Collection",
       "Condition": "Mixed"
     },
     "ImageURL": "images/content-images/buttons.jpg",
-    "favorite": false
+    "Favorite": false
   },
   "8": {
     "Name": "Left Over Construction Paper",
     "Description": "I’m clearing out my craft supplies and have a stack of leftover construction paper in various colors. Perfect for school projects, crafts, or creative activities. Some sheets have been partially used, but most are still intact and ready for new projects.",
-    "Eco-friendly": true,
-    "Barter?": false,
+    "EcoFriendly": true,
+    "Barter": false,
     "Labels": {
-      "price": "Free",
-      "material": "Paper",
+      "Price": "Free",
+      "Material": "Paper",
       "Color": "Various",
       "Quantity": "Stack",
       "Condition": "Partially used but good"
     },
     "ImageURL": "images/content-images/construction-paper.jpg",
-    "favorite": false
+    "Favorite": false
   },
   "9": {
     "Name": "Wood Glue",
     "Description": "I have a partially used container of wood glue that I no longer need. It’s still in good condition and works well for woodworking projects, repairs, or crafts. I’ve finished my project and would like to give this to someone who can make use of it rather than letting it go to waste.",
-    "Eco-friendly": true,
-    "Barter?": false,
+    "EcoFriendly": true,
+    "Barter": false,
     "Labels": {
-      "price": "Free",
-      "material": "Glue",
+      "Price": "Free",
+      "Material": "Glue",
       "Color": "Clear",
       "Quantity": "Partially used container",
       "Condition": "Partially used"
     },
     "ImageURL": "images/content-images/glue.jpg",
-    "favorite": false
+    "Favorite": false
   },
   "10": {
-    "Name": "yarn",
-    "Description": "test",
-    "Eco-friendly": "yes",
-    "Barter": "no",
-    "Price": "price",
-    "Material": "material",
-    "Quantity": "quantity",
-    "Color": "color",
-    "Condition": "condition",
-    "imageUrl": null
-  },
-  "11": {
-    "name": "yarn2",
-    "description": "test2",
-    "ecoFriendly": "no",
-    "barter": "no",
-    "price": "price",
-    "material": "material",
-    "quantity": "quantity",
-    "color": "color",
-    "condition": "condition",
-    "imageUrl": null
-  },
-  "12": {
-    "Name": "test3",
-    "Sescription": "hello",
-    "Element": "yes",
-    "Barter": "yes",
-    "Price": "price",
-    "Material": "material",
-    "Quantity": "quantity",
-    "Color": "color",
-    "Condition": "condition",
-    "ImageUrl": null
-  },
-  "13": {
     "Name": "test",
     "Description": "hello world",
-    "EcoFriendly": "yes",
-    "Barter": "yes",
+    "EcoFriendly": true,
+    "Barter": true,
     "Labels": {
       "Price": "price",
       "Material": "material",
@@ -185,7 +149,7 @@
     "ImageUrl": null,
     "Favorite": false
   },
-  "14": {
+  "11": {
     "Name": "item",
     "Description": "description",
     "EcoFriendly": true,
@@ -200,7 +164,7 @@
     "ImageUrl": null,
     "Favorite": false
   },
-  "15": {
+  "12": {
     "Name": "fabric",
     "Description": "free fabric",
     "EcoFriendly": true,
@@ -215,7 +179,7 @@
     "ImageUrl": null,
     "Favorite": false
   },
-  "16": {
+  "13": {
     "Name": "hi",
     "Description": "this is a test",
     "EcoFriendly": true,
@@ -226,6 +190,21 @@
       "Color": "color",
       "Quantity": "quantity",
       "Condition": "condition"
+    },
+    "ImageUrl": null,
+    "Favorite": false
+  },
+  "14": {
+    "Name": "blue yarn",
+    "Description": "Hi! I am giving away this beautiful merino wool yarn away! It is of high quality, from Lion\nBrand and it is a nice green everglade color. I have not used it much, so it is around 80 yards\nleft. It weighs around 5 ounces and is soft but thick yarn.",
+    "EcoFriendly": true,
+    "Barter": true,
+    "Labels": {
+      "Price": "free",
+      "Material": "merino wool",
+      "Color": "green everglade",
+      "Quantity": "80 yards",
+      "Condition": "barely used"
     },
     "ImageUrl": null,
     "Favorite": false

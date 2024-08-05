@@ -108,7 +108,7 @@ app.post('/add-item', (req, res) => {
         //     Material: newItem.material,
         //     Color: newItem.color,
         //     Quantity: newItem.quantity,
-        //     Xondition: newItem.condition
+        //     Condition: newItem.condition
         // };
 
         
