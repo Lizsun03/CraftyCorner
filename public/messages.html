@@ -56,19 +56,19 @@
             </div>
           </div>
 
-          <div class="chat-bubble-receive">
+          <div id="chat1" class="chat-bubble-receive" style="display: none">
             <p>hi! i'm interested in your yarn!</p>
           </div>
 
-          <div class="chat-bubble-send">
+          <div id="chat2" class="chat-bubble-send" style="display: none">
             <p>cool! are u free tmrw at 4pm?</p>
           </div>
 
-          <div class="chat-bubble-receive">
+          <div id="chat3" class="chat-bubble-receive" style="display: none">
             <p>yep! what's ur address?</p>
           </div>
 
-          <div class="chat-bubble-send">
+          <div id="chat4" class="chat-bubble-send" style="display: none">
             <p>it's 1234 Bears Ave! see you tmrw!!</p>
           </div>
 
@@ -76,8 +76,8 @@
           
           <div style="align-items: center; text-align: center; padding: 18%; margin-bottom: 5px;">
             <div class="message-bar">
-              <input type="text" placeholder="Type your message...">
-              <button class="search-button">
+              <input id="send-text" type="text" placeholder="Type your message...">
+              <button id="send-btn" class="search-button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
                   <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
                 </svg>
@@ -98,5 +98,40 @@
       
       
     </main>
+
+    <script>
+      var token = 0;
+      window.onload = () => {
+        var token = 0;
+      }
+      const sendBtn = document.getElementById('send-btn');
+      const sendMsg = document.getElementById('send-text');
+
+      sendBtn.addEventListener('click', () => {
+        const chat1 = document.getElementById('chat1');
+        const chat2 = document.getElementById('chat2');
+        const chat3 = document.getElementById('chat3');
+        const chat4 = document.getElementById('chat4');
+        
+        if (token == 0) {
+          chat1.style.display = "block";
+          sendMsg.value = '';
+          setTimeout(function(){
+            chat2.style.display = "block";
+          }, 2000);
+          token = token + 1;
+        }
+        else if (token == 1) {
+          chat3.style.display = "block";
+          sendMsg.value = '';
+          setTimeout(function(){
+            chat4.style.display = "block";
+          }, 2000);
+          token = token + 1;
+        }
+      });
+
+
+    </script>
 </body>
 </html>
