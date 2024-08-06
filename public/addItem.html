@@ -168,32 +168,11 @@
         jsonDatabase[imageId] = imageDataUrl;  // Storing image as a property
     }
 
-    // Example usage
-    convertToDataURL(document.getElementById('imageUpload'), function(dataUrl) {
-        const imageId = 'image_' + Date.now();  // Unique ID for each image
-        storeImageInJson(imageId, dataUrl);
-        localStorage.setItem('jsonDatabase', JSON.stringify(jsonDatabase));  // Saving JSON to localStorage
-    });
 
-
-
-
-    
-
-    
-
-    // use LLM to suggest labels: 
-    // import fetch from 'node-fetch'; // for node.js
+    // use LLM to suggest labels:
 
     document.getElementById("suggest").addEventListener("click", async() => {
       const desc = document.getElementById('description').value;
-      // const newLabels = {
-      //   "price": response['price'].value,
-      // "material": "Beads",
-      // "Color": "Assorted",
-      // "Quantity": "Collection",
-      // "Condition": "Mixed"
-      // }
       const response = await fetch(
       'https://noggin.rea.gent/wasteful-termite-2354',
       {
@@ -246,10 +225,6 @@
             "Condition": document.getElementById('condition').innerText
           }
 
-          // if (url) {
-          //   document.getElementById('image-preview').src = URL.createObjectURL(url);
-          // }
-          // console.log(labels);
           const postData = {
             Name: document.getElementById('item-name').value,
             Description: document.getElementById('description').value,

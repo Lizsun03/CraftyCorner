@@ -167,6 +167,7 @@
         <h2 class="side-title">Side Panel</h2>
         <img src="images/content-images/glue.jpg" alt="Image" id="image-id">
         <p class="side-panel-content">Select a box to see its description.</p>
+        <div class="side-panel-labels"></div>
     </div>
     <script>
         
@@ -215,60 +216,57 @@
                     // hasOwnProperty checks if the json object has filtered property, key. Key can be like the ID or it can be some logic
                     if (displayItems.hasOwnProperty(key)) {
                         const item = displayItems[key];
-                        //debug
-                        console.log('Display item: ', item);
                         const itemBox = document.createElement('div');
                         itemBox.className = 'box';
                         itemBox.innerHTML =  `
-                        <div class="top-half">
-                            <img src="${item.ImageURL}" alt="Image of ${item.Name}" class="round-top-corners">
-                            </div>
-                        <div class="bottom-half">
-                            <div class="box-title"> ${item.Name} </div>
-                                <div class="display-tag">
-                                    <div id="price">  ${item.Labels.Price} </div>
-                                    <div id="material">  ${item.Labels.Material}</div>
-                                    <div id="quantity">  ${item.Labels.Quantity}</div>
-                                    <div id="color">  ${item.Labels.Color}</div>
-                                    <div id="condition">  ${item.Labels.Condition}</div>
+                            <div class="top-half">
+                                <img src="${item.ImageURL}" alt="Image of ${item.Name}" class="round-top-corners">
                                 </div>
-
-                                <div class="box-description"> ${item.Description} </div>
-                        </div>
-                        
+                            <div class="bottom-half">
+                                <div class="box-title"> ${item.Name} </div>
+                                <div class="box-description"> ${item.Description}  </div>
+                            </div>
+                            <div class="display-tag">
+                                    <div  class = "display-tag-item" id="price">  ${item.Labels.Price} </div>
+                                    <div class = "display-tag-item" id="material">  ${item.Labels.Material}</div>
+                                    <div class = "display-tag-item" id="quantity">  ${item.Labels.Quantity}</div>
+                                    <div class = "display-tag-item" id="color">  ${item.Labels.Color}</div>
+                                    <div class = "display-tag-item" id="condition">  ${item.Labels.Condition}</div>
+                            </div>
+                            </div>
+                           
                         `;
                         itemsGrid.appendChild(itemBox);
 
-                    } 
-                }
+                    }
 
+                }
                 //if side panel is clicked closed
                 const boxes = document.querySelectorAll('.box');
-                for (box of boxes) {
-                    const title = box.querySelector('.box-title').textContent;
-                    const description = box.querySelector('.box-description').textContent;
-                    const imageSrc = box.querySelector('img').src
+                boxes.forEach(box => {
                     box.addEventListener('click', () => {
+                        const title = box.querySelector('.box-title').textContent;
+                        const description = box.querySelector('.box-description').textContent;
+                        const imageSrc = box.querySelector('img').src;
+                        const displayTags = box.querySelector('.display-tag').innerHTML; // Specific display-tag for this box
+
                         document.querySelector(".side-title").textContent = title;
                         document.querySelector(".side-panel-content").textContent = description;
+                        document.querySelector("#image-id").src = imageSrc;
+                        document.querySelector('.side-panel-labels').innerHTML = displayTags;
+
                         document.querySelector(".side-panel").classList.toggle("side-panel-open");
                         document.querySelector(".overlay").classList.add("overlay-active");
-                        document.querySelector("#image-id").src = imageSrc;
                     });
-                }
+                });
+
                 document.querySelector(".side-panel-close").addEventListener("click", () => {
-                    
                     document.querySelector(".side-panel").classList.remove("side-panel-open");
                     document.querySelector(".overlay").classList.remove("overlay-active");
                 });
-
-
-
             }
             //go through search response
             const searchButton = document.querySelector('.search-button');
-           
-
             searchButton.addEventListener("click", async() => {
                 
                 const searchQuery = document.getElementById('textbox').value.toLowerCase();
@@ -288,16 +286,15 @@
                 }
                 displayItems(filtered);
                 console.log('filtered items', filtered)
-
                  //give error if there are no relevant results.
                  if (Object.keys(filtered).length == 0) {
                     alert("I'm sorry, we are unable to find items related to your search.");
                     displayItems(items); // reset to home
                 }
                
-                
-                
             });
+            
+
 
 
         });
