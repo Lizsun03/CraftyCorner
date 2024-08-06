@@ -150,9 +150,17 @@
                         itemBox.innerHTML =  `
                         <div class="top-half">
                             <img src="${item.ImageURL}" alt="Image of ${item.Name}" class="round-top-corners">
-                        </div>
+                            </div>
                         <div class="bottom-half">
                             <div class="box-title"> ${item.Name} </div>
+                                <div class="display-tag">
+                                    <div id="price">  ${item.Labels.Price} </div>
+                                    <div id="material">  ${item.Labels.Material}</div>
+                                    <div id="quantity">  ${item.Labels.Quantity}</div>
+                                    <div id="color">  ${item.Labels.Color}</div>
+                                    <div id="condition">  ${item.Labels.Condition}</div>
+                                </div>
+
                                 <div class="box-description"> ${item.Description} </div>
                         </div>
                         
@@ -162,28 +170,29 @@
                     } 
                 }
 
+                //if side panel is clicked closed
+                const boxes = document.querySelectorAll('.box');
+                for (box of boxes) {
+                    const title = box.querySelector('.box-title').textContent;
+                    const description = box.querySelector('.box-description').textContent;
+                    const imageSrc = box.querySelector('img').src
+                    box.addEventListener('click', () => {
+                        document.querySelector(".side-title").textContent = title;
+                        document.querySelector(".side-panel-content").textContent = description;
+                        document.querySelector(".side-panel").classList.toggle("side-panel-open");
+                        document.querySelector(".overlay").classList.add("overlay-active");
+                        document.querySelector("#image-id").src = imageSrc;
+                    });
+                }
+                document.querySelector(".side-panel-close").addEventListener("click", () => {
+                    
+                    document.querySelector(".side-panel").classList.remove("side-panel-open");
+                    document.querySelector(".overlay").classList.remove("overlay-active");
+                });
+
+
+
             }
-            //if side panel is clicked closed
-        const boxes = document.querySelectorAll('.box');
-        for (box of boxes) {
-            const title = box.querySelector('.box-title').textContent;
-            const description = box.querySelector('.box-description').textContent;
-            const imageSrc = box.querySelector('img').src
-            box.addEventListener('click', () => {
-                document.querySelector(".side-title").textContent = title;
-                document.querySelector(".side-panel-content").textContent = description;
-                document.querySelector(".side-panel").classList.toggle("side-panel-open");
-                document.querySelector(".overlay").classList.add("overlay-active");
-                document.querySelector("#image-id").src = imageSrc;
-            });
-        }
-        document.querySelector(".side-panel-close").addEventListener("click", () => {
-            
-            document.querySelector(".side-panel").classList.remove("side-panel-open");
-            document.querySelector(".overlay").classList.remove("overlay-active");
-        });
-
-
             //go through search response
             const searchButton = document.querySelector('.search-button');
            
@@ -205,13 +214,17 @@
                         console.log('current items', filtered)
                     }       
                 }
-                console.log('filtered items', filtered)
-                //give error if there are no relevant results.
-                if (Object.keys(filtered).length == 0) {
-                    alert("I'm sorry, we are unable to find items related to your search.");
-                }
-                
                 displayItems(filtered);
+                console.log('filtered items', filtered)
+
+                 //give error if there are no relevant results.
+                 if (Object.keys(filtered).length == 0) {
+                    alert("I'm sorry, we are unable to find items related to your search.");
+                    displayItems(items); // reset to home
+                }
+               
+                
+                
             });
 
 

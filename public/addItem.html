@@ -128,6 +128,7 @@
     const imageUploadInput = document.getElementById('imageUpload');
     const imagePreview = document.getElementById('image-preview');
     const uploadText = document.getElementById('upload-text');
+    let dataURL = '';
 
     imageUploadBox.addEventListener('click', () => {
       imageUploadInput.click();
@@ -138,14 +139,46 @@
       if (file) {
         const reader = new FileReader();
         reader.onload = function(e) {
-          imagePreview.src = e.target.result;
+          dataURL = e.target.result;
+          imagePreview.src = dataURL;
           imagePreview.style.display = 'block';
           uploadText.style.display = 'none';
           imageUploadBox.style.border = 'none';
-        }
+
+          //create shortenedURL ig 
+          const short = createShortURL(dataURL);
+          console.log("shortened url: ", short);
+        
+          
+        };
         reader.readAsDataURL(file);
-      }
+      } // if statement
+      
     });
+
+    function createShortURL(dataURL) {
+      const shortId = Math.random().toString(36).substr(2, 9); // Generate a short ID
+      localStorage.setItem(shortId, dataURL); // Store the data URL with the short ID
+      return shortId;
+    }
+
+    let jsonDatabase = {};  // Simulating a JSON database
+
+    function storeImageInJson(imageId, imageDataUrl) {
+        jsonDatabase[imageId] = imageDataUrl;  // Storing image as a property
+    }
+
+    // Example usage
+    convertToDataURL(document.getElementById('imageUpload'), function(dataUrl) {
+        const imageId = 'image_' + Date.now();  // Unique ID for each image
+        storeImageInJson(imageId, dataUrl);
+        localStorage.setItem('jsonDatabase', JSON.stringify(jsonDatabase));  // Saving JSON to localStorage
+    });
+
+
+
+
+    
 
     
 
@@ -184,6 +217,8 @@
     document.getElementById('condition').innerText = labels.condition;
     
     });
+
+
         const postButton = document.getElementById('post-button');
         const popup = document.querySelector('.popup');
         const overlay = document.querySelector('.overlay');
@@ -191,6 +226,8 @@
         const back = document.querySelectorAll('#go-main');
         const cont = document.getElementById('continue');
         const newPost = document.getElementById('new-post');
+        
+
 
         const form = document.getElementById('submit-form');
 
@@ -208,6 +245,10 @@
             "Quantity": document.getElementById('quantity').innerText,
             "Condition": document.getElementById('condition').innerText
           }
+
+          // if (url) {
+          //   document.getElementById('image-preview').src = URL.createObjectURL(url);
+          // }
           // console.log(labels);
           const postData = {
             Name: document.getElementById('item-name').value,
@@ -215,7 +256,7 @@
             EcoFriendly: document.querySelector('input[name="EcoFriendly"]:checked')?.value === 'yes',
             Barter: document.querySelector('input[name="Barter"]:checked')?.value === 'yes',
             Labels: labels,
-            ImageUrl: null, //document.getElementById('image-preview').src,
+            ImageUrl: document.getElementById('image-preview').getAttribute('src'), //document.getElementById('image-preview').src,
             Favorite: false
           };
 
