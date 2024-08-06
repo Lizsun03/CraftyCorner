@@ -35,10 +35,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <p>Item1</p>
-                    <p>Item2</p>
-                    <p>Item3</p>
+                <div class="modal-body" id="favorites-list">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -242,10 +239,13 @@
             const items = await response.json();
             console.log("fetched items");
             const itemsGrid = document.getElementById("items-grid");
-            
+            const favoritesList = document.getElementById("favorites-list");
+            let favorites = [];
+
             //display the items (boxes)
             console.log("displaying all items:", items);
             displayItems(items);
+
             // function that displays the items
             function displayItems(displayItems) {
                 const itemsGrid = document.getElementById('items-grid');
@@ -261,25 +261,26 @@
                         itemBox.innerHTML =  `
                             <div class="top-half">
                                 <img src="${item.ImageURL}" alt="Image of ${item.Name}" class="round-top-corners">
-                                </div>
+                            </div>
                             <div class="bottom-half">
-                                <div class="box-title"> ${item.Name} </div>
-                                <div class="box-description"> ${item.Description}  </div>
+                                <div class="box-title"> 
+                                    <button class="favorite-button">
+                                        <img src="Images/star.svg" alt="favorites star" class="favorites-star" data-name="${item.Name}" style="margin-bottom:20px">
+                                    </button>
+                                    ${item.Name} 
+                                </div>
+                                <div class="box-description"> ${item.Description} </div>
                             </div>
                             <div class="display-tag">
-                                    <div  class = "pink display-tag-item">  ${item.Labels.Price} </div>
+                                    <div class = "pink display-tag-item">  ${item.Labels.Price} </div>
                                     <div class = "blue display-tag-item">  ${item.Labels.Material}</div>
                                     <div class = "green display-tag-item">  ${item.Labels.Quantity}</div>
                                     <div class = "orange display-tag-item">  ${item.Labels.Color}</div>
                                     <div class = "lightblue display-tag-item">  ${item.Labels.Condition}</div>
                             </div>
-                            </div>
-                           
                         `;
                         itemsGrid.appendChild(itemBox);
-
                     }
-
                 }
                 //if side panel is clicked closed
                 const boxes = document.querySelectorAll('.box');
@@ -304,7 +305,37 @@
                     document.querySelector(".side-panel").classList.remove("side-panel-open");
                     document.querySelector(".overlay").classList.remove("overlay-active");
                 });
+
+                addFavoritesListener();
             }
+            
+            function addFavoritesListener() {
+                const favoriteButtons = document.querySelectorAll('.favorite-button');
+                favoriteButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const itemName = button.querySelector('.favorites-star').getAttribute('data-name');
+                        if (favorites.includes(itemName)) {
+                            favorites = favorites.filter(favorite => favorite !== itemName);
+                            button.querySelector('.favorites-star').src = 'Images/star.svg'; // Unfilled star
+                        } else {
+                            favorites.push(itemName);
+                            button.querySelector('.favorites-star').src = 'Images/star-fill.svg'; // Filled star
+                        }
+                        updateFavoritesList();
+                    });
+                });
+            }
+
+            function updateFavoritesList() {
+                favoritesList.innerHTML = '';
+                favorites.forEach(favorite => {
+                    const favoriteItem = document.createElement('p');
+                    favoriteItem.textContent = favorite;
+                    favoritesList.appendChild(favoriteItem);
+                });
+            }
+
+
             //go through search response
             const searchButton = document.querySelector('.search-button');
             searchButton.addEventListener("click", async() => {
@@ -411,10 +442,6 @@
                     displayItems(filtered);
                 });
             });
-
-
-
-            
 });
 
     
