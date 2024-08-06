@@ -168,12 +168,6 @@
         jsonDatabase[imageId] = imageDataUrl;  // Storing image as a property
     }
 
-    // Example usage
-    convertToDataURL(document.getElementById('imageUpload'), function(dataUrl) {
-        const imageId = 'image_' + Date.now();  // Unique ID for each image
-        storeImageInJson(imageId, dataUrl);
-        localStorage.setItem('jsonDatabase', JSON.stringify(jsonDatabase));  // Saving JSON to localStorage
-    });
 
     // use LLM to suggest labels:
 
