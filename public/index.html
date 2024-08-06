@@ -40,9 +40,6 @@
                     </button>
                 </div>
                 <div class="modal-body" id="favorites-list">
-                    <p>Item1</p>
-                    <p>Item2</p>
-                    <p>Item3</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -62,11 +59,13 @@
     <div class="head-foot-container">
         <div class="header-container">
             <div>
-                <img
+                <a href="index.html">
+                    <img
                     src="images/logo.svg"
                     alt="logo"
                     class="logo"
-                />
+                    />
+                </a>
             </div>
             <h1 class="title vast-shadow-regular" style="color: #3b871f; margin-left: 10px; margin-right: 50px; margin-top: 5px;">Crafty Corner</h1>
             <div class="search-bar">
@@ -392,6 +391,35 @@
                
             });
             
+            const textInput = document.getElementById('textbox');
+            textInput.addEventListener('keydown', async(event) => {
+            if (event.key === 'Enter') {
+                const searchQuery = document.getElementById('textbox').value.toLowerCase();
+                // console.log('searchQuery is: ', searchQuery);
+
+                const response = await fetch('database.json');
+                const json = await response.json();
+                // console.log("json file is: " , json);
+                const filtered = {};
+
+                for (var key in json) {
+                    if (json.hasOwnProperty(key) && json[key] && typeof json[key].Name === 'string' && json[key].Name.toLowerCase().includes(searchQuery)) {
+                        console.log('filtering...', json[key]);
+                        filtered[key] = json[key];
+                        console.log('current items', filtered)
+                    }       
+                }
+                displayItems(filtered);
+                console.log('filtered items', filtered)
+                 //give error if there are no relevant results.
+                 if (Object.keys(filtered).length == 0) {
+                    alert("I'm sorry, we are unable to find items related to your search.");
+                    displayItems(items); // reset to home
+                }
+            
+            }
+            });
+
             // filter by Color
             const colorLabels = document.querySelectorAll('.dropdown-label[data-color]');
             colorLabels.forEach(label => {

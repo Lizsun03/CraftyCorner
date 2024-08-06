@@ -544,11 +544,13 @@ img.rounded {
 .side-panel-content {
     /* Optional styling for the description text */
     color:#929292;
+    font-family: 'Nunito';
 }
 
 .side-title {
     /* Optional styling for the description text */
     color:black;
+    font-family: 'Nunito';
 }
 
 .overlay {
