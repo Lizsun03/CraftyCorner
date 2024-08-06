@@ -13,6 +13,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scrollable Main Page</title>
     <link rel="stylesheet" href="style.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href=
+"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
+
+    <!-- Bootstrap Font Icon CSS -->
+    <link rel="stylesheet" href=
+"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
 </head>
 <body>
     <div class="overlay"></div>
@@ -73,30 +81,81 @@
 
     <div class="container">
         <div class="labels">
-            <label class = "label-item">
-                <input type="checkbox" id="Material" />
-                <span for="material"> Material </span>
-            </label>
+            
+            <div class="dropdown">
+                <button id="color" class="orange label" onclick="drop('color', 'color-dropdown', 'color-caret')">
+                    Color
+                    <i id="color-caret" class="bi bi-caret-down-fill"></i>
+                </button>
+                <div id="color-dropdown" class="dropdown-content">
+                    <div class="orange dropdown-label">Red</div>
+                    <div class="orange dropdown-label">Blue</div>
+                    <div class="orange dropdown-label">Yellow</div>
+                    <div class="orange dropdown-label">Green</div>
+                    <div class="orange dropdown-label">Orange</div>
+                    <div class="orange dropdown-label">Purple</div>
+                    <div class="orange dropdown-label">Pink</div>
+                    <div class="orange dropdown-label">Black</div>
+                    <div class="orange dropdown-label">White</div>
+                </div>
+            </div>
 
-            <label class = "label-item">
-                <input type="checkbox" id="color" />
-                <span for="color"> Color </span>
-            </label>
+            <div class="dropdown">
+                <button id="quantity" class="green label" onclick="drop('quantity', 'quantity-dropdown', 'quantity-caret')">
+                    Quantity
+                    <i id="quantity-caret" class="bi bi-caret-down-fill"></i>
+                </button>
+                <div id="quantity-dropdown" class="dropdown-content">
+                    <div class="green dropdown-label">Small</div>
+                    <div class="green dropdown-label">Medium</div>
+                    <div class="green dropdown-label">Big</div>
+                    <div class="green dropdown-label">Really Big</div>
+                </div>
+            </div>
 
-            <label class = "label-item">
-                <input type="checkbox" id="quantity" />
-                <span for="quantity"> Quantity </span>
-            </label>
+            <div class="dropdown">
+                <button id="condition" class="lightblue label" onclick="drop('condition', 'condition-dropdown', 'condition-caret')">
+                    Condition
+                    <i id="condition-caret" class="bi bi-caret-down-fill"></i>
+                     
+                </button>
+                <div id="condition-dropdown" class="dropdown-content">
+                    <div class="lightblue dropdown-label">New</div>
+                    <div class="lightblue dropdown-label">Almost New</div>
+                    <div class="lightblue dropdown-label">Average</div>
+                    <div class="lightblue dropdown-label">Fair</div>
+                    <div class="lightblue dropdown-label">Poor</div>
+                </div>
+            </div>
 
-            <label class = "label-item">
-                <input type="checkbox" id="Conditon" />
-                <span for="condition"> Condition </span>
-            </label>
+            <div class="dropdown">
+                <button id="price" class="pink label" onclick="drop('price', 'price-dropdown', 'price-caret')">
+                    Price
+                    <i id="price-caret" class="bi bi-caret-down-fill"></i>
+                </button>
+                <div id="price-dropdown" class="dropdown-content">
+                    <div class="pink dropdown-label">$0-$5</div>
+                    <div class="pink dropdown-label">$5-$10</div>
+                    <div class="pink dropdown-label">$10-$15</div>
+                    <div class="pink dropdown-label">$15-$20</div>
+                    <div class="pink dropdown-label">$20+</div>
+                </div>
+            </div>
 
-            <label class = "label-item">
-                <input type="checkbox" id="Price" />
-                <span for="price"> Price </span>
-            </label>
+            <div class="dropdown">
+                <button id="material" class="blue label" onclick="drop('material', 'material-dropdown', 'material-caret')">
+                    Material
+                    <i id="material-caret" class="bi bi-caret-down-fill"></i>
+                </button>
+                <div id="material-dropdown" class="dropdown-content">
+                    <div class="blue dropdown-label">Wood</div>
+                    <div class="blue dropdown-label">Fabric</div>
+                    <div class="blue dropdown-label">Plastic</div>
+                    <div class="blue dropdown-label">Metal</div>
+                    <div class="blue dropdown-label">Threads</div>
+                </div>
+            </div>
+            
         </div>
         
         <div class="grid" id = "items-grid">
@@ -112,7 +171,30 @@
     </div>
     <script>
         
-        
+        //dropdown
+        function drop(buttonId, dropdownId, caretId) {
+            console.log('drop called');
+            var button = document.getElementById(buttonId);
+            var dropdown = document.getElementById(dropdownId);
+            var buttonWidth = window.getComputedStyle(button).width;
+            var caret = document.getElementById(caretId);
+            console.log(caret.classList);
+
+            if (dropdown.style.display === "none" || dropdown.style.display === "") {
+                button.style.borderBottomLeftRadius = "0";
+                button.style.borderBottomRightRadius = "0";
+                dropdown.style.display = "block";
+                dropdown.style.width = buttonWidth;
+                caret.classList.remove("bi bi-caret-down-fill");
+                caret.classList.add("bi bi-caret-right-fill");
+            } else {
+                button.style.borderBottomLeftRadius = "12px";
+                button.style.borderBottomRightRadius = "12px";
+                dropdown.style.display = "none";
+                caret.classList.remove("bi bi-caret-right-fill");
+                caret.classList.add("bi bi-caret-down-fill");
+            }
+        }
         
         //adds the relevant items into the grid. 
         document.addEventListener('DOMContentLoaded', async() =>  {
