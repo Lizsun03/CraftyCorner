@@ -272,23 +272,31 @@
                                         <img src="Images/star.svg" alt="favorites star" class="favorites-star" data-name="${item.Name}" style="margin-bottom:20px">
                                     </button>
                                     ${item.Name} 
-                                </div>
-                                <div>`;
+                                `;
+                                
 
-                        if (item.EcoFriendly == true) {
+                        if (item.EcoFriendly == true & item.Barter == true) {
                             itemBox.innerHTML +=  `
+                            <div>
                                     <img src="Images/eco-icon2.svg" alt="eco friendly symbol" class="post-icon">
-                            `;
-                        }
-                        if (item.Barter == true) {
-                            itemBox.innerHTML +=  `
                                     <img src="Images/barter-icon.svg" alt="barter symbol" class="post-icon">
-                            `;
+                            </div>`;
+                        } else if (item.EcoFriendly == false & item.Barter == true) {
+                            itemBox.innerHTML +=  `
+                                <div>
+                                    <img src="Images/barter-icon.svg" alt="barter symbol" class="post-icon">
+                                </div>`;
 
-                        }
+                        } else if (item.EcoFriendly == true & item.Barter == false) {
+                            itemBox.innerHTML +=  `
+                                <div>
+                                    <img src="Images/eco-icon2.svg" alt="eco friendly symbol" class="post-icon">
+                                </div>`;
+
+                        } 
                         
                         itemBox.innerHTML += ` 
-                                </div>
+                            <div class="bottom-half">
                                 <div class="box-description"> ${item.Description}  </div>
                             </div>
                             <div class="display-tag">
