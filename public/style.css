@@ -321,20 +321,44 @@ h1 {
 }
 .display-tag{
     width: 100%;
-    overflow-y: auto;
-    font-size: 11px;
-    flex-wrap: wrap;
+    padding: 5px;
+    height: auto;
+    overflow-x: auto;
+    white-space: nowrap;
+    font-size: 12px;
+    flex-wrap: flex;
     gap: 5px;
     margin-left: 5px;
 }
 .display-tag>*{
      /* style the hover button */
-     flex: 0 0 20%;
+     height: auto;
+     flex: 0 0 25%;
      text-align: center;
-     display: inline;
-     margin: 0px 10px;
+     padding: 0px 5px 0px 5px;
+     display: inline-block;
+     margin: 0px 5px;
      border-radius: 8px;
      box-shadow: 0px 4px 4px -1px rgba(12, 12, 13, 0.1), 0px 4px 4px -1px rgba(12, 12, 13, 0.05);
+}
+#price{
+    background-color: #FFD0CC;
+}
+#material {
+    background-color: #AED9E0;
+
+}
+#quantity {
+    background-color: #D3E79B;
+
+}
+#color {
+    background-color: #FCC879
+
+}
+#condition {
+    background-color: #C0F1E7;
+
 }
 
 .input-box {
