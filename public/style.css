@@ -123,6 +123,16 @@ button {
     color: #4f4e4e;
 }
 
+.favorite-button {
+    right: 5px;
+    background: none;
+    border: none;
+    /* color: #757575; */
+    font-size: 20px;
+    right: 5px;
+    max-height: 20px;
+}
+
 .fixed-buttons {
     display: flex;
     width: 100%;
@@ -267,7 +277,8 @@ button {
 
 .box-title {
     color: #4f4e4e;
-}
+    display: flex;
+    align-items: center;}
 
 .box-description {
     font-size: 17px;

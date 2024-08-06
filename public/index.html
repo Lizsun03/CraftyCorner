@@ -264,7 +264,12 @@
                                 <img src="${item.ImageURL}" alt="Image of ${item.Name}" class="round-top-corners">
                                 </div>
                             <div class="bottom-half">
-                                <div class="box-title"> ${item.Name} </div>
+                                <div class="box-title"> 
+                                    <button class="favorite-button">
+                                        <img src="Images/star.svg" alt="favorites star" class="favorites-star" data-name="${item.Name}" style="margin-bottom:20px">
+                                    </button>
+                                    ${item.Name} 
+                                </div>
                                 <div class="box-description"> ${item.Description}  </div>
                             </div>
                             <div class="display-tag">
