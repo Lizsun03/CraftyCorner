@@ -123,6 +123,16 @@ button {
     color: #4f4e4e;
 }
 
+.favorite-button {
+    right: 5px;
+    background: none;
+    border: none;
+    /* color: #757575; */
+    font-size: 20px;
+    right: 5px;
+    max-height: 20px;
+}
+
 .fixed-buttons {
     display: flex;
     width: 100%;
@@ -146,8 +156,9 @@ button {
     margin-left: 30px;
     margin-right: 30px;
 }
-
+/*these are the dropdowns*/
 .label {
+    min-width: 100px;
     display: flex;
     align-items: center;
     font-size: 16px;
@@ -173,22 +184,36 @@ button {
 
 
 .dropdown-content {
+    
     display: none;
     position: absolute;
-    min-width: 60px;
+    min-width: 100px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    overflow:hidden;
+    border: 1px solid;
+
   }
 
   .dropdown-label {
     cursor: pointer;
     background-color: #fff;
+    border-bottom: 10px solid #ccc;
     border: 1px solid #ccc;
     box-sizing: border-box;
     color: #757575;
-    padding-right: 5px;
+    padding: 10px;
+    min-width: 100px;
+    transition: background-color 0.3s ease;
     
   }
+  .dropdown-label:hover {
+    /* filter: brightness(80%); */
+    opacity: 0.8;
+    color: #333;
+}
+
+  
 
   .horizontal {
     display: flex;
@@ -238,7 +263,7 @@ button {
     box-sizing: border-box;
     text-align: center;
     font-size: 18px;
-    height: 236px;
+    height: 300px;
     width: 33%;
   
     /*removed padding*/
@@ -252,7 +277,8 @@ button {
 
 .box-title {
     color: #4f4e4e;
-}
+    display: flex;
+    align-items: center;}
 
 .box-description {
     font-size: 17px;
@@ -332,42 +358,24 @@ button {
     box-shadow: 0px 4px 4px -1px rgba(12, 12, 13, 0.1), 0px 4px 4px -1px rgba(12, 12, 13, 0.05);
 
 }
-.display-tag{
+.display-tag {
     width: 100%;
     height: auto;
     font-size: 12px;
     flex-wrap: wrap;
+    
 
 }
 .display-tag-item{
      height: auto;
-     flex: 0 0 25%;
+     flex: 1 1 auto;
      text-align: center;
-     padding: 0px 5px 0px 5px;
+     padding: 5px;
+     margin: 5px;
      display: inline-block;
-     margin: 0px 5px 10px; /*the gap between elements */
+    
      border-radius: 8px;
      box-shadow: 0px 4px 4px -1px rgba(12, 12, 13, 0.1), 0px 4px 4px -1px rgba(12, 12, 13, 0.05);
-}
-
-#price{
-    background-color: #FFD0CC;
-}
-#material {
-    background-color: #AED9E0;
-
-}
-#quantity {
-    background-color: #D3E79B;
-
-}
-#color {
-    background-color: #FCC879
-
-}
-#condition {
-    background-color: #C0F1E7;
-
 }
 
 .input-box {
