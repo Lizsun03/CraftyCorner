@@ -36,9 +36,6 @@
                     </button>
                 </div>
                 <div class="modal-body" id="favorites-list">
-                    <p>Item1</p>
-                    <p>Item2</p>
-                    <p>Item3</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -265,7 +262,7 @@
                         itemBox.innerHTML =  `
                             <div class="top-half">
                                 <img src="${item.ImageURL}" alt="Image of ${item.Name}" class="round-top-corners">
-                                </div>
+                            </div>
                             <div class="bottom-half">
                                 <div class="box-title"> 
                                     <button class="favorite-button">
@@ -273,17 +270,15 @@
                                     </button>
                                     ${item.Name} 
                                 </div>
-                                <div class="box-description"> ${item.Description}  </div>
+                                <div class="box-description"> ${item.Description} </div>
                             </div>
                             <div class="display-tag">
-                                    <div  class = "pink display-tag-item">  ${item.Labels.Price} </div>
+                                    <div class = "pink display-tag-item">  ${item.Labels.Price} </div>
                                     <div class = "blue display-tag-item">  ${item.Labels.Material}</div>
                                     <div class = "green display-tag-item">  ${item.Labels.Quantity}</div>
                                     <div class = "orange display-tag-item">  ${item.Labels.Color}</div>
                                     <div class = "lightblue display-tag-item">  ${item.Labels.Condition}</div>
                             </div>
-                            </div>
-                           
                         `;
                         itemsGrid.appendChild(itemBox);
                     }
