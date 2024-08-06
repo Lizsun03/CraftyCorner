@@ -352,6 +352,7 @@ button {
     height: auto;
     font-size: 12px;
     flex-wrap: wrap;
+    overflow: hidden;
     
 
 }
