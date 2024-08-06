@@ -104,7 +104,7 @@ button {
     padding-left: 20px;
     color: #757575;
     font-size: 16px;
-    height: 30px;
+    height: 50px;
     border-radius: 28px;
     background: none;
     border: none;
@@ -238,8 +238,9 @@ button {
     box-sizing: border-box;
     text-align: center;
     font-size: 18px;
-    width: 236px;
-    height: 237px;
+    height: 236px;
+    width: 33%;
+  
     /*removed padding*/
 }
 
