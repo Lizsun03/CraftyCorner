@@ -263,28 +263,23 @@ button {
 
 
 .grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    overflow-x: auto; /* Allows horizontal scrolling */
-    padding: 10px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns, each taking equal width */
+    gap: 10px; /*Space between boxes*/
+    padding: 10px; /* Padding around the container */
 }
 
 .box {
     cursor: pointer;
-    flex: 1 1 calc(33.333% - 20px); /* Three boxes per row, minus the gap */
-    min-width: calc(33.333% - 20px);
+    width: 350px; /* Fixed width */
+    height: 400px; /* Fixed height */
     background-color: #FFEDAC;
     border: 1px solid #ccc;
-    border-radius: 12px; /*increased this*/
+    border-radius: 12px; /* Increased border radius */
     box-sizing: border-box;
     font-size: 18px;
-    height: 300px;
-    width: 33%;
-    font-family: 'Nunito';
-    color: #757575;
-    
-    /*removed padding*/
+    display: flex;
+    flex-direction: column;
 }
 
 .box:hover {
@@ -304,20 +299,20 @@ button {
     
 }
 
-.bottom-half {
+/*.bottom-half {
     flex: 1;                    /* Make the top half take up half the height */
-    overflow: hidden;           /* Hide overflow to maintain aspect ratio */
-}
+    /*overflow: hidden;           /* Hide overflow to maintain aspect ratio */
+/* }*/ 
 
 .top-half {
     height: 50%;             /* Make the top section take up one-third of the height */
     overflow: hidden;          /* Hide overflow to maintain aspect ratio */
 }
 
-.top-half {
-    flex: 1;                    /* Make the top half take up half the height */
-    overflow: hidden;           /* Hide overflow to maintain aspect ratio */
-}
+/* .top-half { */
+    /* flex: 1;                    Make the top half take up half the height */
+    /* overflow: hidden;           Hide overflow to maintain aspect ratio */
+/* } */
 
 .top-half img {
     width: 100%;                /* Make the image fill the width */
@@ -326,18 +321,12 @@ button {
 }
 
 .bottom-half {
-    flex: 1;                    /* Make the bottom half take up half the height */
-    display: flex;
-    /*flex-direction: column;
-    align-items: center;
-    justify-content: center;*/
     padding: 5px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     text-overflow: hidden;
-    /*text-overflow: ellipsis;   Show '...' for overflowing text */
-    /*box-sizing: border-box; */
+    overflow: hidden;
 }
 
 /* add-page css components */
@@ -374,8 +363,6 @@ button {
 }
 .tag>* {
     flex: 0 0 20%;
-    /* background-color: #C0F1E7;
-    border: 1px solid #8acdbf; */
     text-align: center;
     border-radius: 8px;
     box-shadow: 0px 4px 4px -1px rgba(12, 12, 13, 0.1), 0px 4px 4px -1px rgba(12, 12, 13, 0.05);
@@ -387,8 +374,6 @@ button {
     font-size: 12px;
     flex-wrap: wrap;
     overflow: hidden;
-
-    
 
 }
 .display-tag-item{
@@ -549,13 +534,13 @@ img.rounded {
 
 .side-panel-content {
     /* Optional styling for the description text */
-    color:#929292;
+    color:#616060;
 }
 
 .side-title {
     /* Optional styling for the description text */
-    color:black;
-    font-size: 2.5em;
+    color:#93032E;
+    font-size: 2em;
 }
 
 .overlay {
