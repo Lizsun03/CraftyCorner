@@ -163,8 +163,6 @@
             }
             //go through search response
             const searchButton = document.querySelector('.search-button');
-           
-
             searchButton.addEventListener("click", async() => {
                 
                 const searchQuery = document.getElementById('textbox').value.toLowerCase();
@@ -193,32 +191,27 @@
             });
             //if side panel is clicked closed
             const boxes = document.querySelectorAll('.box');
-            for (box of boxes) {
-                const title = box.querySelector('.box-title').textContent;
-                const description = box.querySelector('.box-description').textContent;
-                const imageSrc = box.querySelector('img').src
-                const displayLabels = document.querySelector(".display-tag");
-                                    
-
+            boxes.forEach(box => {
                 box.addEventListener('click', () => {
+                    const title = box.querySelector('.box-title').textContent;
+                    const description = box.querySelector('.box-description').textContent;
+                    const imageSrc = box.querySelector('img').src;
+                    const displayTags = box.querySelector('.display-tag').innerHTML; // Specific display-tag for this box
+
                     document.querySelector(".side-title").textContent = title;
                     document.querySelector(".side-panel-content").textContent = description;
-                    
+                    document.querySelector("#image-id").src = imageSrc;
+                    document.querySelector('.side-panel-labels').innerHTML = displayTags;
+
                     document.querySelector(".side-panel").classList.toggle("side-panel-open");
                     document.querySelector(".overlay").classList.add("overlay-active");
-                    document.querySelector("#image-id").src = imageSrc;
-                    document.querySelector('.side-panel-labels').innerHTML = displayLabels.innerHTML;
-                    // Object.values(displayLabels);
-                    console.log("display side view NOW");
-
                 });
-            }
+            });
+
             document.querySelector(".side-panel-close").addEventListener("click", () => {
-                
                 document.querySelector(".side-panel").classList.remove("side-panel-open");
                 document.querySelector(".overlay").classList.remove("overlay-active");
             });
-
 
 
 
