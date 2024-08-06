@@ -659,3 +659,9 @@ input[type="text"] {
     height: 200px;
     width: 300px;
 }
+
+.vast-shadow-regular {
+    font-family: "Vast Shadow", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
