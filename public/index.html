@@ -73,6 +73,13 @@
 
     <div class="container">
         <div class="labels">
+            <div class="dropdown">
+                <button onclick="drop" class="label">color</button>
+                <div class="dropdown-content">
+                    <div>pink</div>
+                    <div>purple</div>
+                </div>
+            </div>
             <label class = "label-item">
                 <input type="checkbox" id="Material" />
                 <span for="material"> Material </span>
@@ -111,7 +118,10 @@
     </div>
     <script>
         
-        
+        //dropdown
+        function drop() {
+            document.getElementById('dropdown').classList.toggle("show");
+        }
         
         //adds the relevant items into the grid. 
         document.addEventListener('DOMContentLoaded', async() =>  {
