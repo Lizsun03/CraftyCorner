@@ -88,15 +88,15 @@
                     <i id="color-caret" class="bi bi-caret-down-fill"></i>
                 </button>
                 <div id="color-dropdown" class="dropdown-content">
-                    <div class="orange dropdown-label">Red</div>
-                    <div class="orange dropdown-label">Blue</div>
-                    <div class="orange dropdown-label">Yellow</div>
-                    <div class="orange dropdown-label">Green</div>
-                    <div class="orange dropdown-label">Orange</div>
-                    <div class="orange dropdown-label">Purple</div>
-                    <div class="orange dropdown-label">Pink</div>
-                    <div class="orange dropdown-label">Black</div>
-                    <div class="orange dropdown-label">White</div>
+                    <div class="orange dropdown-label" data-color="Red">Red</div>
+                    <div class="orange dropdown-label"data-color="Orange">Orange</div>
+                    <div class="orange dropdown-label"data-color="Yellow">Yellow</div>
+                    <div class="orange dropdown-label"data-color="Green">Green</div>
+                    <div class="orange dropdown-label"data-color="Blue">Blue</div>
+                    <div class="orange dropdown-label"data-color="Purple">Purple</div>
+                    <div class="orange dropdown-label"data-color="Pink">Pink</div>
+                    <div class="orange dropdown-label"data-color="Black">Black</div>
+                    <div class="orange dropdown-label"data-color="White">White</div>
                 </div>
             </div>
 
@@ -106,10 +106,12 @@
                     <i id="quantity-caret" class="bi bi-caret-down-fill"></i>
                 </button>
                 <div id="quantity-dropdown" class="dropdown-content">
-                    <div class="green dropdown-label">Small</div>
-                    <div class="green dropdown-label">Medium</div>
-                    <div class="green dropdown-label">Big</div>
-                    <div class="green dropdown-label">Really Big</div>
+                    <div class="green dropdown-label" data-quantity="1/2" >1/2</div>
+                    <div class="green dropdown-label"  data-quantity="1">1</div>
+                    <div class="green dropdown-label" data-quantity="2">2</div>
+                    <div class="green dropdown-label" data-quantity="3">3</div>
+                    <div class="green dropdown-label" data-quantity="Collection">Collection</div>
+                    <div class="green dropdown-label" data-quantity="Assorted">Assorted</div>
                 </div>
             </div>
 
@@ -120,11 +122,11 @@
                      
                 </button>
                 <div id="condition-dropdown" class="dropdown-content">
-                    <div class="lightblue dropdown-label">New</div>
-                    <div class="lightblue dropdown-label">Almost New</div>
-                    <div class="lightblue dropdown-label">Average</div>
-                    <div class="lightblue dropdown-label">Fair</div>
-                    <div class="lightblue dropdown-label">Poor</div>
+                    <div class="lightblue dropdown-label" data-condition="New">New</div>
+                    <div class="lightblue dropdown-label" data-condition="Almost New">Almost New</div>
+                    <div class="lightblue dropdown-label" data-condition="Used but good">Used but good</div>
+                    <div class="lightblue dropdown-label" data-condition="Barely used">Barely used</div>
+                    <div class="lightblue dropdown-label" data-condition="Used">Used</div>
                 </div>
             </div>
 
@@ -134,11 +136,12 @@
                     <i id="price-caret" class="bi bi-caret-down-fill"></i>
                 </button>
                 <div id="price-dropdown" class="dropdown-content">
-                    <div class="pink dropdown-label">$0-$5</div>
-                    <div class="pink dropdown-label">$5-$10</div>
-                    <div class="pink dropdown-label">$10-$15</div>
-                    <div class="pink dropdown-label">$15-$20</div>
-                    <div class="pink dropdown-label">$20+</div>
+                    <div class="pink dropdown-label" data-price="Free">Free</div>
+                    <div class="pink dropdown-label" data-price="$1-$5">$1-$5</div>
+                    <div class="pink dropdown-label" data-price="$5-$10">$5-$10</div>
+                    <div class="pink dropdown-label" data-price="$10-$15">$10-$15</div>
+                    <div class="pink dropdown-label" data-price="$15-$20">$15-$20</div>
+                    <div class="pink dropdown-label" data-price="$20+">$20+</div>
                 </div>
             </div>
 
@@ -148,11 +151,13 @@
                     <i id="material-caret" class="bi bi-caret-down-fill"></i>
                 </button>
                 <div id="material-dropdown" class="dropdown-content">
-                    <div class="blue dropdown-label">Wood</div>
-                    <div class="blue dropdown-label">Fabric</div>
-                    <div class="blue dropdown-label">Plastic</div>
-                    <div class="blue dropdown-label">Metal</div>
-                    <div class="blue dropdown-label">Threads</div>
+                    <div class="blue dropdown-label" data-material="Wood">Wood</div>
+                    <div class="blue dropdown-label" data-material="Fabric">Fabric</div>
+                    <div class="blue dropdown-label" data-material="Buttons">Buttons</div>
+                    <div class="blue dropdown-label" data-material="Glitter">Glitter</div>
+                    <div class="blue dropdown-label" data-material="Oil Paint">Oil Paint</div>
+                    <div class="blue dropdown-label" data-material="Paper">Paper</div>
+                    <div class="blue dropdown-label" data-material="Beads">Beads</div>
                 </div>
             </div>
             
@@ -171,30 +176,31 @@
     </div>
     <script>
         
-        //dropdown
+        //andrea's modified dropdown
         function drop(buttonId, dropdownId, caretId) {
-            console.log('drop called');
-            var button = document.getElementById(buttonId);
-            var dropdown = document.getElementById(dropdownId);
-            var buttonWidth = window.getComputedStyle(button).width;
-            var caret = document.getElementById(caretId);
-            console.log(caret.classList);
+        var button = document.getElementById(buttonId);
+        var dropdown = document.getElementById(dropdownId);
+        var caret = document.getElementById(caretId);
+        var buttonWidth = window.getComputedStyle(button).width;
 
-            if (dropdown.style.display === "none" || dropdown.style.display === "") {
-                button.style.borderBottomLeftRadius = "0";
-                button.style.borderBottomRightRadius = "0";
-                dropdown.style.display = "block";
-                dropdown.style.width = buttonWidth;
-                caret.classList.remove("bi bi-caret-down-fill");
-                caret.classList.add("bi bi-caret-right-fill");
-            } else {
-                button.style.borderBottomLeftRadius = "12px";
-                button.style.borderBottomRightRadius = "12px";
-                dropdown.style.display = "none";
-                caret.classList.remove("bi bi-caret-right-fill");
-                caret.classList.add("bi bi-caret-down-fill");
-            }
+        if (dropdown.style.display === "none" || dropdown.style.display === "") {
+            // Open the dropdown
+            button.style.borderBottomLeftRadius = "0";
+            button.style.borderBottomRightRadius = "0";
+            dropdown.style.display = "block";
+            dropdown.style.width = buttonWidth;
+            caret.classList.remove("bi-caret-down-fill");
+            caret.classList.add("bi-caret-up-fill");
+        } else {
+            // Close the dropdown
+            button.style.borderBottomLeftRadius = "12px";
+            button.style.borderBottomRightRadius = "12px";
+            dropdown.style.display = "none";
+            caret.classList.remove("bi-caret-up-fill");
+            caret.classList.add("bi-caret-down-fill");
         }
+    }
+
         
         //adds the relevant items into the grid. 
         document.addEventListener('DOMContentLoaded', async() =>  {
@@ -227,11 +233,11 @@
                                 <div class="box-description"> ${item.Description}  </div>
                             </div>
                             <div class="display-tag">
-                                    <div  class = "display-tag-item" id="price">  ${item.Labels.Price} </div>
-                                    <div class = "display-tag-item" id="material">  ${item.Labels.Material}</div>
-                                    <div class = "display-tag-item" id="quantity">  ${item.Labels.Quantity}</div>
-                                    <div class = "display-tag-item" id="color">  ${item.Labels.Color}</div>
-                                    <div class = "display-tag-item" id="condition">  ${item.Labels.Condition}</div>
+                                    <div  class = "pink display-tag-item">  ${item.Labels.Price} </div>
+                                    <div class = "blue display-tag-item">  ${item.Labels.Material}</div>
+                                    <div class = "green display-tag-item">  ${item.Labels.Quantity}</div>
+                                    <div class = "orange display-tag-item">  ${item.Labels.Color}</div>
+                                    <div class = "lightblue display-tag-item">  ${item.Labels.Condition}</div>
                             </div>
                             </div>
                            
@@ -294,13 +300,90 @@
                
             });
             
+            // filter by Color
+            const colorLabels = document.querySelectorAll('.dropdown-label[data-color]');
+            colorLabels.forEach(label => {
+                label.addEventListener('click', () => {
+                    const selectedCondition = label.getAttribute('data-color');
+                    const filtered = {};
+
+                    for (var key in items) {
+                        if (items.hasOwnProperty(key) && items[key].Labels.Color === selectedCondition) {
+                            filtered[key] = items[key];
+                        }
+                    }
+                    displayItems(filtered);
+                });
+            });
+            //filter by Quantity
+            const quantityLabels = document.querySelectorAll('.dropdown-label[data-quantity]');
+            quantityLabels.forEach(label => {
+                label.addEventListener('click', () => {
+                    const selectedCondition = label.getAttribute('data-quantity');
+                    const filtered = {};
+
+                    for (var key in items) {
+                        if (items.hasOwnProperty(key) && items[key].Labels.Quantity === selectedCondition) {
+                            filtered[key] = items[key];
+                        }
+                    }
+                    displayItems(filtered);
+                });
+            });
+
+            //Event Listener for the Condition Filter: 
+            const conditionLabels = document.querySelectorAll('.dropdown-label[data-condition]');
+            conditionLabels.forEach(label => {
+                label.addEventListener('click', () => {
+                    const selectedCondition = label.getAttribute('data-condition');
+                    const filtered = {};
+
+                    for (var key in items) {
+                        if (items.hasOwnProperty(key) && items[key].Labels.Condition === selectedCondition) {
+                            filtered[key] = items[key];
+                        }
+                    }
+                    displayItems(filtered);
+                });
+            });
+            //filter by Price
+            const priceLabels = document.querySelectorAll('.dropdown-label[data-price]');
+            priceLabels.forEach(label => {
+                label.addEventListener('click', () => {
+                    const selectedCondition = label.getAttribute('data-price');
+                    const filtered = {};
+
+                    for (var key in items) {
+                        if (items.hasOwnProperty(key) && items[key].Labels.Price === selectedCondition) {
+                            filtered[key] = items[key];
+                        }
+                    }
+                    displayItems(filtered);
+                });
+            });
+
+            //filter by Material
+            const materialLabels = document.querySelectorAll('.dropdown-label[data-material]');
+            materialLabels.forEach(label => {
+                label.addEventListener('click', () => {
+                    const selectedCondition = label.getAttribute('data-material');
+                    const filtered = {};
+
+                    for (var key in items) {
+                        if (items.hasOwnProperty(key) && items[key].Labels.Material === selectedCondition) {
+                            filtered[key] = items[key];
+                        }
+                    }
+                    displayItems(filtered);
+                });
+            });
 
 
 
-        });
+            
+});
+
     
-    
-
     </script>
 
    

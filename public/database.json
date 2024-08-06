@@ -6,9 +6,9 @@
     "Barter": false,
     "Labels": {
       "Price": "Free",
-      "Material": "Various",
-      "Color": "Various",
-      "Quantity": "Bunch",
+      "Material": "Wool",
+      "Color": "Blue",
+      "Quantity": "3",
       "Condition": "Used but good"
     },
     "ImageURL": "images/content-images/yarn.png",
@@ -20,9 +20,9 @@
     "EcoFriendly": true,
     "Barter": false,
     "Labels": {
-      "Price": "under $5",
+      "Price": "$1-$5",
       "Material": "Fabric",
-      "Color": "Various",
+      "Color": "Assorted",
       "Quantity": "Collection",
       "Condition": "Used"
     },
@@ -35,10 +35,10 @@
     "EcoFriendly": true,
     "Barter": false,
     "Labels": {
-      "Price": "under $10",
+      "Price": "$5-$10",
       "Material": "Wood",
       "Color": "Natural",
-      "Quantity": "Several",
+      "Quantity": "5",
       "Condition": "Used"
     },
     "ImageURL": "images/content-images/wood-pallets.jpg",
@@ -54,7 +54,7 @@
       "Material": "Beads",
       "Color": "Assorted",
       "Quantity": "Collection",
-      "Condition": "Mixed"
+      "Condition": "New"
     },
     "ImageURL": "images/content-images/beads.jpg",
     "Favorite": false
@@ -65,10 +65,10 @@
     "EcoFriendly": true,
     "Barter": false,
     "Labels": {
-      "Price": "under $5",
+      "Price": "Free",
       "Material": "Oil Paint",
-      "Color": "Various",
-      "Quantity": "Several containers",
+      "Color": "Assorted",
+      "Quantity": "Collection",
       "Condition": "Used"
     },
     "ImageURL": "images/content-images/used-paint.jpg",
@@ -81,9 +81,9 @@
     "Barter": false,
     "Labels": {
       "Price": "Free",
-      "Material": "Glitter",
-      "Color": "Assorted",
-      "Quantity": "Half container",
+      "Material": "glitter",
+      "Color": "Purple",
+      "Quantity": "1/2",
       "Condition": "Used"
     },
     "ImageURL": "images/content-images/glitter.jpg",
@@ -95,11 +95,11 @@
     "EcoFriendly": true,
     "Barter": false,
     "Labels": {
-      "Price": "under $5",
+      "Price": "Free",
       "Material": "Buttons",
-      "Color": "Various",
+      "Color": "Assorted",
       "Quantity": "Collection",
-      "Condition": "Mixed"
+      "Condition":  "Used"
     },
     "ImageURL": "images/content-images/buttons.jpg",
     "Favorite": false
@@ -112,9 +112,9 @@
     "Labels": {
       "Price": "Free",
       "Material": "Paper",
-      "Color": "Various",
+      "Color": "Assorted",
       "Quantity": "Stack",
-      "Condition": "Partially used but good"
+      "Condition": "Barely used"
     },
     "ImageURL": "images/content-images/construction-paper.jpg",
     "Favorite": false
@@ -129,7 +129,7 @@
       "Material": "Glue",
       "Color": "Clear",
       "Quantity": "Partially used container",
-      "Condition": "Partially used"
+      "Condition": "Barely used"
     },
     "ImageURL": "images/content-images/glue.jpg",
     "Favorite": false
