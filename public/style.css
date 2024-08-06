@@ -272,7 +272,7 @@ h1 {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;
-    overflow: hidden;
+    overflow: scroll;
     text-align: left;
     /*text-overflow: ellipsis;   Show '...' for overflowing text */
     /*box-sizing: border-box; */
@@ -318,6 +318,23 @@ h1 {
     border-radius: 8px;
     box-shadow: 0px 4px 4px -1px rgba(12, 12, 13, 0.1), 0px 4px 4px -1px rgba(12, 12, 13, 0.05);
 
+}
+.display-tag{
+    width: 100%;
+    overflow-y: auto;
+    font-size: 11px;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-left: 5px;
+}
+.display-tag>*{
+     /* style the hover button */
+     flex: 0 0 20%;
+     text-align: center;
+     display: inline;
+     margin: 0px 10px;
+     border-radius: 8px;
+     box-shadow: 0px 4px 4px -1px rgba(12, 12, 13, 0.1), 0px 4px 4px -1px rgba(12, 12, 13, 0.05);
 }
 
 .input-box {

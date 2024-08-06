@@ -20,7 +20,7 @@
     "EcoFriendly": true,
     "Barter": false,
     "Labels": {
-      "Price": "Free",
+      "Price": "under $5",
       "Material": "Fabric",
       "Color": "Various",
       "Quantity": "Collection",
@@ -35,7 +35,7 @@
     "EcoFriendly": true,
     "Barter": false,
     "Labels": {
-      "Price": "Free",
+      "Price": "under $10",
       "Material": "Wood",
       "Color": "Natural",
       "Quantity": "Several",
@@ -65,7 +65,7 @@
     "EcoFriendly": true,
     "Barter": false,
     "Labels": {
-      "Price": "Free",
+      "Price": "under $5",
       "Material": "Oil Paint",
       "Color": "Various",
       "Quantity": "Several containers",
@@ -95,7 +95,7 @@
     "EcoFriendly": true,
     "Barter": false,
     "Labels": {
-      "Price": "Free",
+      "Price": "under $5",
       "Material": "Buttons",
       "Color": "Various",
       "Quantity": "Collection",

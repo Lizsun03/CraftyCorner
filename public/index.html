@@ -140,9 +140,17 @@
                         itemBox.innerHTML =  `
                         <div class="top-half">
                             <img src="${item.ImageURL}" alt="Image of ${item.Name}" class="round-top-corners">
-                        </div>
+                            </div>
                         <div class="bottom-half">
                             <div class="box-title"> ${item.Name} </div>
+                                <div class="display-tag">
+                                    <div id="price">  ${item.Labels.Price} </div>
+                                    <div id="material">  ${item.Labels.Material}</div>
+                                    <div id="quantity">  ${item.Labels.Quantity}</div>
+                                    <div id="color">  ${item.Labels.Color}</div>
+                                    <div id="condition">  ${item.Labels.Condition}</div>
+                                </div>
+
                                 <div class="box-description"> ${item.Description} </div>
                         </div>
                         
@@ -196,13 +204,17 @@
                         console.log('current items', filtered)
                     }       
                 }
-                console.log('filtered items', filtered)
-                //give error if there are no relevant results.
-                if (Object.keys(filtered).length == 0) {
-                    alert("I'm sorry, we are unable to find items related to your search.");
-                }
-                
                 displayItems(filtered);
+                console.log('filtered items', filtered)
+
+                 //give error if there are no relevant results.
+                 if (Object.keys(filtered).length == 0) {
+                    alert("I'm sorry, we are unable to find items related to your search.");
+                    displayItems(items); // reset to home
+                }
+               
+                
+                
             });
 
 
