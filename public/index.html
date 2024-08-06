@@ -263,42 +263,35 @@
                         const itemBox = document.createElement('div');
                         itemBox.className = 'box';
                         itemBox.innerHTML =  `
-                            <div class="top-half">
-                                <img src="${item.ImageURL}" alt="Image of ${item.Name}" class="round-top-corners">
-                                </div>
-                            <div class="bottom-half">
-                                <div class="box-title"> 
-                                    <button class="favorite-button">
-                                        <img src="Images/star.svg" alt="favorites star" class="favorites-star" data-name="${item.Name}" style="margin-bottom:20px">
-                                    </button>
-                                    ${item.Name} 
-                                `;
-                                
-
-                        if (item.EcoFriendly == true & item.Barter == true) {
-                            itemBox.innerHTML +=  `
-                            <div>
-                                    <img src="Images/eco-icon2.svg" alt="eco friendly symbol" class="post-icon">
-                                    <img src="Images/barter-icon.svg" alt="barter symbol" class="post-icon">
-                            </div>`;
-                        } else if (item.EcoFriendly == false & item.Barter == true) {
-                            itemBox.innerHTML +=  `
-                                <div>
-                                    <img src="Images/barter-icon.svg" alt="barter symbol" class="post-icon">
-                                </div>`;
-
-                        } else if (item.EcoFriendly == true & item.Barter == false) {
-                            itemBox.innerHTML +=  `
-                                <div>
-                                    <img src="Images/eco-icon2.svg" alt="eco friendly symbol" class="post-icon">
-                                </div>`;
-
-                        } 
-                        
+                        <div class="top-half">
+            <img src="${item.ImageURL}" alt="Image of ${item.Name}" class="round-top-corners">
+        </div>
+        <div class="bottom-half">
+            <div class="box-title"> 
+                <button class="favorite-button">
+                    <img src="Images/star.svg" alt="favorites star" class="favorites-star" data-name="${item.Name}" style="margin-bottom:20px">
+                </button>
+                ${item.Name} 
+            </div>
+            <div class="box-icons">
+                ${item.EcoFriendly && item.Barter ? `
+                    <div>
+                        <img src="Images/eco-icon2.svg" alt="eco friendly symbol" class="post-icon">
+                        <img src="Images/barter-icon.svg" alt="barter symbol" class="post-icon">
+                    </div>` 
+                : item.EcoFriendly ? `
+                    <div>
+                        <img src="Images/eco-icon2.svg" alt="eco friendly symbol" class="post-icon">
+                    </div>` 
+                : item.Barter ? `
+                    <div>
+                        <img src="Images/barter-icon.svg" alt="barter symbol" class="post-icon">
+                    </div>` 
+                : ''}
+            </div>
+            <div class="box-description"> ${item.Description}  </div>
+    `; 
                         itemBox.innerHTML += ` 
-                            <div class="bottom-half">
-                                <div class="box-description"> ${item.Description}  </div>
-                            </div>
                             <div class="display-tag">
                                     <div  class = "pink display-tag-item">  ${item.Labels.Price} </div>
                                     <div class = "blue display-tag-item">  ${item.Labels.Material}</div>
