@@ -28,7 +28,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Vast+Shadow&display=swap" rel="stylesheet">
 </head>
-<body>
+<body style=" background-color:#FFFDF5">
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -214,30 +214,29 @@
     </div>
 
     <script>
-        
-        //andrea's modified dropdown
         function drop(buttonId, dropdownId, caretId) {
-        var button = document.getElementById(buttonId);
-        var dropdown = document.getElementById(dropdownId);
-        var caret = document.getElementById(caretId);
-        var buttonWidth = window.getComputedStyle(button).width;
+            console.log('drop called');
+            var button = document.getElementById(buttonId);
+            var dropdown = document.getElementById(dropdownId);
+            var caret = document.getElementById(caretId);
+            var buttonWidth = window.getComputedStyle(button).width;
 
-        if (dropdown.style.display === "none" || dropdown.style.display === "") {
-            // Open the dropdown
-            button.style.borderBottomLeftRadius = "0";
-            button.style.borderBottomRightRadius = "0";
-            dropdown.style.display = "block";
-            dropdown.style.width = buttonWidth;
-            caret.classList.remove("bi-caret-down-fill");
-            caret.classList.add("bi-caret-up-fill");
-        } else {
-            // Close the dropdown
-            button.style.borderBottomLeftRadius = "12px";
-            button.style.borderBottomRightRadius = "12px";
-            dropdown.style.display = "none";
-            caret.classList.remove("bi-caret-up-fill");
-            caret.classList.add("bi-caret-down-fill");
-        }
+            if (dropdown.style.display === "none" || dropdown.style.display === "") {
+                // Open the dropdown
+                button.style.borderBottomLeftRadius = "0";
+                button.style.borderBottomRightRadius = "0";
+                dropdown.style.display = "block";
+                dropdown.style.width = buttonWidth;
+                caret.classList.remove("bi-caret-down-fill");
+                caret.classList.add("bi-caret-up-fill");
+            } else {
+                // Close the dropdown
+                button.style.borderBottomLeftRadius = "12px";
+                button.style.borderBottomRightRadius = "12px";
+                dropdown.style.display = "none";
+                caret.classList.remove("bi-caret-up-fill");
+                caret.classList.add("bi-caret-down-fill");
+            }
     }
 
         
