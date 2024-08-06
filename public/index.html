@@ -23,6 +23,10 @@
 "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Vast+Shadow&display=swap" rel="stylesheet">
 </head>
 <body style=" background-color:#FFFDF5">
     <!-- Modal -->
@@ -36,6 +40,9 @@
                     </button>
                 </div>
                 <div class="modal-body" id="favorites-list">
+                    <p>Item1</p>
+                    <p>Item2</p>
+                    <p>Item3</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -54,14 +61,14 @@
     <div class="overlay"></div>
     <div class="head-foot-container">
         <div class="header-container">
-            <div class="icon">
+            <div>
                 <img
                     src="images/logo.svg"
                     alt="logo"
                     class="logo"
                 />
-                <h1 class="title">Crafty Corner</h1>
             </div>
+            <h1 class="title vast-shadow-regular" style="color: #3b871f; margin-left: 10px; margin-right: 50px; margin-top: 5px;">Crafty Corner</h1>
             <div class="search-bar">
                 <input type="text" id = "textbox" placeholder="Search...">
                 <button class="search-button">
@@ -69,7 +76,7 @@
                 </button>
             </div>
             <div class="icons-container">
-                <div class="icon">
+                <div style="margin-left: 100px; margin-right: 30px;">
                     <button type="button" data-toggle="modal" data-target="#exampleModal" style="border: none; background-color: #FFFDF5;">
                         <img
                             src="Images/favorites-icon.svg"
@@ -79,7 +86,7 @@
                     </button>
                     
                 </div>
-                <div class="icon">
+                <div style="margin-right: 35px;">
                     <a href="profile.html">
                         <img
                         src="Images/profileIcon2.png"
@@ -259,25 +266,44 @@
                         const itemBox = document.createElement('div');
                         itemBox.className = 'box';
                         itemBox.innerHTML =  `
-                            <div class="top-half">
-                                <img src="${item.ImageURL}" alt="Image of ${item.Name}" class="round-top-corners">
-                            </div>
-                            <div class="bottom-half">
-                                <div class="box-title"> 
-                                    <button class="favorite-button">
-                                        <img src="Images/star.svg" alt="favorites star" class="favorites-star" data-name="${item.Name}" style="margin-bottom:20px">
-                                    </button>
-                                    ${item.Name} 
-                                </div>
-                                <div class="box-description"> ${item.Description} </div>
-                            </div>
+                        <div class="top-half">
+            <img src="${item.ImageURL}" alt="Image of ${item.Name}" class="round-top-corners">
+        </div>
+        <div class="bottom-half">
+            <div class="box-title"> 
+                <button class="favorite-button">
+                    <img src="Images/star.svg" alt="favorites star" class="favorites-star" data-name="${item.Name}" style="margin-bottom:20px">
+                </button>
+                ${item.Name} 
+            </div>
+            <div class="box-icons">
+                ${item.EcoFriendly && item.Barter ? `
+                    <div>
+                        <img src="Images/eco-icon2.svg" alt="eco friendly symbol" class="post-icon">
+                        <img src="Images/barter-icon.svg" alt="barter symbol" class="post-icon">
+                    </div>` 
+                : item.EcoFriendly ? `
+                    <div>
+                        <img src="Images/eco-icon2.svg" alt="eco friendly symbol" class="post-icon">
+                    </div>` 
+                : item.Barter ? `
+                    <div>
+                        <img src="Images/barter-icon.svg" alt="barter symbol" class="post-icon">
+                    </div>` 
+                : ''}
+            </div>
+            <div class="box-description"> ${item.Description}  </div>
+    `; 
+                        itemBox.innerHTML += ` 
                             <div class="display-tag">
-                                    <div class = "pink display-tag-item">  ${item.Labels.Price} </div>
+                                    <div  class = "pink display-tag-item">  ${item.Labels.Price} </div>
                                     <div class = "blue display-tag-item">  ${item.Labels.Material}</div>
                                     <div class = "green display-tag-item">  ${item.Labels.Quantity}</div>
                                     <div class = "orange display-tag-item">  ${item.Labels.Color}</div>
                                     <div class = "lightblue display-tag-item">  ${item.Labels.Condition}</div>
                             </div>
+                            </div>
+                           
                         `;
                         itemsGrid.appendChild(itemBox);
                     }
