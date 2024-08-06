@@ -175,25 +175,10 @@
         localStorage.setItem('jsonDatabase', JSON.stringify(jsonDatabase));  // Saving JSON to localStorage
     });
 
-
-
-
-    
-
-    
-
-    // use LLM to suggest labels: 
-    // import fetch from 'node-fetch'; // for node.js
+    // use LLM to suggest labels:
 
     document.getElementById("suggest").addEventListener("click", async() => {
       const desc = document.getElementById('description').value;
-      // const newLabels = {
-      //   "price": response['price'].value,
-      // "material": "Beads",
-      // "Color": "Assorted",
-      // "Quantity": "Collection",
-      // "Condition": "Mixed"
-      // }
       const response = await fetch(
       'https://noggin.rea.gent/wasteful-termite-2354',
       {
@@ -246,17 +231,13 @@
             "Condition": document.getElementById('condition').innerText
           }
 
-          // if (url) {
-          //   document.getElementById('image-preview').src = URL.createObjectURL(url);
-          // }
-          // console.log(labels);
           const postData = {
             Name: document.getElementById('item-name').value,
             Description: document.getElementById('description').value,
             EcoFriendly: document.querySelector('input[name="EcoFriendly"]:checked')?.value === 'yes',
             Barter: document.querySelector('input[name="Barter"]:checked')?.value === 'yes',
             Labels: labels,
-            ImageUrl: document.getElementById('image-preview').getAttribute('src'), //document.getElementById('image-preview').src,
+            ImageURL: document.getElementById('image-preview').src,
             Favorite: false
           };
 

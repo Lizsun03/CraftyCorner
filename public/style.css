@@ -271,8 +271,8 @@ h1 {
     padding: 5px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
-    overflow: scroll;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
     text-align: left;
     /*text-overflow: ellipsis;   Show '...' for overflowing text */
     /*box-sizing: border-box; */
@@ -321,26 +321,22 @@ h1 {
 }
 .display-tag{
     width: 100%;
-    padding: 5px;
     height: auto;
-    overflow-x: auto;
-    white-space: nowrap;
     font-size: 12px;
-    flex-wrap: flex;
-    gap: 5px;
-    margin-left: 5px;
+    flex-wrap: wrap;
+
 }
-.display-tag>*{
-     /* style the hover button */
+.display-tag-item{
      height: auto;
      flex: 0 0 25%;
      text-align: center;
      padding: 0px 5px 0px 5px;
      display: inline-block;
-     margin: 0px 5px;
+     margin: 0px 5px 10px; /*the gap between elements */
      border-radius: 8px;
      box-shadow: 0px 4px 4px -1px rgba(12, 12, 13, 0.1), 0px 4px 4px -1px rgba(12, 12, 13, 0.05);
 }
+
 #price{
     background-color: #FFD0CC;
 }
