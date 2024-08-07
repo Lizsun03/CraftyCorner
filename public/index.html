@@ -335,26 +335,55 @@
                 addFavoritesListener();
             }
             
+            var favsList = JSON.parse(localStorage.getItem('favorites')) || {};
             function addFavoritesListener() {
                 const favoriteButtons = document.querySelectorAll('.favorite-button');
                 favoriteButtons.forEach(button => {
                     button.addEventListener('click', () => {
                         const itemName = button.querySelector('.favorites-star').getAttribute('data-name');
                         if (favorites.includes(itemName)) {
+                            //deleting the item from local storage list
+                            var index = favsList.indexOf(itemName);
+                            if (index !== -1) {
+                                favsList.splice(index, 1);
+                            }
+
                             favorites = favorites.filter(favorite => favorite !== itemName);
                             button.querySelector('.favorites-star').src = 'Images/star.svg'; // Unfilled star
                         } else {
                             favorites.push(itemName);
                             button.querySelector('.favorites-star').src = 'Images/star-fill.svg'; // Filled star
+                            
                         }
                         updateFavoritesList();
                     });
                 });
             }
 
+            /*load posts in favorites from the local storage*/
+            window.onload = () => {
+                var favsIterable = JSON.parse(localStorage.getItem('favorites'));
+                reloadFavoritesList(favsIterable);
+            }
+
+            function reloadFavoritesList(list) {
+                favoritesList.innerHTML = '';
+                for (var key in favsIterable) {
+                    var fav = localStorage.getItem(key);
+                    const favoriteItem = document.createElement('p');
+                    favoriteItem.textContent = fav;
+                    favoritesList.appendChild(favoriteItem);
+                }
+            }
+
             function updateFavoritesList() {
                 favoritesList.innerHTML = '';
                 favorites.forEach(favorite => {
+                    //adding the item to local storage list
+                    favsList.favorite = favorite;
+                    console.log('list value: ' + favorite);
+                    localStorage.setItem('favorites', JSON.stringify(favsList));
+
                     const favoriteItem = document.createElement('p');
                     favoriteItem.textContent = favorite;
                     favoritesList.appendChild(favoriteItem);

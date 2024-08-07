@@ -406,6 +406,11 @@ button {
     border: 0;
 }
 
+.button-style:hover {
+    color: #4f4e4e;
+}
+
+
 /* message page css components */
 img.rounded {
     object-fit: cover;
