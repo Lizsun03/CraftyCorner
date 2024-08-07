@@ -138,6 +138,14 @@ button {
 .search-button:hover i {
     color: #4f4e4e;
 }
+.favorite-item{
+    cursor: pointer;
+}
+.favorite-item:hover {
+    cursor: pointer;
+    background-color: #70b756;
+    height: 50px;
+}
 
 .favorite-button {
     right: 5px;

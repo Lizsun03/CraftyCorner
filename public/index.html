@@ -32,7 +32,7 @@
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
+            <div class="modal-content" style = 'text-align: center; width: 50%; right:-200px;'>
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Favorites</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -40,11 +40,10 @@
                     </button>
                 </div>
                 <div class="modal-body" id="favorites-list">
-                    No favorites!
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id = 'clear' style  = 'background-color: #93032E;'>clear</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id = 'close' >Close</button>
                 </div>
             </div>
         </div>
@@ -182,6 +181,9 @@
         <button class="side-panel-close" type="button">×</button>
         <h2 class="side-title">Side Panel</h2>
         <img src="images/content-images/glue.jpg" alt="Image" id="image-id">
+        <div class="box-icons">
+            
+        </div>
         <p class="side-panel-content">Select a box to see its description.</p>
         <div class="side-panel-labels"></div>
         <a href="messages.html">
@@ -233,10 +235,12 @@
 
         
         //adds the relevant items into the grid. 
+        let itemsArray = [];
         document.addEventListener('DOMContentLoaded', async() =>  {
             const response = await fetch('database.json');
             const items = await response.json();
             const itemsGrid = document.getElementById("items-grid");
+            itemsArray = Object.values(items);
             var favsList = JSON.parse(localStorage.getItem('favorites')) || [];
             if (!Array.isArray(favsList)) {
                 console.warn('Data from localStorage is not an array. Initializing as an empty array.');
@@ -362,11 +366,11 @@
             console.log('favsList:', favsList);
                 
                 // Set initial state of the star image based on favsList
-            if (favsList.includes(itemName)) {
-                star.src = 'Images/star-fill.svg'; // Filled star
-            } else {
-                star.src = 'Images/star.svg'; // Unfilled star
-            }
+                if (favsList.includes(itemName)) {
+                    star.src = 'Images/star-fill.svg'; // Filled star
+                } else {
+                    star.src = 'Images/star.svg'; // Unfilled star
+                }
                 button.addEventListener('click', () => {
                     
                     if (favsList.includes(itemName)) {
@@ -383,17 +387,6 @@
                 });
             });
         }
-
-        function reloadFavoritesList() {
-            favoritesList.innerHTML = '';
-            favsList.forEach(favorite => {
-                const favoriteItem = document.createElement('p');
-                favoriteItem.textContent = favorite;
-                favoritesList.appendChild(favoriteItem);
-            });
-            
-        }
-
         function updateFavoritesList() {
             // Update localStorage with the current list
             localStorage.setItem('favorites', JSON.stringify(favsList));
@@ -402,11 +395,108 @@
             console.log('Updated favorites list:', favsList);
         }
 
-        // Load favorites on page load
+        function reloadFavoritesList() {
+                const favoritesList = document.getElementById('favorites-list');
+                // const noFavorites = document.getElementById('no-favorites');
+                favoritesList.innerHTML = '';
+                if (favsList.length === 0) {
+                    favoritesList.textContent = 'No favorites!';
+        }else{
+            favsList.forEach(favorite => {
+                    const favoriteItem = document.createElement('p');
+                    favoriteItem.textContent = favorite;
+                    favoriteItem.classList.add('favorite-item');
+                    favoriteItem.setAttribute('data-name', favorite);
+                    favoritesList.appendChild(favoriteItem);
+                });
+        }
+                
+                addFavoriteItemClickListeners();
+            }
+        function addFavoriteItemClickListeners() {
+            const favoriteItems = document.querySelectorAll('.favorite-item');
+            favoriteItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const itemName = item.getAttribute('data-name');
+                    const itemData = itemsArray.find(it => it.Name === itemName);
+                    if (itemData) {
+                        openSidePanel(itemData);
+                    }
+                });
+            });
+        }
+        function updateStarImages() {
+                const favoriteButtons = document.querySelectorAll('.favorite-button');
+                favoriteButtons.forEach(button => {
+                    const star = button.querySelector('.favorites-star');
+                    if (!star) return;
+
+                    const itemName = star.getAttribute('data-name');
+                    if (favsList.includes(itemName)) {
+                        star.src = 'Images/star-fill.svg'; // Filled star
+                    } else {
+                        star.src = 'Images/star.svg'; // Unfilled star
+                    }
+                });
+            }
+        function openSidePanel(item) {
+                document.querySelector(".side-title").textContent = item.Name;
+                document.querySelector(".side-panel-content").textContent = item.Description;
+                document.querySelector("#image-id").src = item.ImageURL;
+                document.querySelector('.side-panel-labels').innerHTML = `
+                    <div class="pink display-tag-item">${item.Labels.Price}</div>
+                    <div class="blue display-tag-item">${item.Labels.Material}</div>
+                    <div class="green display-tag-item">${item.Labels.Quantity}</div>
+                    <div class="orange display-tag-item">${item.Labels.Color}</div>
+                    <div class="lightblue display-tag-item">${item.Labels.Condition}</div>
+                `;
+
+                document.querySelector(".side-panel").classList.add("side-panel-open");
+                document.querySelector(".overlay").classList.add("overlay-active");
+            }
+            function addSidePanelListeners() {
+                const boxes = document.querySelectorAll('.box');
+                boxes.forEach(box => {
+                    box.addEventListener('click', (event) => {
+                        if (!event.target.closest('.favorite-button')) {
+                            const title = box.querySelector('.box-title').textContent;
+                            const description = box.querySelector('.box-description').textContent;
+                            const imageSrc = box.querySelector('img').src;
+                            const displayTags = box.querySelector('.display-tag').innerHTML;
+
+                            document.querySelector(".side-title").textContent = title;
+                            document.querySelector(".side-panel-content").textContent = description;
+                            document.querySelector("#image-id").src = imageSrc;
+                            document.querySelector('.side-panel-labels').innerHTML = displayTags;
+
+                            document.querySelector(".side-panel").classList.add("side-panel-open");
+                            document.querySelector(".overlay").classList.add("overlay-active");
+                        }
+                    });
+                });
+
+                document.querySelector(".side-panel-close").addEventListener("click", () => {
+                    document.querySelector(".side-panel").classList.remove("side-panel-open");
+                    document.querySelector(".overlay").classList.remove("overlay-active");
+                });
+            }
+
         window.onload = () => {
             reloadFavoritesList();
             addFavoritesListener(); // Ensure buttons have event listeners
         };
+        // Clear Favorites Function
+        function clearFavorites() {
+                favsList = [];
+                localStorage.setItem('favorites', JSON.stringify(favsList));
+                reloadFavoritesList();
+                updateStarImages();
+            }
+
+            // Add Event Listener to Clear Favorites Button
+            document.getElementById('clear').addEventListener('click', clearFavorites);
+
+            // Load favorites on page load
         reloadFavoritesList();
             function getLabels(itemsGrid) {
                 const colorDropdown = document.getElementById("color-dropdown");
@@ -614,4 +704,4 @@
 
    
 </body>
-</html
+</html>
