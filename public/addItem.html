@@ -145,9 +145,6 @@
           uploadText.style.display = 'none';
           imageUploadBox.style.border = 'none';
 
-          //create shortenedURL ig 
-          const short = createShortURL(dataURL);
-          console.log("shortened url: ", short);
         
           
         };
@@ -155,12 +152,6 @@
       } // if statement
       
     });
-
-    function createShortURL(dataURL) {
-      const shortId = Math.random().toString(36).substr(2, 9); // Generate a short ID
-      localStorage.setItem(shortId, dataURL); // Store the data URL with the short ID
-      return shortId;
-    }
 
     let jsonDatabase = {};  // Simulating a JSON database
 
@@ -172,7 +163,12 @@
     // use LLM to suggest labels:
 
     document.getElementById("suggest").addEventListener("click", async() => {
+      const suggestButton= document.getElementById('suggest');
+      suggestButton.disabled=true;
+      suggestButton.innerHTML = "creating labels...";
       const desc = document.getElementById('description').value;
+      const img = dataURL;
+
       const response = await fetch(
       'https://noggin.rea.gent/wasteful-termite-2354',
       {
@@ -184,6 +180,7 @@
         body: JSON.stringify({
           // fill variables here.
           "description": desc,
+          "image": img,
         }),
         
       }
@@ -196,6 +193,9 @@
     document.getElementById('quantity').innerText = labels.quantity;
     document.getElementById('color').innerText = labels.color;
     document.getElementById('condition').innerText = labels.condition;
+    
+    suggestButton.disabled = false;
+    suggestButton.innerHTML = "suggest labels";
     
     });
     
