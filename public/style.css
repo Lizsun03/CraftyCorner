@@ -296,9 +296,10 @@ button {
 
 .box-description {
     font-size: 17px;
+    width: 100%;
+    height: 50px;
     
 }
-
 /*.bottom-half {
     flex: 1;                    /* Make the top half take up half the height */
     /*overflow: hidden;           /* Hide overflow to maintain aspect ratio */
@@ -541,6 +542,7 @@ img.rounded {
     /* Optional styling for the description text */
     color:#616060;
     font-family: 'Nunito';
+    padding-top: 30px;
 }
 
 .side-title {
