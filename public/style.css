@@ -209,7 +209,6 @@ button {
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     overflow:hidden;
-    border: 1px solid;
 
   }
 
@@ -407,6 +406,11 @@ button {
     width: 140px;
     border: 0;
 }
+
+.button-style:hover {
+    color: #4f4e4e;
+}
+
 
 /* message page css components */
 img.rounded {
