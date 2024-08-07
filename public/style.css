@@ -660,3 +660,11 @@ input[type="text"] {
     font-weight: 400;
     font-style: normal;
   }
+
+.button-hovered:hover {
+    fill: #d23f5f;
+}
+
+input[type='radio'] { 
+    transform: scale(1.7); 
+}
