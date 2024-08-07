@@ -536,11 +536,13 @@ img.rounded {
 .side-panel-content {
     /* Optional styling for the description text */
     color:#616060;
+    font-family: 'Nunito';
 }
 
 .side-title {
     /* Optional styling for the description text */
     color:#93032E;
+    font-family: 'Nunito';
     font-size: 2em;
 }
 

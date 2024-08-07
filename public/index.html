@@ -60,11 +60,13 @@
     <div class="head-foot-container">
         <div class="header-container">
             <div>
-                <img
+                <a href="index.html">
+                    <img
                     src="images/logo.svg"
                     alt="logo"
                     class="logo"
-                />
+                    />
+                </a>
             </div>
             <h1 class="title vast-shadow-regular" style="color: #3b871f; margin-left: 10px; margin-right: 50px; margin-top: 5px;">Crafty Corner</h1>
             <div class="search-bar">
@@ -123,15 +125,7 @@
                     <i id="color-caret" class="bi bi-caret-down-fill"></i>
                 </button>
                 <div id="color-dropdown" class="dropdown-content">
-                    <div class="orange dropdown-label" data-color="Red">Red</div>
-                    <div class="orange dropdown-label"data-color="Orange">Orange</div>
-                    <div class="orange dropdown-label"data-color="Yellow">Yellow</div>
-                    <div class="orange dropdown-label"data-color="Green">Green</div>
-                    <div class="orange dropdown-label"data-color="Blue">Blue</div>
-                    <div class="orange dropdown-label"data-color="Purple">Purple</div>
-                    <div class="orange dropdown-label"data-color="Pink">Pink</div>
-                    <div class="orange dropdown-label"data-color="Black">Black</div>
-                    <div class="orange dropdown-label"data-color="White">White</div>
+                    <!-- add colors based on database -->
                 </div>
             </div>
 
@@ -141,12 +135,7 @@
                     <i id="quantity-caret" class="bi bi-caret-down-fill"></i>
                 </button>
                 <div id="quantity-dropdown" class="dropdown-content">
-                    <div class="green dropdown-label" data-quantity="1/2" >1/2</div>
-                    <div class="green dropdown-label"  data-quantity="1">1</div>
-                    <div class="green dropdown-label" data-quantity="2">2</div>
-                    <div class="green dropdown-label" data-quantity="3">3</div>
-                    <div class="green dropdown-label" data-quantity="Collection">Collection</div>
-                    <div class="green dropdown-label" data-quantity="Assorted">Assorted</div>
+                    <!-- add quantity based on database-->
                 </div>
             </div>
 
@@ -157,11 +146,7 @@
                      
                 </button>
                 <div id="condition-dropdown" class="dropdown-content">
-                    <div class="lightblue dropdown-label" data-condition="New">New</div>
-                    <div class="lightblue dropdown-label" data-condition="Almost New">Almost New</div>
-                    <div class="lightblue dropdown-label" data-condition="Used but good">Used but good</div>
-                    <div class="lightblue dropdown-label" data-condition="Barely used">Barely used</div>
-                    <div class="lightblue dropdown-label" data-condition="Used">Used</div>
+                     <!-- add condition based on database-->
                 </div>
             </div>
 
@@ -171,12 +156,7 @@
                     <i id="price-caret" class="bi bi-caret-down-fill"></i>
                 </button>
                 <div id="price-dropdown" class="dropdown-content">
-                    <div class="pink dropdown-label" data-price="Free">Free</div>
-                    <div class="pink dropdown-label" data-price="$1-$5">$1-$5</div>
-                    <div class="pink dropdown-label" data-price="$5-$10">$5-$10</div>
-                    <div class="pink dropdown-label" data-price="$10-$15">$10-$15</div>
-                    <div class="pink dropdown-label" data-price="$15-$20">$15-$20</div>
-                    <div class="pink dropdown-label" data-price="$20+">$20+</div>
+                     <!-- add price based on database-->
                 </div>
             </div>
 
@@ -186,13 +166,7 @@
                     <i id="material-caret" class="bi bi-caret-down-fill"></i>
                 </button>
                 <div id="material-dropdown" class="dropdown-content">
-                    <div class="blue dropdown-label" data-material="Wood">Wood</div>
-                    <div class="blue dropdown-label" data-material="Fabric">Fabric</div>
-                    <div class="blue dropdown-label" data-material="Buttons">Buttons</div>
-                    <div class="blue dropdown-label" data-material="Glitter">Glitter</div>
-                    <div class="blue dropdown-label" data-material="Oil Paint">Oil Paint</div>
-                    <div class="blue dropdown-label" data-material="Paper">Paper</div>
-                    <div class="blue dropdown-label" data-material="Beads">Beads</div>
+                     <!-- add material based on database-->
                 </div>
             </div>
             
@@ -218,6 +192,16 @@
             var caret = document.getElementById(caretId);
             var buttonWidth = window.getComputedStyle(button).width;
 
+            const allDropdowns = document.querySelectorAll('.dropdown-content');
+            const allButtons = document.querySelectorAll('.label');
+            const allCarets = document.querySelectorAll('.bi-caret-up-fill, .bi-caret-down-fill');
+
+
+            allDropdowns.forEach(dd => {
+                if (dd !== dropdown) {
+                    dd.style.display = 'none';
+                }
+            });
             if (dropdown.style.display === "none" || dropdown.style.display === "") {
                 // Open the dropdown
                 button.style.borderBottomLeftRadius = "0";
@@ -241,14 +225,17 @@
         document.addEventListener('DOMContentLoaded', async() =>  {
             const response = await fetch('database.json');
             const items = await response.json();
-            console.log("fetched items");
             const itemsGrid = document.getElementById("items-grid");
             const favoritesList = document.getElementById("favorites-list");
             let favorites = [];
 
             //display the items (boxes)
-            console.log("displaying all items:", items);
+            console.log("displaying all items:", itemsGrid);
             displayItems(items);
+            getLabels(items);
+            filter(items);
+            
+            
 
             // function that displays the items
             function displayItems(displayItems) {
@@ -263,47 +250,29 @@
                         const itemBox = document.createElement('div');
                         itemBox.className = 'box';
                         itemBox.innerHTML =  `
-                        <div class="top-half">
-            <img src="${item.ImageURL}" alt="Image of ${item.Name}" class="round-top-corners">
-        </div>
-        <div class="bottom-half">
-            <div class="box-title"> 
-                <button class="favorite-button">
-                    <img src="Images/star.svg" alt="favorites star" class="favorites-star" data-name="${item.Name}" style="margin-bottom:20px">
-                </button>
-                ${item.Name} 
-            </div>
-            <div class="box-icons">
-                ${item.EcoFriendly && item.Barter ? `
-                    <div>
-                        <img src="Images/eco-icon2.svg" alt="eco friendly symbol" class="post-icon">
-                        <img src="Images/barter-icon.svg" alt="barter symbol" class="post-icon">
-                    </div>` 
-                : item.EcoFriendly ? `
-                    <div>
-                        <img src="Images/eco-icon2.svg" alt="eco friendly symbol" class="post-icon">
-                    </div>` 
-                : item.Barter ? `
-                    <div>
-                        <img src="Images/barter-icon.svg" alt="barter symbol" class="post-icon">
-                    </div>` 
-                : ''}
-            </div>
-            <div class="box-description"> ${item.Description}  </div>
-    `; 
-                        itemBox.innerHTML += ` 
+                            <div class="top-half">
+                                <img src="${item.ImageURL}" alt="Image of ${item.Name}" class="round-top-corners">
+                            </div>
+                            <div class="bottom-half">
+                                <div class="box-title"> 
+                                    <button class="favorite-button">
+                                        <img src="Images/star.svg" alt="favorites star" class="favorites-star" data-name="${item.Name}" style="margin-bottom:20px">
+                                    </button>
+                                    ${item.Name} 
+                                </div>
+                                <div class="box-description"> ${item.Description} </div>
+                            </div>
                             <div class="display-tag">
-                                    <div  class = "pink display-tag-item">  ${item.Labels.Price} </div>
+                                    <div class = "pink display-tag-item">  ${item.Labels.Price} </div>
                                     <div class = "blue display-tag-item">  ${item.Labels.Material}</div>
                                     <div class = "green display-tag-item">  ${item.Labels.Quantity}</div>
                                     <div class = "orange display-tag-item">  ${item.Labels.Color}</div>
                                     <div class = "lightblue display-tag-item">  ${item.Labels.Condition}</div>
                             </div>
-                            </div>
-                           
                         `;
                         itemsGrid.appendChild(itemBox);
                     }
+                    
                 }
                 //if side panel is clicked closed
                 const boxes = document.querySelectorAll('.box');
@@ -357,9 +326,131 @@
                     favoritesList.appendChild(favoriteItem);
                 });
             }
+            function getLabels(itemsGrid) {
+                const colorDropdown = document.getElementById("color-dropdown");
+                const quantityDropdown = document.getElementById("quantity-dropdown");
+                const conditionDropdown = document.getElementById("condition-dropdown");
+                const priceDropdown = document.getElementById("price-dropdown");
+                const materialDropdown = document.getElementById("material-dropdown");
 
+                let colorLabels = [];
+                let quantityLabels = [];
+                let conditionLabels = [];
+                let priceLabels = [];
+                let materialLabels = [];
+                
+                for (key in items) {
+                    const item = items[key];
+                    if (!colorLabels.includes(item.Labels.Color)) {
+                        colorLabels.push(item.Labels.Color);
+                        colorDropdown.innerHTML += `<div class="orange dropdown-label" data-color="${item.Labels.Color}">${item.Labels.Color}</div>`;
+                    }
 
+                    //quantity labels: 
+                    if (!quantityLabels.includes(item.Labels.Quantity)) {
+                        quantityLabels.push(item.Labels.Quantity); // use push which modifies existing..+= returns new array
+                        quantityDropdown.innerHTML += `<div class="green dropdown-label" data-quantity="${item.Labels.Quantity}">${item.Labels.Quantity}</div>`;
+                    }
+
+                    if (!conditionLabels.includes(item.Labels.Condition)) {
+                        conditionLabels.push(item.Labels.Condition);
+                        conditionDropdown.innerHTML += `<div class="lightblue dropdown-label" data-condition="${item.Labels.Condition}">${item.Labels.Condition}</div>`;
+                    }
+                    if (!priceLabels.includes(item.Labels.Price)) {
+                        priceLabels.push(item.Labels.Price);
+                        priceDropdown.innerHTML += `<div class="pink dropdown-label" data-price="${item.Labels.Price}">${item.Labels.Price}</div>`;
+                    }
+                    // Populate Material Labels
+                    if (!materialLabels.includes(item.Labels.Material)) {
+                        materialLabels.push(item.Labels.Material);
+                        materialDropdown.innerHTML += `<div class="blue dropdown-label" data-material="${item.Labels.Material}">${item.Labels.Material}</div>`;
+                    }
+
+                }
+
+            }
+            function filter(items){
+                // filter by Color
+                const colorLabels = document.querySelectorAll('.dropdown-label[data-color]');
+                colorLabels.forEach(label => {
+                    label.addEventListener('click', () => {
+                        const selectedCondition = label.getAttribute('data-color');
+                        const filtered = {};
+
+                        for (var key in items) {
+                            if (items.hasOwnProperty(key) && items[key].Labels.Color === selectedCondition) {
+                                filtered[key] = items[key];
+                            }
+                        }
+                        displayItems(filtered);
+                    });
+                });
+                //filter by Quantity
+                const quantityLabels = document.querySelectorAll('.dropdown-label[data-quantity]');
+                quantityLabels.forEach(label => {
+                    label.addEventListener('click', () => {
+                        const selectedCondition = label.getAttribute('data-quantity');
+                        const filtered = {};
+
+                        for (var key in items) {
+                            if (items.hasOwnProperty(key) && items[key].Labels.Quantity === selectedCondition) {
+                                filtered[key] = items[key];
+                            }
+                        }
+                        displayItems(filtered);
+                    });
+                });
+
+                //Event Listener for the Condition Filter: 
+                const conditionLabels = document.querySelectorAll('.dropdown-label[data-condition]');
+                conditionLabels.forEach(label => {
+                    label.addEventListener('click', () => {
+                        const selectedCondition = label.getAttribute('data-condition');
+                        const filtered = {};
+
+                        for (var key in items) {
+                            if (items.hasOwnProperty(key) && items[key].Labels.Condition === selectedCondition) {
+                                filtered[key] = items[key];
+                            }
+                        }
+                        displayItems(filtered);
+                    });
+                });
+                //filter by Price
+                const priceLabels = document.querySelectorAll('.dropdown-label[data-price]');
+                priceLabels.forEach(label => {
+                    label.addEventListener('click', () => {
+                        const selectedCondition = label.getAttribute('data-price');
+                        const filtered = {};
+
+                        for (var key in items) {
+                            if (items.hasOwnProperty(key) && items[key].Labels.Price === selectedCondition) {
+                                filtered[key] = items[key];
+                            }
+                        }
+                        displayItems(filtered);
+                    });
+                });
+
+                //filter by Material
+                const materialLabels = document.querySelectorAll('.dropdown-label[data-material]');
+                materialLabels.forEach(label => {
+                    label.addEventListener('click', () => {
+                        const selectedCondition = label.getAttribute('data-material');
+                        const filtered = {};
+
+                        for (var key in items) {
+                            if (items.hasOwnProperty(key) && items[key].Labels.Material === selectedCondition) {
+                                filtered[key] = items[key];
+                            }
+                        }
+                        displayItems(filtered);
+                    });
+                });
+
+                }
             //go through search response
+            
             const searchButton = document.querySelector('.search-button');
             searchButton.addEventListener("click", async() => {
                 
@@ -388,88 +479,40 @@
                
             });
             
-            // filter by Color
-            const colorLabels = document.querySelectorAll('.dropdown-label[data-color]');
-            colorLabels.forEach(label => {
-                label.addEventListener('click', () => {
-                    const selectedCondition = label.getAttribute('data-color');
-                    const filtered = {};
+            
+            const textInput = document.getElementById('textbox');
+            textInput.addEventListener('keydown', async(event) => {
+            if (event.key === 'Enter') {
+                const searchQuery = document.getElementById('textbox').value.toLowerCase();
+                // console.log('searchQuery is: ', searchQuery);
 
-                    for (var key in items) {
-                        if (items.hasOwnProperty(key) && items[key].Labels.Color === selectedCondition) {
-                            filtered[key] = items[key];
-                        }
-                    }
-                    displayItems(filtered);
-                });
+                const response = await fetch('database.json');
+                const json = await response.json();
+                // console.log("json file is: " , json);
+                const filtered = {};
+
+                for (var key in json) {
+                    if (json.hasOwnProperty(key) && json[key] && typeof json[key].Name === 'string' && json[key].Name.toLowerCase().includes(searchQuery)) {
+                        console.log('filtering...', json[key]);
+                        filtered[key] = json[key];
+                        console.log('current items', filtered)
+                    }       
+                }
+                displayItems(filtered);
+                console.log('filtered items', filtered)
+                 //give error if there are no relevant results.
+                 if (Object.keys(filtered).length == 0) {
+                    alert("I'm sorry, we are unable to find items related to your search.");
+                    displayItems(items); // reset to home
+                }
+            
+            }
             });
-            //filter by Quantity
-            const quantityLabels = document.querySelectorAll('.dropdown-label[data-quantity]');
-            quantityLabels.forEach(label => {
-                label.addEventListener('click', () => {
-                    const selectedCondition = label.getAttribute('data-quantity');
-                    const filtered = {};
-
-                    for (var key in items) {
-                        if (items.hasOwnProperty(key) && items[key].Labels.Quantity === selectedCondition) {
-                            filtered[key] = items[key];
-                        }
-                    }
-                    displayItems(filtered);
-                });
-            });
-
-            //Event Listener for the Condition Filter: 
-            const conditionLabels = document.querySelectorAll('.dropdown-label[data-condition]');
-            conditionLabels.forEach(label => {
-                label.addEventListener('click', () => {
-                    const selectedCondition = label.getAttribute('data-condition');
-                    const filtered = {};
-
-                    for (var key in items) {
-                        if (items.hasOwnProperty(key) && items[key].Labels.Condition === selectedCondition) {
-                            filtered[key] = items[key];
-                        }
-                    }
-                    displayItems(filtered);
-                });
-            });
-            //filter by Price
-            const priceLabels = document.querySelectorAll('.dropdown-label[data-price]');
-            priceLabels.forEach(label => {
-                label.addEventListener('click', () => {
-                    const selectedCondition = label.getAttribute('data-price');
-                    const filtered = {};
-
-                    for (var key in items) {
-                        if (items.hasOwnProperty(key) && items[key].Labels.Price === selectedCondition) {
-                            filtered[key] = items[key];
-                        }
-                    }
-                    displayItems(filtered);
-                });
-            });
-
-            //filter by Material
-            const materialLabels = document.querySelectorAll('.dropdown-label[data-material]');
-            materialLabels.forEach(label => {
-                label.addEventListener('click', () => {
-                    const selectedCondition = label.getAttribute('data-material');
-                    const filtered = {};
-
-                    for (var key in items) {
-                        if (items.hasOwnProperty(key) && items[key].Labels.Material === selectedCondition) {
-                            filtered[key] = items[key];
-                        }
-                    }
-                    displayItems(filtered);
-                });
-            });
-});
+        });
 
     
     </script>
 
    
 </body>
-</html>
+</html
