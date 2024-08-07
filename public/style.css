@@ -521,6 +521,7 @@ img.rounded {
     transition: right 0.3s ease;
     padding: 20px;
     z-index: 1000;
+    border-left: 1px solid #ccc;
 }
 
 .side-panel-open {
