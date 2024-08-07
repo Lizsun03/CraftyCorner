@@ -10,7 +10,7 @@
 </head>
 <body>
   <main>
-    <h1>Add Item</h1>
+    <h1 style="text-align: center; text-decoration: underline; margin: 40px;"> <b> Add Item</b> </h1>
     <div style="display: flex;">
       <div style="flex: 50%; text-align: center; margin-top: 40px;">
 
@@ -69,11 +69,11 @@
             <div class="input-box" style="display: flex; gap: 250px; padding-bottom: 0%;">
               <div>
                   <input type="radio" id="optionYes" name="EcoFriendly" value="yes">
-                  <label for="optionYes">Yes</label>
+                  <label for="optionYes" style="margin-left: 8px;">Yes</label>
               </div>
               <div>
                   <input type="radio" id="optionNo" name="EcoFriendly" value="no">
-                  <label for="optionNo">No</label>
+                  <label for="optionNo" style="margin-left: 8px;">No</label>
               </div>
             </div>
           </div>
@@ -83,11 +83,11 @@
             <div class="input-box" style="display: flex; gap: 250px; padding-bottom: 0%;">
               <div>
                   <input type="radio" id="optionYes" name="Barter" value="yes">
-                  <label for="optionYes">Yes</label>
+                  <label for="optionYes" style="margin-left: 8px;">Yes</label>
               </div>
               <div>
                   <input type="radio" id="optionNo" name="Barter" value="no">
-                  <label for="optionNo">No</label>
+                  <label for="optionNo" style="margin-left: 8px;">No</label>
               </div>
             </div>
           </div>
@@ -186,9 +186,7 @@
           // fill variables here.
           "description": desc,
         }),
-        
       }
-      
     ).then(response => response.text());
     console.log("printing out results", response);
     const labels = JSON.parse(response);
@@ -199,7 +197,6 @@
     document.getElementById('condition').innerText = labels.condition;
     
     });
-    
 
 
         const postButton = document.getElementById('post-button');
