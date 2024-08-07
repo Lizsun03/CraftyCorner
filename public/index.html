@@ -449,8 +449,19 @@
                 });
 
                 }
-            function search(json) {
+            //go through search response
+            
+            const searchButton = document.querySelector('.search-button');
+            searchButton.addEventListener("click", async() => {
+                
+                const searchQuery = document.getElementById('textbox').value.toLowerCase();
+                console.log('searchQuery is: ', searchQuery);
+
+                const response = await fetch('database.json');
+                const json = await response.json();
+                console.log("json file is: " , json);
                 const filtered = {};
+
                 for (var key in json) {
                     if (json.hasOwnProperty(key) && json[key] && typeof json[key].Name === 'string' && json[key].Name.toLowerCase().includes(searchQuery)) {
                         console.log('filtering...', json[key]);
@@ -465,19 +476,9 @@
                     alert("I'm sorry, we are unable to find items related to your search.");
                     displayItems(items); // reset to home
                 }
-
-            }
-                //go through search response
-            const searchButton = document.querySelector('.search-button');
-            searchButton.addEventListener("click", async() => {
-                const searchQuery = document.getElementById('textbox').value.toLowerCase();
-                // console.log('searchQuery is: ', searchQuery);
-
-                const response = await fetch('database.json');
-                const json = await response.json();
-                search(json);
                
             });
+            
             
             const textInput = document.getElementById('textbox');
             textInput.addEventListener('keydown', async(event) => {
