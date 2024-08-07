@@ -142,6 +142,15 @@ button {
 .search-button:hover i {
     color: #4f4e4e;
 }
+
+#suggest{
+    background-color: #3b871f;
+    height: 50%;
+}
+
+#suggest:hover {
+    color: #fcf4d4;
+}
 .favorite-item{
     cursor: pointer;
 }
