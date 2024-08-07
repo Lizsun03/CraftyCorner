@@ -82,6 +82,8 @@
                             src="Images/favorites-icon.svg"
                             alt="favorites icon"
                             class="favorites-image"
+                            data-image1="Images/favorites-icon.svg" 
+                            data-image2="Images/favorites-click.svg"
                         />
                     </button>
                     
@@ -250,25 +252,44 @@
                         const itemBox = document.createElement('div');
                         itemBox.className = 'box';
                         itemBox.innerHTML =  `
-                            <div class="top-half">
-                                <img src="${item.ImageURL}" alt="Image of ${item.Name}" class="round-top-corners">
-                            </div>
-                            <div class="bottom-half">
-                                <div class="box-title"> 
-                                    <button class="favorite-button">
-                                        <img src="Images/star.svg" alt="favorites star" class="favorites-star" data-name="${item.Name}" style="margin-bottom:20px">
-                                    </button>
-                                    ${item.Name} 
-                                </div>
-                                <div class="box-description"> ${item.Description} </div>
-                            </div>
+                        <div class="top-half">
+            <img src="${item.ImageURL}" alt="Image of ${item.Name}" class="round-top-corners">
+        </div>
+        <div class="bottom-half">
+            <div class="box-title"> 
+                <button class="favorite-button">
+                    <img src="Images/star.svg" alt="favorites star" class="favorites-star" data-name="${item.Name}" style="margin-bottom:20px">
+                </button>
+                ${item.Name} 
+            </div>
+            <div class="box-icons">
+                ${item.EcoFriendly && item.Barter ? `
+                    <div>
+                        <img src="Images/eco-icon2.svg" alt="eco friendly symbol" class="post-icon">
+                        <img src="Images/barter-icon.svg" alt="barter symbol" class="post-icon">
+                    </div>` 
+                : item.EcoFriendly ? `
+                    <div>
+                        <img src="Images/eco-icon2.svg" alt="eco friendly symbol" class="post-icon">
+                    </div>` 
+                : item.Barter ? `
+                    <div>
+                        <img src="Images/barter-icon.svg" alt="barter symbol" class="post-icon">
+                    </div>` 
+                : ''}
+            </div>
+            <div class="box-description"> ${item.Description}  </div>
+    `; 
+                        itemBox.innerHTML += ` 
                             <div class="display-tag">
-                                    <div class = "pink display-tag-item">  ${item.Labels.Price} </div>
+                                    <div  class = "pink display-tag-item">  ${item.Labels.Price} </div>
                                     <div class = "blue display-tag-item">  ${item.Labels.Material}</div>
                                     <div class = "green display-tag-item">  ${item.Labels.Quantity}</div>
                                     <div class = "orange display-tag-item">  ${item.Labels.Color}</div>
                                     <div class = "lightblue display-tag-item">  ${item.Labels.Condition}</div>
                             </div>
+                            </div>
+                           
                         `;
                         itemsGrid.appendChild(itemBox);
                     }
@@ -543,6 +564,23 @@
             
             }
             });
+            const favIcon = document.querySelector('.favorites-image');
+            favIcon.addEventListener('click', () => {
+                const currentSrc = favIcon.src.split('/').pop(); // Extract file name from src
+                const image1 = favIcon.getAttribute('data-image1').split('/').pop();
+                const image2 = favIcon.getAttribute('data-image2').split('/').pop();
+
+                if (currentSrc === image1) {
+                    favIcon.src = favIcon.getAttribute('data-image2'); // Swap to second image
+                } else {
+                    favIcon.src = favIcon.getAttribute('data-image1'); // Swap back to initial image
+                }
+
+            });
+            $('#exampleModal').on('hidden.bs.modal', function () {
+                    favIcon.src = favIcon.getAttribute('data-image1'); // Reset to the initial image
+                });
+            
             
         });
     
