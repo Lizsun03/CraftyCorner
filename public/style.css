@@ -540,11 +540,13 @@ img.rounded {
 .side-panel-content {
     /* Optional styling for the description text */
     color:#616060;
+    font-family: 'Nunito';
 }
 
 .side-title {
     /* Optional styling for the description text */
     color:#93032E;
+    font-family: 'Nunito';
     font-size: 2em;
 }
 
@@ -662,3 +664,11 @@ input[type="text"] {
     font-weight: 400;
     font-style: normal;
   }
+
+.button-hovered:hover {
+    fill: #70b756;
+}
+
+input[type='radio'] { 
+    transform: scale(1.7); 
+}
