@@ -274,22 +274,26 @@
                     }
                     
                 }
+
+                addFavoritesListener();
                 //if side panel is clicked closed
                 const boxes = document.querySelectorAll('.box');
                 boxes.forEach(box => {
-                    box.addEventListener('click', () => {
-                        const title = box.querySelector('.box-title').textContent;
-                        const description = box.querySelector('.box-description').textContent;
-                        const imageSrc = box.querySelector('img').src;
-                        const displayTags = box.querySelector('.display-tag').innerHTML; // Specific display-tag for this box
+                    box.addEventListener('click', (event) => {
+                        if (!event.target.closest('.favorite-button')) {
+                            const title = box.querySelector('.box-title').textContent;
+                            const description = box.querySelector('.box-description').textContent;
+                            const imageSrc = box.querySelector('img').src;
+                            const displayTags = box.querySelector('.display-tag').innerHTML; // Specific display-tag for this box
 
-                        document.querySelector(".side-title").textContent = title;
-                        document.querySelector(".side-panel-content").textContent = description;
-                        document.querySelector("#image-id").src = imageSrc;
-                        document.querySelector('.side-panel-labels').innerHTML = displayTags;
+                            document.querySelector(".side-title").textContent = title;
+                            document.querySelector(".side-panel-content").textContent = description;
+                            document.querySelector("#image-id").src = imageSrc;
+                            document.querySelector('.side-panel-labels').innerHTML = displayTags;
 
-                        document.querySelector(".side-panel").classList.toggle("side-panel-open");
-                        document.querySelector(".overlay").classList.add("overlay-active");
+                            document.querySelector(".side-panel").classList.toggle("side-panel-open");
+                            document.querySelector(".overlay").classList.add("overlay-active");
+                        }
                     });
                 });
 
@@ -297,8 +301,6 @@
                     document.querySelector(".side-panel").classList.remove("side-panel-open");
                     document.querySelector(".overlay").classList.remove("overlay-active");
                 });
-
-                addFavoritesListener();
             }
             
             function addFavoritesListener() {
