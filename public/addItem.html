@@ -38,7 +38,7 @@
 
           </div>
           <div>
-            <div class="tag">
+            <div class="tag"  style = margin-bottom:20px;>
               <div id = 'price' class = "pink"> price</div>
               <div id = 'material' class = "blue"> material</div>
               <div id = 'quantity' class = "green" > quantity</div>
@@ -46,7 +46,7 @@
               <div id = 'condition' class = "lightblue"> condition</div>
             </div>
 
-            <div class = "suggest-labels" style = margin-top:20px;>
+            <div class = "suggest-labels">
               <button type = "button" id = "suggest" class = "button-style"> suggest labels </button>
             </div>
           </div>
@@ -192,32 +192,54 @@
     document.getElementById('quantity').innerText = labels.quantity;
     document.getElementById('color').innerText = labels.color;
     document.getElementById('condition').innerText = labels.condition;
-    if (document.getElementById('price').innerText == ''){
-      document.getElementById('price').style.display = 'none';
+    if (labels.price === "") {
+          document.getElementById('price').style.display = 'none';
+    }
+    else {
+      document.getElementById('price').style.display = 'block';
+    }
 
+    if (labels.material === "") {
+          document.getElementById('material').style.display = 'none';
     }
-    if (document.getElementById('material').innerText == ''){
-      document.getElementById('material').style.display = 'none';
-      
+    else {
+      document.getElementById('material').style.display = 'block';
     }
-    if (document.getElementById('quantity').innerText == ''){
-      document.getElementById('quantity').style.display = 'none';
-      
+    if (labels.quantity === "") {
+          document.getElementById('quantity').style.display = 'none';
     }
-    if (document.getElementById('color').innerText == ''){
-      document.getElementById('color').style.display = 'none';
-      
+    else {
+      document.getElementById('quantity').style.display = 'block';
     }
-    if (document.getElementById('condition').innerText == ''){
-      document.getElementById('condition').style.display = 'none';
-      
+    if (labels.color === "") {
+          document.getElementById('color').style.display = 'none';
     }
+    else {
+      document.getElementById('color').style.display = 'block';
+    }
+    if (labels.condition === "") {
+          document.getElementById('condition').style.display = 'none';
+    }
+    else {
+      document.getElementById('condition').style.display = 'block';
+    }
+    
     
     
     suggestButton.disabled = false;
     suggestButton.innerHTML = "suggest labels";
     
     });
+
+    function toggleLabelVisibility(type) { 
+      if (labels.type === "") {
+          document.getElementById(type).style.display = 'none';
+      }
+      else {
+        document.getElementById(type).style.display = 'block';
+      }
+    }
+    
 
 
         const postButton = document.getElementById('post-button');

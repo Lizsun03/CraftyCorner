@@ -26,6 +26,7 @@ h1 {
 button {
     font-family: 'Nunito';
     color: #757575;
+    
 }
 
 .round-top-corners {
@@ -145,7 +146,8 @@ button {
 
 #suggest{
     background-color: #3b871f;
-    height: 50%;
+    position: fixed;
+    
 }
 
 #suggest:hover {
