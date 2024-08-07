@@ -300,14 +300,13 @@
             <div class="box-description"> ${item.Description}  </div>
     `; 
                         itemBox.innerHTML += ` 
-                            <div class="display-tag">
-                                    <div  class = "pink display-tag-item">  ${item.Labels.Price} </div>
-                                    <div class = "blue display-tag-item">  ${item.Labels.Material}</div>
-                                    <div class = "green display-tag-item">  ${item.Labels.Quantity}</div>
-                                    <div class = "orange display-tag-item">  ${item.Labels.Color}</div>
-                                    <div class = "lightblue display-tag-item">  ${item.Labels.Condition}</div>
-                            </div>
-                            </div>
+                        <div class="display-tag">
+                            ${item.Labels.Price ? `<div class="pink display-tag-item">${item.Labels.Price}</div>` : ''}
+                            ${item.Labels.Material ? `<div class="blue display-tag-item">${item.Labels.Material}</div>` : ''}
+                            ${item.Labels.Quantity ? `<div class="green display-tag-item">${item.Labels.Quantity}</div>` : ''}
+                            ${item.Labels.Color ? `<div class="orange display-tag-item">${item.Labels.Color}</div>` : ''}
+                            ${item.Labels.Condition ? `<div class="lightblue display-tag-item">${item.Labels.Condition}</div>` : ''}
+                        </div>
                            
                         `;
                         itemsGrid.appendChild(itemBox);
