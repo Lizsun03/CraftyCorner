@@ -665,7 +665,15 @@ input[type="text"] {
 
 .button-hovered:hover {
     fill: #70b756;
+    
 }
+
+.favorites-image {
+    transition: filter 0.1s ease;
+}
+
+.favorites-image:hover {
+    filter:brightness(0) saturate(100%) invert(66%) sepia(18%) saturate(1108%) hue-rotate(59deg) brightness(93%) contrast(92%)}
 
 input[type='radio'] { 
     transform: scale(1.7); 
